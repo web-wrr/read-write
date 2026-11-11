@@ -198,6 +198,7 @@
    
            try {
                const url = `https://github.com{GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}`;
+
                
                // ดึง sha ล่าสุดก่อนบันทึกเสมอ เพื่อป้องกัน Error 409 Conflict
                if (!currentSha) {
