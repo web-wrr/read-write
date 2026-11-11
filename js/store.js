@@ -135,7 +135,7 @@
        // 1. ดึงข้อมูลจาก GitHub มาอัปเดตทับ localStorage
        async function syncFromGitHub() {
            try {
-               const url = `https://github.com{GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}?t=${Date.now()}`;
+               const url = 'https://github.com' + Date.now();
                const headers = {};
                if (GH_CONFIG.getToken()) headers['Authorization'] = `token ${GH_CONFIG.getToken()}`;
    
@@ -197,7 +197,7 @@
            isSaving = true;
    
            try {
-               const url = `https://github.com{GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}`;
+               const url = 'https://github.com';
 
                
                // ดึง sha ล่าสุดก่อนบันทึกเสมอ เพื่อป้องกัน Error 409 Conflict
