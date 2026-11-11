@@ -2,7 +2,7 @@
   "app": "vs-read-think-write",
   "schemaVersion": 1,
   "createdAt": "2026-11-11T13:29:34.075Z",
-  "updatedAt": "2026-11-11T15:12:24.554Z",
+  "updatedAt": "2026-11-11T15:28:04.141Z",
   "school": {
     "name": "โรงเรียนวัดรัตนวราราม",
     "agency": "โรงเรียนวัดรัตนวราราม อำเภอรัตภูมิ จังหวัดสงขลา",
@@ -61,10 +61,955 @@
       "ควรจัดซ่อมเสริมนักเรียนกลุ่มที่ไม่ผ่านเกณฑ์ และประเมินซ้ำภายในภาคเรียน"
     ]
   },
-  "classes": [],
-  "students": [],
+  "classes": [
+    {
+      "name": "ป.1",
+      "teacher": ""
+    },
+    {
+      "name": "ป.2",
+      "teacher": ""
+    },
+    {
+      "name": "ป.3",
+      "teacher": ""
+    },
+    {
+      "name": "ป.4",
+      "teacher": ""
+    },
+    {
+      "name": "ป.5",
+      "teacher": ""
+    },
+    {
+      "name": "ป.6",
+      "teacher": ""
+    }
+  ],
+  "students": [
+    {
+      "id": "s_mwc9quy7ej0pe",
+      "no": 1,
+      "code": "1794",
+      "prefix": "ด.ช.",
+      "firstName": "อนุชา",
+      "lastName": "จันทะภาโส",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy72sp4d",
+      "no": 2,
+      "code": "1795",
+      "prefix": "ด.ช.",
+      "firstName": "ธีรพัฒน์",
+      "lastName": "ชุมพงษ์",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy77c6q2",
+      "no": 3,
+      "code": "1796",
+      "prefix": "ด.ช.",
+      "firstName": "นาธาร",
+      "lastName": "ศรีเกษม",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy743bbf",
+      "no": 4,
+      "code": "1797",
+      "prefix": "ด.ช.",
+      "firstName": "ธนเดช",
+      "lastName": "คงคล้าย",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7fiv5q",
+      "no": 5,
+      "code": "1798",
+      "prefix": "ด.ช.",
+      "firstName": "วรภัทร",
+      "lastName": "เห็ดทอง",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7sxgbh",
+      "no": 6,
+      "code": "1800",
+      "prefix": "ด.ช.",
+      "firstName": "ธีรภัทร",
+      "lastName": "เหล้าพิเดช",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7tqiye",
+      "no": 7,
+      "code": "1801",
+      "prefix": "ด.ญ.",
+      "firstName": "หนึ่งธิดา",
+      "lastName": "ซุ่นเส้ง",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7t9yii",
+      "no": 8,
+      "code": "1802",
+      "prefix": "ด.ญ.",
+      "firstName": "กันตา",
+      "lastName": "นวลสร้อย",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7olz6p",
+      "no": 9,
+      "code": "1803",
+      "prefix": "ด.ญ.",
+      "firstName": "ภัททิยา",
+      "lastName": "ปานแก้ว",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7g5ka8",
+      "no": 10,
+      "code": "1804",
+      "prefix": "ด.ญ.",
+      "firstName": "ธิญดา",
+      "lastName": "จันทะภาโส",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7gach5",
+      "no": 11,
+      "code": "1805",
+      "prefix": "ด.ญ.",
+      "firstName": "ณัชชารินทร์",
+      "lastName": "แขวงดำ",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy79rxnx",
+      "no": 12,
+      "code": "1835",
+      "prefix": "ด.ญ.",
+      "firstName": "อรินดา",
+      "lastName": "มิงมะ",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7y1t4r",
+      "no": 13,
+      "code": "1836",
+      "prefix": "ด.ญ.",
+      "firstName": "เว",
+      "lastName": "",
+      "cls": "ป.1"
+    },
+    {
+      "id": "s_mwc9quy7d9s0l",
+      "no": 1,
+      "code": "1770",
+      "prefix": "ด.ช.",
+      "firstName": "พรพิสุทธิ์",
+      "lastName": "รูปต่ำ",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7o1zgd",
+      "no": 2,
+      "code": "1772",
+      "prefix": "ด.ช.",
+      "firstName": "กฤษณพล",
+      "lastName": "เสน่ห์ภักดี",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7en3xp",
+      "no": 3,
+      "code": "1773",
+      "prefix": "ด.ช.",
+      "firstName": "ต้า",
+      "lastName": "",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy70eyuk",
+      "no": 4,
+      "code": "1806",
+      "prefix": "ด.ช.",
+      "firstName": "สุทธิภัทร",
+      "lastName": "นวลศรี",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7kc4z7",
+      "no": 5,
+      "code": "1822",
+      "prefix": "ด.ช.",
+      "firstName": "อ่องโก",
+      "lastName": "",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy72brwe",
+      "no": 6,
+      "code": "1837",
+      "prefix": "ด.ช.",
+      "firstName": "ไฮ",
+      "lastName": "ตู ยะ",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7k134z",
+      "no": 7,
+      "code": "1774",
+      "prefix": "ด.ญ.",
+      "firstName": "ชนัญชิดา",
+      "lastName": "นวลสร้อย",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7r1sdd",
+      "no": 8,
+      "code": "1776",
+      "prefix": "ด.ญ.",
+      "firstName": "วิภาวรรณ",
+      "lastName": "สายจันทร์",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7z6evk",
+      "no": 9,
+      "code": "1777",
+      "prefix": "ด.ญ.",
+      "firstName": "จิรัชยา",
+      "lastName": "มณีรักษ์",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7fuwe5",
+      "no": 10,
+      "code": "1778",
+      "prefix": "ด.ญ.",
+      "firstName": "เกอิต้า",
+      "lastName": "โต๊ะอะ",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7lh4it",
+      "no": 11,
+      "code": "1780",
+      "prefix": "ด.ญ.",
+      "firstName": "พัณณิตา",
+      "lastName": "สุวรรณมณี",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7323x8",
+      "no": 12,
+      "code": "1781",
+      "prefix": "ด.ญ.",
+      "firstName": "สุชญา",
+      "lastName": "สารประสงค์",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7v4kqu",
+      "no": 13,
+      "code": "1792",
+      "prefix": "ด.ญ.",
+      "firstName": "ฟิววรรณวิษา",
+      "lastName": "สุวรรณมณี",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7nq761",
+      "no": 14,
+      "code": "1793",
+      "prefix": "ด.ญ.",
+      "firstName": "ณรินรัตน์",
+      "lastName": "มดคัน",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy71rlfc",
+      "no": 15,
+      "code": "1823",
+      "prefix": "ด.ญ.",
+      "firstName": "กชกร",
+      "lastName": "แก้วยศกุล",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy704aho",
+      "no": 16,
+      "code": "1831",
+      "prefix": "ด.ญ.",
+      "firstName": "ใบเตย",
+      "lastName": "",
+      "cls": "ป.2"
+    },
+    {
+      "id": "s_mwc9quy7xnytu",
+      "no": 1,
+      "code": "1744",
+      "prefix": "ด.ช.",
+      "firstName": "สุวิจักขณ์",
+      "lastName": "ขันทอง",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy70f2wt",
+      "no": 2,
+      "code": "1745",
+      "prefix": "ด.ช.",
+      "firstName": "กรวิชญ์",
+      "lastName": "นะฮา",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7m5out",
+      "no": 3,
+      "code": "1746",
+      "prefix": "ด.ช.",
+      "firstName": "อมรเทพ",
+      "lastName": "มณีรักษ์",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7g0htz",
+      "no": 4,
+      "code": "1747",
+      "prefix": "ด.ช.",
+      "firstName": "ศักรินทร์",
+      "lastName": "แย้มแก้ว",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7uerja",
+      "no": 5,
+      "code": "1749",
+      "prefix": "ด.ช.",
+      "firstName": "กันติทัต",
+      "lastName": "เอี่ยมศิริ",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy73948m",
+      "no": 6,
+      "code": "1750",
+      "prefix": "ด.ช.",
+      "firstName": "ธนพัชร์",
+      "lastName": "ใหม่คงแก้ว",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7wr6gi",
+      "no": 7,
+      "code": "1751",
+      "prefix": "ด.ช.",
+      "firstName": "อันดาลีฟ",
+      "lastName": "เส็นหีมหม๊ะ",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy70uisz",
+      "no": 8,
+      "code": "1752",
+      "prefix": "ด.ช.",
+      "firstName": "กฤษฎา",
+      "lastName": "สาหมุด",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7s2ngn",
+      "no": 9,
+      "code": "1753",
+      "prefix": "ด.ช.",
+      "firstName": "ศุภกิตติ์",
+      "lastName": "รายอ",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7wuwyb",
+      "no": 10,
+      "code": "1754",
+      "prefix": "ด.ช.",
+      "firstName": "ธีรภัทร",
+      "lastName": "สุวรรณมณี",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy72x9op",
+      "no": 11,
+      "code": "1755",
+      "prefix": "ด.ช.",
+      "firstName": "ชลธี",
+      "lastName": "บัวตุ่ม",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7vfg1x",
+      "no": 12,
+      "code": "1756",
+      "prefix": "ด.ญ.",
+      "firstName": "ขวัญทิชา",
+      "lastName": "เรืองกูล",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7x1xw0",
+      "no": 13,
+      "code": "1757",
+      "prefix": "ด.ญ.",
+      "firstName": "หนึ่งธิดา",
+      "lastName": "พรรตุยู",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7t1mda",
+      "no": 14,
+      "code": "1758",
+      "prefix": "ด.ญ.",
+      "firstName": "ปริญญ์รดา",
+      "lastName": "หนูแก้ว",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy74qwjq",
+      "no": 15,
+      "code": "1759",
+      "prefix": "ด.ญ.",
+      "firstName": "ณัฐริกา",
+      "lastName": "จันเกลี้ยง",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7zlmow",
+      "no": 16,
+      "code": "1760",
+      "prefix": "ด.ญ.",
+      "firstName": "กัลย์กมล",
+      "lastName": "เทพเกลี้ยง",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7eggro",
+      "no": 17,
+      "code": "1761",
+      "prefix": "ด.ญ.",
+      "firstName": "ชุติกาญจน์",
+      "lastName": "สรรายย์",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy73s1wt",
+      "no": 18,
+      "code": "1764",
+      "prefix": "ด.ญ.",
+      "firstName": "กชมน",
+      "lastName": "สุขเจริญ",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy70absr",
+      "no": 19,
+      "code": "1790",
+      "prefix": "ด.ญ.",
+      "firstName": "วิญาดา",
+      "lastName": "กาแก้ว",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy77hcv9",
+      "no": 20,
+      "code": "1824",
+      "prefix": "ด.ญ.",
+      "firstName": "กรกมล",
+      "lastName": "สมัดหานาย",
+      "cls": "ป.3"
+    },
+    {
+      "id": "s_mwc9quy7ikwbo",
+      "no": 1,
+      "code": "1724",
+      "prefix": "ด.ช.",
+      "firstName": "สิทธิศักดิ์",
+      "lastName": "ปราบปัญจะ",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7m8tso",
+      "no": 2,
+      "code": "1725",
+      "prefix": "ด.ช.",
+      "firstName": "สิทธิกร",
+      "lastName": "ศิริ",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7o7kfu",
+      "no": 3,
+      "code": "1726",
+      "prefix": "ด.ช.",
+      "firstName": "กฤติเดช",
+      "lastName": "พรหมศรี",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy78ht0f",
+      "no": 4,
+      "code": "1727",
+      "prefix": "ด.ช.",
+      "firstName": "นันทฉัตร",
+      "lastName": "คนขยัน",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7sae7l",
+      "no": 5,
+      "code": "1729",
+      "prefix": "ด.ช.",
+      "firstName": "นภดล",
+      "lastName": "แจ่มจันทา",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7twaab",
+      "no": 6,
+      "code": "1731",
+      "prefix": "ด.ช.",
+      "firstName": "อนุวัต",
+      "lastName": "สำราญ",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7xwd9i",
+      "no": 7,
+      "code": "1766",
+      "prefix": "ด.ช.",
+      "firstName": "ณัชพล",
+      "lastName": "นัดดาวรรณ์",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7kdh7u",
+      "no": 8,
+      "code": "1732",
+      "prefix": "ด.ญ.",
+      "firstName": "ภิญญามาศ",
+      "lastName": "ขันทอง",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7xthu4",
+      "no": 9,
+      "code": "1733",
+      "prefix": "ด.ญ.",
+      "firstName": "ณัฐณิชา",
+      "lastName": "ชูรักษ์",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7qa4e2",
+      "no": 10,
+      "code": "1734",
+      "prefix": "ด.ญ.",
+      "firstName": "ซีรีน",
+      "lastName": "ณะภัยรีย์",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy77b4xl",
+      "no": 11,
+      "code": "1735",
+      "prefix": "ด.ญ.",
+      "firstName": "อังคณา",
+      "lastName": "เกษมุล",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7yo63p",
+      "no": 12,
+      "code": "1736",
+      "prefix": "ด.ญ.",
+      "firstName": "เมลดา",
+      "lastName": "ปาธะรัตน์",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7z7zzf",
+      "no": 13,
+      "code": "1737",
+      "prefix": "ด.ญ.",
+      "firstName": "กัญญาพัชร",
+      "lastName": "แก้วประสิทธิ์",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7umjcr",
+      "no": 14,
+      "code": "1738",
+      "prefix": "ด.ญ.",
+      "firstName": "วรรณวริน",
+      "lastName": "สมัดหานาย",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7rlt0l",
+      "no": 15,
+      "code": "1739",
+      "prefix": "ด.ญ.",
+      "firstName": "กฤตชญา",
+      "lastName": "ศิริดล",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7mvjds",
+      "no": 16,
+      "code": "1740",
+      "prefix": "ด.ญ.",
+      "firstName": "ปานิสรา",
+      "lastName": "จันทะภาโส",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7jb11w",
+      "no": 17,
+      "code": "1763",
+      "prefix": "ด.ญ.",
+      "firstName": "ภัทรานิษฐ์",
+      "lastName": "บุญชู",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7timol",
+      "no": 18,
+      "code": "1785",
+      "prefix": "ด.ญ.",
+      "firstName": "แอนดีชาย",
+      "lastName": "",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7w7bo8",
+      "no": 19,
+      "code": "1786",
+      "prefix": "ด.ญ.",
+      "firstName": "ศุภวรรณ",
+      "lastName": "บัวตุ่ม",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7f4dvi",
+      "no": 20,
+      "code": "1826",
+      "prefix": "ด.ญ.",
+      "firstName": "นาซีฟาร์",
+      "lastName": "กียะ",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7bfem5",
+      "no": 21,
+      "code": "1832",
+      "prefix": "ด.ญ.",
+      "firstName": "เมธินี",
+      "lastName": "สัตย์ซ้ำ",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7ioljx",
+      "no": 22,
+      "code": "1839",
+      "prefix": "ด.ญ.",
+      "firstName": "ปิ่นมนัส",
+      "lastName": "โสมโสดา",
+      "cls": "ป.4"
+    },
+    {
+      "id": "s_mwc9quy7ctirn",
+      "no": 1,
+      "code": "1672",
+      "prefix": "ด.ช.",
+      "firstName": "อุเทน",
+      "lastName": "เกษมุล",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7a3w9u",
+      "no": 2,
+      "code": "1698",
+      "prefix": "ด.ช.",
+      "firstName": "กมลภพ",
+      "lastName": "ศรีประสม",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy76vvrc",
+      "no": 3,
+      "code": "1699",
+      "prefix": "ด.ช.",
+      "firstName": "กิตติวัฒน์",
+      "lastName": "แก้วมณีย์",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy70d8hz",
+      "no": 4,
+      "code": "1700",
+      "prefix": "ด.ช.",
+      "firstName": "ศุภกฤต",
+      "lastName": "ชูแก้ว",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7vmbe2",
+      "no": 5,
+      "code": "1701",
+      "prefix": "ด.ช.",
+      "firstName": "ธันวา",
+      "lastName": "เรืองฤทธิ์",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7119qv",
+      "no": 6,
+      "code": "1703",
+      "prefix": "ด.ช.",
+      "firstName": "กฤตยชญ์",
+      "lastName": "พูลแก้ว",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7es456",
+      "no": 7,
+      "code": "1704",
+      "prefix": "ด.ช.",
+      "firstName": "อดิศักดิ์",
+      "lastName": "มีงาม",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy79e3pu",
+      "no": 8,
+      "code": "1705",
+      "prefix": "ด.ช.",
+      "firstName": "ภูรวิชญ์",
+      "lastName": "สุขแก้ว",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7nt3j4",
+      "no": 9,
+      "code": "1767",
+      "prefix": "ด.ช.",
+      "firstName": "ณัฐวุฒิ",
+      "lastName": "นัดดาวรรณ์",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7kp4ve",
+      "no": 10,
+      "code": "1784",
+      "prefix": "ด.ช.",
+      "firstName": "รัชชานนท์",
+      "lastName": "เบ็ญยู่โส๊ะ",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7i9zw7",
+      "no": 11,
+      "code": "1684",
+      "prefix": "ด.ญ.",
+      "firstName": "โชติกา",
+      "lastName": "สรรายย์",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7vxzkt",
+      "no": 12,
+      "code": "1708",
+      "prefix": "ด.ญ.",
+      "firstName": "นาตาชาร์",
+      "lastName": "โส๊ะหลี",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7ltj12",
+      "no": 13,
+      "code": "1709",
+      "prefix": "ด.ญ.",
+      "firstName": "มาริสา",
+      "lastName": "นกแอนหมาน",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7ewmf6",
+      "no": 14,
+      "code": "1710",
+      "prefix": "ด.ญ.",
+      "firstName": "ทักษภร",
+      "lastName": "พงศ์แพะ",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy74ej9n",
+      "no": 15,
+      "code": "1712",
+      "prefix": "ด.ญ.",
+      "firstName": "ณิชาภัทร",
+      "lastName": "สุวรรณชาตรี",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7r3gne",
+      "no": 16,
+      "code": "1723",
+      "prefix": "ด.ญ.",
+      "firstName": "ธัญญลักษณ์",
+      "lastName": "ศรีพินิจตระกูล",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy72h1ad",
+      "no": 17,
+      "code": "1741",
+      "prefix": "ด.ญ.",
+      "firstName": "เอ",
+      "lastName": "เอ เท",
+      "cls": "ป.5"
+    },
+    {
+      "id": "s_mwc9quy7za55y",
+      "no": 1,
+      "code": "1666",
+      "prefix": "ด.ช.",
+      "firstName": "สิทธิพร",
+      "lastName": "ธรรมประดิษฐ์",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7sfwdi",
+      "no": 2,
+      "code": "1667",
+      "prefix": "ด.ช.",
+      "firstName": "อภิเดช",
+      "lastName": "พูลแก้ว",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7dfhpt",
+      "no": 3,
+      "code": "1668",
+      "prefix": "ด.ช.",
+      "firstName": "วิชญ์พล",
+      "lastName": "เกษมุล",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7aiez1",
+      "no": 4,
+      "code": "1669",
+      "prefix": "ด.ช.",
+      "firstName": "อธิบดี",
+      "lastName": "โชคเกษม",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7pf40z",
+      "no": 5,
+      "code": "1671",
+      "prefix": "ด.ช.",
+      "firstName": "ณัฏฐ์กิตติ์",
+      "lastName": "ไชยแก้ว",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7hyesq",
+      "no": 6,
+      "code": "1673",
+      "prefix": "ด.ช.",
+      "firstName": "ธนพัฒน์",
+      "lastName": "เรืองฤทธิ์",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy72r6wd",
+      "no": 7,
+      "code": "1675",
+      "prefix": "ด.ช.",
+      "firstName": "กิตศิริ",
+      "lastName": "รอดสุข",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7ur2ng",
+      "no": 8,
+      "code": "1678",
+      "prefix": "ด.ช.",
+      "firstName": "มาลิก",
+      "lastName": "ฤทธิ์โต",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7ss0ur",
+      "no": 9,
+      "code": "1679",
+      "prefix": "ด.ช.",
+      "firstName": "ภูภูมิ",
+      "lastName": "บัวตุ่ม",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7tcaxm",
+      "no": 10,
+      "code": "1720",
+      "prefix": "ด.ช.",
+      "firstName": "สมหวัง",
+      "lastName": "",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7tfxqv",
+      "no": 11,
+      "code": "1680",
+      "prefix": "ด.ญ.",
+      "firstName": "กชกร",
+      "lastName": "อ่อนทอง",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy76jo7t",
+      "no": 12,
+      "code": "1721",
+      "prefix": "ด.ญ.",
+      "firstName": "สุธิชา",
+      "lastName": "พรหมอินทร์",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7i9myc",
+      "no": 13,
+      "code": "1827",
+      "prefix": "ด.ญ.",
+      "firstName": "นาซีย์ร่า",
+      "lastName": "กียะ",
+      "cls": "ป.6"
+    },
+    {
+      "id": "s_mwc9quy7oofjp",
+      "no": 14,
+      "code": "1828",
+      "prefix": "ด.ญ.",
+      "firstName": "ชนากานต์",
+      "lastName": "ชาลี",
+      "cls": "ป.6"
+    }
+  ],
   "tasks": [],
   "scores": {},
   "remedial": {},
-  "register": []
+  "register": [],
+  "exportedAt": "2026-11-11T15:25:47.791Z"
 }
