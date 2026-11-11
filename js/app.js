@@ -194,7 +194,7 @@
 
     async function welcome() {
         if (!Store.isEmpty() || Store.meta.dismissedWelcome) return;
-        const r = await Swal.fire({
+        await Swal.fire({
             html: `
                 <div class="sheet-head">
                     <span class="sh-ic"><i class="fas fa-book-open-reader"></i></span>
@@ -209,24 +209,16 @@
                     </div>
                 </div>`,
             width: 760,
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: '<i class="fas fa-play"></i> เริ่มใหม่ (ข้อมูลว่าง)',
-            denyButtonText: '<i class="fas fa-flask"></i> ทดลองด้วยข้อมูลตัวอย่าง',
-            cancelButtonText: '<i class="fas fa-folder-open"></i> เปิดไฟล์ข้อมูลเดิม',
+            showDenyButton: false,
+            showCancelButton: false,
+            confirmButtonText: '<i class="fas fa-arrow-right-to-bracket"></i> เข้าสู่โปรแกรม',
             buttonsStyling: false,
-            customClass: { popup: 'sheet', confirmButton: 'btn-x primary lg', denyButton: 'btn-x orange lg', cancelButton: 'btn-x ghost lg' },
+            customClass: { popup: 'sheet', confirmButton: 'btn-x primary lg' },
             allowOutsideClick: false,
-            didOpen: () => {
-                VSDemo.lock(Swal.getConfirmButton(), 'เริ่มใหม่ (ข้อมูลว่าง)');
-                VSDemo.lock(Swal.getCancelButton(), 'เปิดไฟล์ข้อมูลเดิม');
-            },
         });
         Store.setMeta({ dismissedWelcome: true });
-        if (r.isDenied || VSDemo.active) App.loadDemo();
-        else if (r.dismiss === Swal.DismissReason.cancel) App.openFile();
-        else App.go('school');
     }
+
 
     function init() {
         Store.load();
