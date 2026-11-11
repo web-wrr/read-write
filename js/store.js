@@ -112,15 +112,9 @@
         d.schemaVersion = SCHEMA_VERSION;
         return d;
     }
-       /* ---------- ตั้งค่าเชื่อมต่อ GitHub ---------- */
-       const GH_CONFIG = {
-           owner: 'web-wrr',
-           repo: 'read-write',
-           path: 'data.json',
-           // แนะนำให้เก็บ Token ไว้ใน localStorage ของเครื่องแอดมิน เพื่อไม่ให้หลุดไปกับโค้ดสาธารณะ
-           getToken: () => localStorage.getItem('gh_token') || ''
-       };
-       let currentSha = null;
+
+        /* ---------- ตั้งค่าเชื่อมต่อส่วนกลาง (Google Apps Script) ---------- */
+       const PROXY_URL = 'https://script.google.com/a/macros/ska2.go.th/s/AKfycbytX-KekEqfaquHhn3ERrjAvpECm1CREX2QQCLUfeDVReZN65OrKpZmkYO6XYRZaxYl/exec';
        let isSaving = false;
    
        /* ---------- สถานะ ---------- */
@@ -132,27 +126,21 @@
        function loadMeta() { try { meta = Object.assign(meta, JSON.parse(localStorage.getItem(KEY_META) || '{}')); } catch (e) { /* ค่าเริ่มต้น */ } }
        function saveMeta() { try { localStorage.setItem(KEY_META, JSON.stringify(meta)); } catch (e) { /* ไม่เป็นไร */ } }
    
-       // 1. ดึงข้อมูลจาก GitHub มาอัปเดตทับ localStorage
+       // 1. ดึงข้อมูลจาก GitHub มาแสดง (อ่านตรงจาก GitHub ได้เลย ไม่ต้องใช้ Token)
        async function syncFromGitHub() {
            try {
-               const url = ['https://api.github.com', 'repos', 'web-wrr', 'read-write', 'contents', 'data.json?t=' + Date.now()].join('/');
-               const headers = {};
-               if (GH_CONFIG.getToken()) headers['Authorization'] = `token ${GH_CONFIG.getToken()}`;
-   
-               const res = await fetch(url, { headers });
+               const url = ['https://github.com', 'repos', 'web-wrr', 'read-write', 'contents', 'data.json?t=' + Date.now()].join('/');
+               const res = await fetch(url);
                if (!res.ok) throw new Error('โหลดจาก GitHub ไม่สำเร็จ');
                
                const file = await res.json();
-               currentSha = file.sha; // เก็บ sha ล่าสุดไว้ใช้ตอนบันทึก
-   
                const content = decodeURIComponent(escape(atob(file.content)));
                const parsed = JSON.parse(content);
    
-               // ถ้าไฟล์บน GitHub มีข้อมูลอยู่แล้ว ให้นำมาใช้งานและรีเฟรชหน้าจอ
                if (parsed && Object.keys(parsed).length > 0) {
                    data = normalize(parsed);
                    localStorage.setItem(KEY, JSON.stringify(data));
-                   emit('sync'); // สั่งให้ UI อัปเดตข้อมูลใหม่ทันที
+                   emit('sync');
                }
            } catch (e) {
                console.warn('ใช้ข้อมูลสำรองในเครื่องแทนเนื่องจาก:', e);
@@ -169,14 +157,12 @@
                storageOk = false;
                data = newData();
            }
-           // สั่งดึงข้อมูลล่าสุดจาก GitHub ทันทีที่เปิดหน้าเว็บ
            syncFromGitHub();
            return data;
        }
    
-       // 2. บันทึกลงทั้งในเบราว์เซอร์ และส่งขึ้น GitHub
+       // 2. บันทึกลงเบราว์เซอร์ และส่งขึ้น GitHub ผ่านตัวกลาง Google Apps Script
        async function persist() {
-           // บันทึกลงเครื่องก่อนเสมอ (ทำงานเร็วและกันข้อมูลหาย)
            try {
                localStorage.setItem(KEY, JSON.stringify(data));
                meta.lastSavedAt = new Date().toISOString();
@@ -187,60 +173,33 @@
                console.error('บันทึกลงเบราว์เซอร์ไม่สำเร็จ', e);
            }
    
-           // ส่งขึ้น GitHub ถ้ามี Token
-           const token = GH_CONFIG.getToken();
-           if (!token) {
-               console.warn('ยังไม่ได้ใส่ GitHub Token (บันทึกเฉพาะในเครื่องนี้)');
-               return;
-           }
-           if (isSaving) return; // ป้องกันการกดบันทึกซ้ำซ้อนขณะกำลังส่งข้อมูล
+           if (!PROXY_URL || PROXY_URL.includes('นำ_URL')) return;
+           if (isSaving) return;
            isSaving = true;
    
            try {
-               const url = ['https://api.github.com', 'repos', 'web-wrr', 'read-write', 'contents', 'data.json'].join('/');
-
-
-               
-               // ดึง sha ล่าสุดก่อนบันทึกเสมอ เพื่อป้องกัน Error 409 Conflict
-               if (!currentSha) {
-                   const checkRes = await fetch(`${url}?t=${Date.now()}`, { headers: { 'Authorization': `token ${token}` } });
-                   if (checkRes.ok) {
-                       const checkFile = await checkRes.json();
-                       currentSha = checkFile.sha;
-                   }
-               }
-   
-               const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-               const res = await fetch(url, {
-                   method: 'PUT',
-                   headers: {
-                       'Authorization': `token ${token}`,
-                       'Content-Type': 'application/json'
-                   },
-                   body: JSON.stringify({
-                       message: `Update data (${new Date().toLocaleString('th-TH')})`,
-                       content: encodedContent,
-                       sha: currentSha
-                   })
+               const res = await fetch(PROXY_URL, {
+                   method: 'POST',
+                   headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                   body: JSON.stringify(data, null, 2)
                });
    
-               if (res.ok) {
-                   const result = await res.json();
-                   currentSha = result.content.sha; // อัปเดต sha ใหม่สำหรับการบันทึกครั้งถัดไป
-                   U.toast('บันทึกข้อมูลขึ้นส่วนกลาง (GitHub) สำเร็จ', { type: 'ok', ms: 2500 });
+               const result = await res.json();
+               if (result.status === 'ok') {
+                   U.toast('บันทึกข้อมูลขึ้นส่วนกลางสำเร็จ', { type: 'ok', ms: 2500 });
                } else {
-                   throw new Error(`HTTP ${res.status}`);
+                   throw new Error(result.message || 'บันทึกไม่สำเร็จ');
                }
            } catch (e) {
-               console.error('บันทึกขึ้น GitHub ไม่สำเร็จ:', e);
-               U.toast('บันทึกขึ้นส่วนกลางไม่สำเร็จ กรุณาตรวจสอบ Token หรืออินเทอร์เน็ต', { type: 'bad', ms: 5000 });
+               console.error('บันทึกขึ้นส่วนกลางไม่สำเร็จ:', e);
+               U.toast('บันทึกขึ้นส่วนกลางไม่สำเร็จ กรุณาตรวจสอบอินเทอร์เน็ต', { type: 'bad', ms: 5000 });
            } finally {
                isSaving = false;
            }
        }
    
-       // ปรับเวลาหน่วงการบันทึกอัตโนมัติเป็น 1.5 วินาที (1500ms) เพื่อไม่ให้ยิง API ถี่เกินไปตอนพิมพ์คะแนน
        const persistSoon = U.debounce(persist, 1500);
+
   
     function emit(reason) { listeners.forEach((fn) => { try { fn(reason); } catch (e) { console.error(e); } }); }
     function commit(reason, opts) {
