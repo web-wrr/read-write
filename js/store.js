@@ -239,43 +239,7 @@
    
        // ปรับเวลาหน่วงการบันทึกอัตโนมัติเป็น 1.5 วินาที (1500ms) เพื่อไม่ให้ยิง API ถี่เกินไปตอนพิมพ์คะแนน
        const persistSoon = U.debounce(persist, 1500);
-
-
-
-   
-    /* ---------- สถานะ ---------- */
-    const listeners = new Set();
-    let data = null;
-    let meta = { lastBackupAt: null, lastBackupName: '', lastChangeAt: null, lastSavedAt: null, dismissedWelcome: false, lastClass: '', lastTask: '' };
-    let storageOk = true;
-
-    function loadMeta() { try { meta = Object.assign(meta, JSON.parse(localStorage.getItem(KEY_META) || '{}')); } catch (e) { /* ค่าเริ่มต้น */ } }
-    function saveMeta() { try { localStorage.setItem(KEY_META, JSON.stringify(meta)); } catch (e) { /* ไม่เป็นไร */ } }
-    function load() {
-        loadMeta();
-        try {
-            const raw = localStorage.getItem(KEY);
-            data = raw ? normalize(JSON.parse(raw)) : newData();
-        } catch (e) {
-            console.warn('โหลดข้อมูลไม่สำเร็จ', e);
-            storageOk = false;
-            data = newData();
-        }
-        return data;
-    }
-    function persist() {
-        try {
-            localStorage.setItem(KEY, JSON.stringify(data));
-            meta.lastSavedAt = new Date().toISOString();
-            saveMeta();
-            storageOk = true;
-        } catch (e) {
-            storageOk = false;
-            console.error('บันทึกลงเบราว์เซอร์ไม่สำเร็จ', e);
-            U.toast('บันทึกลงเบราว์เซอร์ไม่สำเร็จ — กรุณากด "บันทึกไฟล์ข้อมูล" เพื่อสำรองทันที', { type: 'bad', ms: 8000 });
-        }
-    }
-    const persistSoon = U.debounce(persist, 300);
+  
     function emit(reason) { listeners.forEach((fn) => { try { fn(reason); } catch (e) { console.error(e); } }); }
     function commit(reason, opts) {
         if (opts && opts.normalize) data = normalize(data);
