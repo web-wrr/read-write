@@ -1,0 +1,2477 @@
+/* =====================================================================
+   VS Kit — ธีมสีประจำระบบ (สีเมนูซ้าย + สีเน้นของปุ่ม/ไอคอน/หัวตาราง)
+   ใช้: โหลดต่อจาก vs-app.css แล้วใส่คลาสที่ <body>  เช่น  <body class="vs-theme-emerald">
+   ไม่ใส่คลาส = ม่วงคราม (โทนเดิมของระบบจัดตารางสอน)
+   ทุกระบบใช้ธีมไม่ซ้ำกัน — หัวหน้าโครงการกำหนดธีมไว้ใน BRIEF.md ของแต่ละระบบ
+   ส่วนอื่น (การ์ดสถิติหลากสี, ป้ายสถานะ, ปุ่มเขียว/ส้ม/แดง) คงเดิม เพื่อให้ความหมายของสีเหมือนกันทุกระบบ
+   ===================================================================== */
+:root {
+    --sb-a: #4f46e5; --sb-b: #7c3aed; --sb-glow: rgba(124, 58, 237, .25); --sb-mark: #FFCC70;
+    --ac: #5E5CE6; --ac-2: #BF5AF2; --ac-ink: #3730a3; --ac-soft: #eef2ff; --ac-line: #e0e7ff; --ac-head: #f5f7ff;
+    --hero-1: #1e3a8a; --hero-2: #4338ca; --hero-3: #0f766e;
+}
+/* 1. ม่วงคราม (ค่าเริ่มต้น) */
+.vs-theme-indigo { }
+/* 2. เขียวมรกต */
+.vs-theme-emerald { --sb-a: #047857; --sb-b: #10b981; --sb-glow: rgba(16, 185, 129, .28); --sb-mark: #FDE68A;
+    --ac: #059669; --ac-2: #34d399; --ac-ink: #065f46; --ac-soft: #ecfdf5; --ac-line: #a7f3d0; --ac-head: #f0fdf7;
+    --hero-1: #064e3b; --hero-2: #059669; --hero-3: #0891b2; }
+/* 3. ฟ้าน้ำทะเลสาบ (เขียวอมฟ้า) */
+.vs-theme-lagoon { --sb-a: #0f766e; --sb-b: #0891b2; --sb-glow: rgba(8, 145, 178, .28); --sb-mark: #FDE68A;
+    --ac: #0d9488; --ac-2: #22d3ee; --ac-ink: #115e59; --ac-soft: #f0fdfa; --ac-line: #99f6e4; --ac-head: #f0fdfa;
+    --hero-1: #134e4a; --hero-2: #0d9488; --hero-3: #0369a1; }
+/* 4. ส้มพระอาทิตย์ตก */
+.vs-theme-sunset { --sb-a: #ea580c; --sb-b: #db2777; --sb-glow: rgba(234, 88, 12, .28); --sb-mark: #FEF08A;
+    --ac: #f97316; --ac-2: #ec4899; --ac-ink: #9a3412; --ac-soft: #fff7ed; --ac-line: #fed7aa; --ac-head: #fff7ed;
+    --hero-1: #9a3412; --hero-2: #ea580c; --hero-3: #be185d; }
+/* 5. ทองอำพัน */
+.vs-theme-amber { --sb-a: #b45309; --sb-b: #d97706; --sb-glow: rgba(217, 119, 6, .3); --sb-mark: #FFFFFF;
+    --ac: #d97706; --ac-2: #f59e0b; --ac-ink: #92400e; --ac-soft: #fffbeb; --ac-line: #fde68a; --ac-head: #fffbeb;
+    --hero-1: #78350f; --hero-2: #b45309; --hero-3: #ca8a04; }
+/* 6. ชมพูกุหลาบ */
+.vs-theme-rose { --sb-a: #be185d; --sb-b: #e11d48; --sb-glow: rgba(225, 29, 72, .26); --sb-mark: #FDE68A;
+    --ac: #e11d48; --ac-2: #f472b6; --ac-ink: #9f1239; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #fff1f2;
+    --hero-1: #881337; --hero-2: #e11d48; --hero-3: #c026d3; }
+/* 7. แดงเพลิง */
+.vs-theme-crimson { --sb-a: #b91c1c; --sb-b: #ea580c; --sb-glow: rgba(220, 38, 38, .26); --sb-mark: #FDE68A;
+    --ac: #dc2626; --ac-2: #f97316; --ac-ink: #991b1b; --ac-soft: #fef2f2; --ac-line: #fecaca; --ac-head: #fef2f2;
+    --hero-1: #7f1d1d; --hero-2: #dc2626; --hero-3: #ea580c; }
+/* 8. ม่วงองุ่น (ม่วงอมบานเย็น) */
+.vs-theme-grape { --sb-a: #6d28d9; --sb-b: #a21caf; --sb-glow: rgba(162, 28, 175, .26); --sb-mark: #FDE68A;
+    --ac: #9333ea; --ac-2: #d946ef; --ac-ink: #6b21a8; --ac-soft: #faf5ff; --ac-line: #e9d5ff; --ac-head: #faf5ff;
+    --hero-1: #4c1d95; --hero-2: #9333ea; --hero-3: #c026d3; }
+/* 9. เขียวป่า */
+.vs-theme-forest { --sb-a: #166534; --sb-b: #4d7c0f; --sb-glow: rgba(22, 101, 52, .28); --sb-mark: #FDE68A;
+    --ac: #16a34a; --ac-2: #84cc16; --ac-ink: #14532d; --ac-soft: #f0fdf4; --ac-line: #bbf7d0; --ac-head: #f0fdf4;
+    --hero-1: #14532d; --hero-2: #15803d; --hero-3: #65a30d; }
+/* 10. กรมท่ายามค่ำ (น้ำเงินเข้ม + ฟ้าสด) */
+.vs-theme-midnight { --sb-a: #0f172a; --sb-b: #1e3a5f; --sb-glow: rgba(15, 23, 42, .35); --sb-mark: #38BDF8;
+    --ac: #0284c7; --ac-2: #22d3ee; --ac-ink: #075985; --ac-soft: #f0f9ff; --ac-line: #bae6fd; --ac-head: #f0f9ff;
+    --hero-1: #0f172a; --hero-2: #1e40af; --hero-3: #0891b2; }
+/* 11. ม่วงพลัม (ม่วงอมชมพู) */
+.vs-theme-plum { --sb-a: #7e22ce; --sb-b: #db2777; --sb-glow: rgba(219, 39, 119, .26); --sb-mark: #FDE68A;
+    --ac: #a855f7; --ac-2: #ec4899; --ac-ink: #7e22ce; --ac-soft: #fdf4ff; --ac-line: #f5d0fe; --ac-head: #fdf4ff;
+    --hero-1: #581c87; --hero-2: #a21caf; --hero-3: #db2777; }
+/* 12. ปะการัง (ชมพูส้ม) */
+.vs-theme-coral { --sb-a: #e11d48; --sb-b: #f97316; --sb-glow: rgba(249, 115, 22, .28); --sb-mark: #FEF08A;
+    --ac: #f43f5e; --ac-2: #fb923c; --ac-ink: #be123c; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #fff5f5;
+    --hero-1: #9f1239; --hero-2: #f43f5e; --hero-3: #f97316; }
+/* 13. มิ้นต์ (เขียวมิ้นต์ + เขียวมะนาว) */
+.vs-theme-mint { --sb-a: #0d9488; --sb-b: #65a30d; --sb-glow: rgba(13, 148, 136, .28); --sb-mark: #FEF08A;
+    --ac: #14b8a6; --ac-2: #84cc16; --ac-ink: #115e59; --ac-soft: #f0fdfa; --ac-line: #99f6e4; --ac-head: #f0fdfa;
+    --hero-1: #134e4a; --hero-2: #0d9488; --hero-3: #4d7c0f; }
+/* 14. ฟ้าสดใส */
+.vs-theme-sky { --sb-a: #0284c7; --sb-b: #06b6d4; --sb-glow: rgba(6, 182, 212, .28); --sb-mark: #FEF08A;
+    --ac: #0ea5e9; --ac-2: #22d3ee; --ac-ink: #075985; --ac-soft: #f0f9ff; --ac-line: #bae6fd; --ac-head: #f0f9ff;
+    --hero-1: #0c4a6e; --hero-2: #0284c7; --hero-3: #0d9488; }
+/* 15. น้ำตาลโกโก้ (น้ำตาลอมส้ม) */
+.vs-theme-cocoa { --sb-a: #7c2d12; --sb-b: #c2410c; --sb-glow: rgba(124, 45, 18, .3); --sb-mark: #FDE68A;
+    --ac: #c2410c; --ac-2: #f59e0b; --ac-ink: #7c2d12; --ac-soft: #fff7ed; --ac-line: #fed7aa; --ac-head: #fff7ed;
+    --hero-1: #431407; --hero-2: #9a3412; --hero-3: #d97706; }
+/* 16. ทับทิม-ม่วง (แดงอมม่วง) */
+.vs-theme-ruby { --sb-a: #9f1239; --sb-b: #7e22ce; --sb-glow: rgba(159, 18, 57, .28); --sb-mark: #FDE68A;
+    --ac: #be123c; --ac-2: #a855f7; --ac-ink: #881337; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #fff1f2;
+    --hero-1: #4c0519; --hero-2: #be123c; --hero-3: #7e22ce; }
+
+/* 17. น้ำเงินราชวงศ์ */
+.vs-theme-royal { --sb-a: #1e3a8a; --sb-b: #2563eb; --sb-glow: rgba(37, 99, 235, .28); --sb-mark: #FDE68A;
+    --ac: #2563eb; --ac-2: #60a5fa; --ac-ink: #1e3a8a; --ac-soft: #eff6ff; --ac-line: #bfdbfe; --ac-head: #eff6ff;
+    --hero-1: #172554; --hero-2: #1d4ed8; --hero-3: #0284c7; }
+/* 18. เทาเหล็ก + เขียวน้ำทะเล */
+.vs-theme-steel { --sb-a: #334155; --sb-b: #475569; --sb-glow: rgba(51, 65, 85, .3); --sb-mark: #5EEAD4;
+    --ac: #0d9488; --ac-2: #14b8a6; --ac-ink: #134e4a; --ac-soft: #f0fdfa; --ac-line: #99f6e4; --ac-head: #f1f5f9;
+    --hero-1: #1e293b; --hero-2: #334155; --hero-3: #0f766e; }
+/* 19. แสงเหนือ (เขียวอมฟ้า → ม่วง) */
+.vs-theme-aurora { --sb-a: #0f766e; --sb-b: #7c3aed; --sb-glow: rgba(124, 58, 237, .25); --sb-mark: #FDE68A;
+    --ac: #0d9488; --ac-2: #8b5cf6; --ac-ink: #115e59; --ac-soft: #f0fdfa; --ac-line: #ccfbf1; --ac-head: #f0fdfa;
+    --hero-1: #134e4a; --hero-2: #0f766e; --hero-3: #6d28d9; }
+/* 20. สนธยา (ครามเข้ม → ชมพู) */
+.vs-theme-dusk { --sb-a: #312e81; --sb-b: #be185d; --sb-glow: rgba(190, 24, 93, .25); --sb-mark: #FDE68A;
+    --ac: #6366f1; --ac-2: #ec4899; --ac-ink: #3730a3; --ac-soft: #eef2ff; --ac-line: #c7d2fe; --ac-head: #f5f3ff;
+    --hero-1: #1e1b4b; --hero-2: #4338ca; --hero-3: #be185d; }
+/* 21. นกยูง (ฟ้าเข้ม → เขียว) */
+.vs-theme-peacock { --sb-a: #155e75; --sb-b: #15803d; --sb-glow: rgba(21, 128, 61, .26); --sb-mark: #FDE68A;
+    --ac: #0e7490; --ac-2: #22c55e; --ac-ink: #164e63; --ac-soft: #ecfeff; --ac-line: #a5f3fc; --ac-head: #ecfeff;
+    --hero-1: #083344; --hero-2: #0e7490; --hero-3: #15803d; }
+/* 22. ส้มเขียวหวาน (ส้ม → เหลือง) */
+.vs-theme-tangerine { --sb-a: #ea580c; --sb-b: #ca8a04; --sb-glow: rgba(234, 88, 12, .28); --sb-mark: #FFFFFF;
+    --ac: #ea580c; --ac-2: #eab308; --ac-ink: #9a3412; --ac-soft: #fff7ed; --ac-line: #fed7aa; --ac-head: #fffbeb;
+    --hero-1: #7c2d12; --hero-2: #ea580c; --hero-3: #ca8a04; }
+/* 23. ดินโคลน (เทาหิน → เหลืองดินเผา) */
+.vs-theme-earth { --sb-a: #57534e; --sb-b: #a16207; --sb-glow: rgba(87, 83, 78, .3); --sb-mark: #FDE68A;
+    --ac: #a16207; --ac-2: #ca8a04; --ac-ink: #713f12; --ac-soft: #fefce8; --ac-line: #fef08a; --ac-head: #fafaf9;
+    --hero-1: #292524; --hero-2: #57534e; --hero-3: #a16207; }
+/* 24. ไซเบอร์ (ฟ้าน้ำทะเล → บานเย็น) */
+.vs-theme-cyber { --sb-a: #0e7490; --sb-b: #a21caf; --sb-glow: rgba(162, 28, 175, .26); --sb-mark: #FDE68A;
+    --ac: #0891b2; --ac-2: #d946ef; --ac-ink: #155e75; --ac-soft: #ecfeff; --ac-line: #a5f3fc; --ac-head: #fdf4ff;
+    --hero-1: #164e63; --hero-2: #0e7490; --hero-3: #a21caf; }
+/* 25. รุ่งอรุณ (ชมพู → ทอง) */
+.vs-theme-sunrise { --sb-a: #db2777; --sb-b: #f59e0b; --sb-glow: rgba(245, 158, 11, .28); --sb-mark: #FFFFFF;
+    --ac: #ec4899; --ac-2: #f59e0b; --ac-ink: #9d174d; --ac-soft: #fdf2f8; --ac-line: #fbcfe8; --ac-head: #fff7ed;
+    --hero-1: #831843; --hero-2: #db2777; --hero-3: #d97706; }
+/* 26. ลูกกวาด (ชมพู → ม่วงอ่อน) */
+.vs-theme-candy { --sb-a: #ec4899; --sb-b: #8b5cf6; --sb-glow: rgba(139, 92, 246, .26); --sb-mark: #FEF08A;
+    --ac: #ec4899; --ac-2: #8b5cf6; --ac-ink: #9d174d; --ac-soft: #fdf2f8; --ac-line: #fbcfe8; --ac-head: #faf5ff;
+    --hero-1: #831843; --hero-2: #db2777; --hero-3: #7c3aed; }
+
+/* 27. เขียว Excel (เขียวเข้ม → เขียว Excel) */
+.vs-theme-excel { --sb-a: #0b5d33; --sb-b: #1f8a4c; --sb-glow: rgba(31, 138, 76, .28); --sb-mark: #BBF7D0;
+    --ac: #16a34a; --ac-2: #22c55e; --ac-ink: #14532d; --ac-soft: #f0fdf4; --ac-line: #bbf7d0; --ac-head: #f0fdf4;
+    --hero-1: #052e16; --hero-2: #15803d; --hero-3: #0d9488; }
+/* 28. มะนาว (เขียวมะกอก → เขียวมะนาว) */
+.vs-theme-lime { --sb-a: #3f6212; --sb-b: #84cc16; --sb-glow: rgba(132, 204, 22, .28); --sb-mark: #ECFCCB;
+    --ac: #65a30d; --ac-2: #a3e635; --ac-ink: #365314; --ac-soft: #f7fee7; --ac-line: #d9f99d; --ac-head: #f7fee7;
+    --hero-1: #1a2e05; --hero-2: #4d7c0f; --hero-3: #65a30d; }
+/* 29. ทองคำ (น้ำตาลทอง → เหลืองทอง) */
+.vs-theme-gold { --sb-a: #92400e; --sb-b: #eab308; --sb-glow: rgba(234, 179, 8, .28); --sb-mark: #FFFFFF;
+    --ac: #ca8a04; --ac-2: #facc15; --ac-ink: #713f12; --ac-soft: #fefce8; --ac-line: #fef08a; --ac-head: #fefce8;
+    --hero-1: #422006; --hero-2: #a16207; --hero-3: #ca8a04; }
+/* 30. กราไฟต์ (ดำกราไฟต์ → เทาเข้ม (ปุ่มสีอำพัน)) */
+.vs-theme-graphite { --sb-a: #18181b; --sb-b: #3f3f46; --sb-glow: rgba(63, 63, 70, .30); --sb-mark: #FBBF24;
+    --ac: #d97706; --ac-2: #f59e0b; --ac-ink: #78350f; --ac-soft: #fffbeb; --ac-line: #fde68a; --ac-head: #fafaf9;
+    --hero-1: #18181b; --hero-2: #3f3f46; --hero-3: #b45309; }
+/* 31. แตงโม (เขียวเปลือก → แดงเนื้อแตงโม) */
+.vs-theme-watermelon { --sb-a: #15803d; --sb-b: #e11d48; --sb-glow: rgba(225, 29, 72, .26); --sb-mark: #BBF7D0;
+    --ac: #e11d48; --ac-2: #fb7185; --ac-ink: #881337; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #f0fdf4;
+    --hero-1: #14532d; --hero-2: #15803d; --hero-3: #e11d48; }
+/* 32. ลาเวนเดอร์ (ม่วงเข้ม → ม่วงลาเวนเดอร์) */
+.vs-theme-lavender { --sb-a: #5b21b6; --sb-b: #a78bfa; --sb-glow: rgba(167, 139, 250, .30); --sb-mark: #FDE68A;
+    --ac: #7c3aed; --ac-2: #a78bfa; --ac-ink: #4c1d95; --ac-soft: #f5f3ff; --ac-line: #ddd6fe; --ac-head: #f5f3ff;
+    --hero-1: #2e1065; --hero-2: #6d28d9; --hero-3: #8b5cf6; }
+/* 33. เขียวเสจ (เขียวหม่นเข้ม → เขียวเสจ) */
+.vs-theme-sage { --sb-a: #3f4f3a; --sb-b: #6b8f71; --sb-glow: rgba(107, 143, 113, .30); --sb-mark: #FEF3C7;
+    --ac: #4d7c5a; --ac-2: #84a98c; --ac-ink: #2f3e2c; --ac-soft: #f3f7f2; --ac-line: #d4e2d4; --ac-head: #f3f7f2;
+    --hero-1: #1f2a1c; --hero-2: #4d6b4f; --hero-3: #7a9a6b; }
+
+/* 34. เบอร์รี่ (ม่วงไวน์ → แดงเบอร์รี่) */
+.vs-theme-berry { --sb-a: #701a75; --sb-b: #be123c; --sb-glow: rgba(190, 18, 60, .28); --sb-mark: #FDE68A;
+    --ac: #be185d; --ac-2: #e11d48; --ac-ink: #831843; --ac-soft: #fdf2f8; --ac-line: #fbcfe8; --ac-head: #fdf2f8;
+    --hero-1: #4a044e; --hero-2: #a21caf; --hero-3: #e11d48; }
+
+/* 35. ทะเลลึก (น้ำเงินทะเล → ฟ้าคราม) */
+.vs-theme-ocean { --sb-a: #0c4a6e; --sb-b: #0284c7; --sb-glow: rgba(2, 132, 199, .28); --sb-mark: #FDE68A;
+    --ac: #0369a1; --ac-2: #0ea5e9; --ac-ink: #0c4a6e; --ac-soft: #f0f9ff; --ac-line: #bae6fd; --ac-head: #f0f9ff;
+    --hero-1: #082f49; --hero-2: #0369a1; --hero-3: #38bdf8; }
+
+/* 36. ชาเขียว (เขียวมัทฉะ → เหลืองอ่อน) */
+.vs-theme-matcha { --sb-a: #365314; --sb-b: #65a30d; --sb-glow: rgba(101, 163, 13, .28); --sb-mark: #FEF9C3;
+    --ac: #4d7c0f; --ac-2: #84cc16; --ac-ink: #365314; --ac-soft: #f7fee7; --ac-line: #d9f99d; --ac-head: #f7fee7;
+    --hero-1: #1a2e05; --hero-2: #4d7c0f; --hero-3: #a3e635; }
+
+/* 37. ส้มอิฐ (น้ำตาลแดง → ส้มอิฐ) */
+.vs-theme-terracotta { --sb-a: #7c2d12; --sb-b: #c2410c; --sb-glow: rgba(194, 65, 12, .28); --sb-mark: #FDE68A;
+    --ac: #c2410c; --ac-2: #ea580c; --ac-ink: #7c2d12; --ac-soft: #fff7ed; --ac-line: #fed7aa; --ac-head: #fff7ed;
+    --hero-1: #431407; --hero-2: #9a3412; --hero-3: #f97316; }
+
+/* 38. ฟ้าน้ำแข็ง (น้ำเงินเทา → ฟ้าน้ำแข็ง) */
+.vs-theme-glacier { --sb-a: #1e3a5f; --sb-b: #3b82a0; --sb-glow: rgba(59, 130, 160, .28); --sb-mark: #E0F2FE;
+    --ac: #2b6f8f; --ac-2: #5fa8c6; --ac-ink: #1e3a5f; --ac-soft: #f1f8fb; --ac-line: #cbe4ee; --ac-head: #f1f8fb;
+    --hero-1: #13263f; --hero-2: #2b6f8f; --hero-3: #7cc4de; }
+
+/* 39. ชมพูพีช (ชมพูเข้ม → พีช) */
+.vs-theme-peach { --sb-a: #9d174d; --sb-b: #f472b6; --sb-glow: rgba(244, 114, 182, .30); --sb-mark: #FFEDD5;
+    --ac: #db2777; --ac-2: #fb923c; --ac-ink: #831843; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #fff1f2;
+    --hero-1: #701a3e; --hero-2: #db2777; --hero-3: #fb923c; }
+
+/* 40. นีออนเทอร์ควอยซ์ (เขียวน้ำทะเลเข้ม → เทอร์ควอยซ์) */
+.vs-theme-turquoise { --sb-a: #134e4a; --sb-b: #14b8a6; --sb-glow: rgba(20, 184, 166, .28); --sb-mark: #FEF08A;
+    --ac: #0d9488; --ac-2: #2dd4bf; --ac-ink: #134e4a; --ac-soft: #f0fdfa; --ac-line: #99f6e4; --ac-head: #f0fdfa;
+    --hero-1: #042f2e; --hero-2: #0f766e; --hero-3: #2dd4bf; }
+
+/* 41. น้ำเงินกรมท่า (กรมท่า → ทองอ่อน) */
+.vs-theme-navy { --sb-a: #172554; --sb-b: #1e40af; --sb-glow: rgba(30, 64, 175, .30); --sb-mark: #FCD34D;
+    --ac: #1e40af; --ac-2: #3b82f6; --ac-ink: #172554; --ac-soft: #eff6ff; --ac-line: #bfdbfe; --ac-head: #eff6ff;
+    --hero-1: #0b1437; --hero-2: #1e3a8a; --hero-3: #ca8a04; }
+
+/* 42. มะม่วง (เหลืองมะม่วง → ส้ม) */
+.vs-theme-mango { --sb-a: #a16207; --sb-b: #f59e0b; --sb-glow: rgba(245, 158, 11, .30); --sb-mark: #FFFFFF;
+    --ac: #d97706; --ac-2: #facc15; --ac-ink: #78350f; --ac-soft: #fefce8; --ac-line: #fde68a; --ac-head: #fefce8;
+    --hero-1: #713f12; --hero-2: #ca8a04; --hero-3: #f59e0b; }
+
+/* 43. อเมทิสต์ (ม่วงคราม → ม่วงอเมทิสต์) */
+.vs-theme-amethyst { --sb-a: #3b0764; --sb-b: #9333ea; --sb-glow: rgba(147, 51, 234, .28); --sb-mark: #FDE68A;
+    --ac: #7e22ce; --ac-2: #a855f7; --ac-ink: #3b0764; --ac-soft: #faf5ff; --ac-line: #e9d5ff; --ac-head: #faf5ff;
+    --hero-1: #2e1065; --hero-2: #7e22ce; --hero-3: #c084fc; }
+
+/* 44. โคบอลต์ */
+.vs-theme-cobalt { --sb-a: #1e3a8a; --sb-b: #2563eb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #1d4ed8; --ac-2: #60a5fa; --ac-ink: #1e3a8a; --ac-soft: #eff6ff; --ac-line: #bfdbfe; --ac-head: #eff6ff;
+    --hero-1: #0f1f4d; --hero-2: #1d4ed8; --hero-3: #22d3ee; }
+
+/* 45. หยก */
+.vs-theme-jade { --sb-a: #064e3b; --sb-b: #059669; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF08A;
+    --ac: #047857; --ac-2: #34d399; --ac-ink: #064e3b; --ac-soft: #ecfdf5; --ac-line: #a7f3d0; --ac-head: #ecfdf5;
+    --hero-1: #022c22; --hero-2: #047857; --hero-3: #6ee7b7; }
+
+/* 46. หญ้าฝรั่น */
+.vs-theme-saffron { --sb-a: #9a3412; --sb-b: #f59e0b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ea580c; --ac-2: #fbbf24; --ac-ink: #7c2d12; --ac-soft: #fffbeb; --ac-line: #fde68a; --ac-head: #fffbeb;
+    --hero-1: #7c2d12; --hero-2: #ea580c; --hero-3: #facc15; }
+
+/* 47. กล้วยไม้ */
+.vs-theme-orchid { --sb-a: #86198f; --sb-b: #d946ef; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #c026d3; --ac-2: #e879f9; --ac-ink: #701a75; --ac-soft: #fdf4ff; --ac-line: #f5d0fe; --ac-head: #fdf4ff;
+    --hero-1: #4a044e; --hero-2: #a21caf; --hero-3: #f0abfc; }
+
+/* 48. หินชนวน */
+.vs-theme-slate { --sb-a: #1e293b; --sb-b: #475569; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #334155; --ac-2: #64748b; --ac-ink: #0f172a; --ac-soft: #f8fafc; --ac-line: #cbd5e1; --ac-head: #f8fafc;
+    --hero-1: #0f172a; --hero-2: #334155; --hero-3: #38bdf8; }
+
+/* 49. เชอร์รี่ */
+.vs-theme-cherry { --sb-a: #881337; --sb-b: #e11d48; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #be123c; --ac-2: #fb7185; --ac-ink: #881337; --ac-soft: #fff1f2; --ac-line: #fecdd3; --ac-head: #fff1f2;
+    --hero-1: #4c0519; --hero-2: #be123c; --hero-3: #fb923c; }
+
+/* 50. นกเป็ดน้ำ */
+.vs-theme-teal { --sb-a: #115e59; --sb-b: #0891b2; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF08A;
+    --ac: #0e7490; --ac-2: #22d3ee; --ac-ink: #164e63; --ac-soft: #ecfeff; --ac-line: #a5f3fc; --ac-head: #ecfeff;
+    --hero-1: #083344; --hero-2: #0e7490; --hero-3: #2dd4bf; }
+
+/* 51. มอส */
+.vs-theme-moss { --sb-a: #1c3d2e; --sb-b: #3f7d58; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #2f6b4a; --ac-2: #5fa77a; --ac-ink: #1c3d2e; --ac-soft: #f0f7f2; --ac-line: #c7e3d1; --ac-head: #f0f7f2;
+    --hero-1: #10261c; --hero-2: #2f6b4a; --hero-3: #86c79c; }
+
+/* 52. ทองแดง */
+.vs-theme-copper { --sb-a: #7a3e1d; --sb-b: #b8692f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0522d; --ac-2: #d08a4f; --ac-ink: #5c2e15; --ac-soft: #fdf6ef; --ac-line: #f1d3b5; --ac-head: #fdf6ef;
+    --hero-1: #4a240f; --hero-2: #a0522d; --hero-3: #e0a96d; }
+
+/* 53. ยีนส์ */
+.vs-theme-denim { --sb-a: #1f3a68; --sb-b: #3e64a8; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #33558f; --ac-2: #6a8fd0; --ac-ink: #1f3a68; --ac-soft: #f1f5fc; --ac-line: #c9d7f0; --ac-head: #f1f5fc;
+    --hero-1: #132544; --hero-2: #33558f; --hero-3: #8fb0e8; }
+
+/* 54. ราสเบอร์รี่ */
+.vs-theme-raspberry { --sb-a: #7d1546; --sb-b: #c2185b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #ad1457; --ac-2: #ec407a; --ac-ink: #6a0f3b; --ac-soft: #fdf0f5; --ac-line: #f8c4d8; --ac-head: #fdf0f5;
+    --hero-1: #4a0a2a; --hero-2: #ad1457; --hero-3: #f06292; }
+
+/* 55. มะกอก */
+.vs-theme-olive { --sb-a: #4a4a14; --sb-b: #7a7a1f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6b6b1a; --ac-2: #a3a33a; --ac-ink: #3d3d10; --ac-soft: #fafaf0; --ac-line: #e5e5b8; --ac-head: #fafaf0;
+    --hero-1: #2e2e0b; --hero-2: #6b6b1a; --hero-3: #c2c25a; }
+
+/* 56. ไพลิน */
+.vs-theme-sapphire { --sb-a: #172a6e; --sb-b: #3b5bdb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #364fc7; --ac-2: #5c7cfa; --ac-ink: #1b2a5e; --ac-soft: #edf2ff; --ac-line: #bac8ff; --ac-head: #edf2ff;
+    --hero-1: #0f1a45; --hero-2: #364fc7; --hero-3: #748ffc; }
+
+/* 57. พิสตาชิโอ */
+.vs-theme-pistachio { --sb-a: #3d5a1e; --sb-b: #7cb342; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #689f38; --ac-2: #9ccc65; --ac-ink: #33691e; --ac-soft: #f4f9ec; --ac-line: #d4e8b8; --ac-head: #f4f9ec;
+    --hero-1: #25390f; --hero-2: #689f38; --hero-3: #aed581; }
+
+/* 58. ฟลามิงโก */
+.vs-theme-flamingo { --sb-a: #9c1f5a; --sb-b: #f06595; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFF3BF;
+    --ac: #e64980; --ac-2: #f783ac; --ac-ink: #862e5c; --ac-soft: #fff0f6; --ac-line: #fcc2d7; --ac-head: #fff0f6;
+    --hero-1: #5c0f35; --hero-2: #d6336c; --hero-3: #ffa8a8; }
+
+/* 59. อาร์กติก */
+.vs-theme-arctic { --sb-a: #0b4f6c; --sb-b: #22a3c4; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1592b4; --ac-2: #4cc3e0; --ac-ink: #0b4f6c; --ac-soft: #ecfafe; --ac-line: #b6ecf8; --ac-head: #ecfafe;
+    --hero-1: #06334a; --hero-2: #1592b4; --hero-3: #7fdcef; }
+
+/* 60. คาราเมล */
+.vs-theme-caramel { --sb-a: #7c4a1e; --sb-b: #c7843a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #b26f2a; --ac-2: #e0a35e; --ac-ink: #5e3612; --ac-soft: #fdf6ec; --ac-line: #f1d6b0; --ac-head: #fdf6ec;
+    --hero-1: #4a2a0c; --hero-2: #b26f2a; --hero-3: #f2c27b; }
+
+/* 61. ไวโอเล็ต */
+.vs-theme-violet { --sb-a: #4c1d95; --sb-b: #7c3aed; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #6d28d9; --ac-2: #a78bfa; --ac-ink: #3b0f80; --ac-soft: #f5f3ff; --ac-line: #ddd6fe; --ac-head: #f5f3ff;
+    --hero-1: #2e1065; --hero-2: #6d28d9; --hero-3: #c4b5fd; }
+
+/* 62. ใบไม้ผลิ */
+.vs-theme-spring { --sb-a: #14633f; --sb-b: #2fb67c; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #20a06a; --ac-2: #5fd39b; --ac-ink: #0f5132; --ac-soft: #ecfbf3; --ac-line: #b7ecd2; --ac-head: #ecfbf3;
+    --hero-1: #0a3d26; --hero-2: #20a06a; --hero-3: #8be0b6; }
+
+/* 63. ทานตะวัน */
+.vs-theme-sunflower { --sb-a: #8a5a00; --sb-b: #eab308; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ca8a04; --ac-2: #fde047; --ac-ink: #6b4500; --ac-soft: #fefce8; --ac-line: #fef08a; --ac-head: #fefce8;
+    --hero-1: #5a3a00; --hero-2: #ca8a04; --hero-3: #fde047; }
+
+/* 64. ม่วงไลแลค */
+.vs-theme-lilac { --sb-a: #5b3a8c; --sb-b: #9f7aea; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #805ad5; --ac-2: #b794f4; --ac-ink: #44337a; --ac-soft: #faf5ff; --ac-line: #e9d8fd; --ac-head: #faf5ff;
+    --hero-1: #322659; --hero-2: #6b46c1; --hero-3: #d6bcfa; }
+
+/* 65. นาวิกโยธิน */
+.vs-theme-marine { --sb-a: #0b3954; --sb-b: #087e8b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #0a6f7a; --ac-2: #3fb6c1; --ac-ink: #0b3954; --ac-soft: #ebf8fa; --ac-line: #b3e3e8; --ac-head: #ebf8fa;
+    --hero-1: #062436; --hero-2: #087e8b; --hero-3: #5fd0d8; }
+
+/* 66. ลูกพลับ */
+.vs-theme-persimmon { --sb-a: #9a3b12; --sb-b: #ef6c33; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #e0561c; --ac-2: #fb8c55; --ac-ink: #7a2c0b; --ac-soft: #fff4ed; --ac-line: #ffd2b8; --ac-head: #fff4ed;
+    --hero-1: #5c1f06; --hero-2: #e0561c; --hero-3: #ffa77a; }
+
+/* 67. สนเขียว */
+.vs-theme-evergreen { --sb-a: #14432a; --sb-b: #2d7a4f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #256b44; --ac-2: #4fa774; --ac-ink: #123b25; --ac-soft: #eef7f1; --ac-line: #c3e2cf; --ac-head: #eef7f1;
+    --hero-1: #0b2918; --hero-2: #256b44; --hero-3: #79c597; }
+
+/* 68. ชมพูระเรื่อ */
+.vs-theme-blush { --sb-a: #8c2f55; --sb-b: #d9628f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c94f7c; --ac-2: #ec8fb3; --ac-ink: #6e2343; --ac-soft: #fdf1f6; --ac-line: #f7cadb; --ac-head: #fdf1f6;
+    --hero-1: #541932; --hero-2: #c94f7c; --hero-3: #f3a9c6; }
+
+/* 69. ฟ้าอาซัวร์ */
+.vs-theme-azure { --sb-a: #0b4a8c; --sb-b: #1e88e5; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #1976d2; --ac-2: #64b5f6; --ac-ink: #0d3c6e; --ac-soft: #eef6fd; --ac-line: #bbdefb; --ac-head: #eef6fd;
+    --hero-1: #082b52; --hero-2: #1976d2; --hero-3: #90caf9; }
+
+/* 70. ไวน์พลัม */
+.vs-theme-plumwine { --sb-a: #4a1d3f; --sb-b: #8e3b74; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #7b2f63; --ac-2: #b05f97; --ac-ink: #3d1534; --ac-soft: #fbf1f8; --ac-line: #ead0e2; --ac-head: #fbf1f8;
+    --hero-1: #2c0f26; --hero-2: #7b2f63; --hero-3: #cf8fbe; }
+
+/* 71. สนภูเขา */
+.vs-theme-pine { --sb-a: #1d3b2a; --sb-b: #3e6b4f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #355e45; --ac-2: #5e8f6f; --ac-ink: #1d3b2a; --ac-soft: #f1f6f2; --ac-line: #cfe0d4; --ac-head: #f1f6f2;
+    --hero-1: #122519; --hero-2: #355e45; --hero-3: #8fbf9e; }
+
+/* 72. สนิมเหล็ก */
+.vs-theme-rust { --sb-a: #6b2d14; --sb-b: #a8502a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #964422; --ac-2: #c77548; --ac-ink: #55230f; --ac-soft: #fbf2ec; --ac-line: #eccbb7; --ac-head: #fbf2ec;
+    --hero-1: #3f1909; --hero-2: #964422; --hero-3: #dd9a72; }
+
+/* 73. ครามเข้ม */
+.vs-theme-indigo2 { --sb-a: #26215c; --sb-b: #4c43b5; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #4038a0; --ac-2: #7068d6; --ac-ink: #26215c; --ac-soft: #f2f1fd; --ac-line: #d3d0f5; --ac-head: #f2f1fd;
+    --hero-1: #18143d; --hero-2: #4038a0; --hero-3: #9f99ea; }
+
+/* 74. ปะการัง */
+.vs-theme-coralreef { --sb-a: #8a2f2a; --sb-b: #e8625a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #d64f47; --ac-2: #f2857e; --ac-ink: #6e231f; --ac-soft: #fff2f1; --ac-line: #fbcdc9; --ac-head: #fff2f1;
+    --hero-1: #541a17; --hero-2: #d64f47; --hero-3: #f7a8a2; }
+
+/* 75. ฟองทะเล */
+.vs-theme-seafoam { --sb-a: #14534f; --sb-b: #2aa198; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FEF3C7;
+    --ac: #228c84; --ac-2: #5cc2b9; --ac-ink: #114541; --ac-soft: #edf9f8; --ac-line: #c1ebe7; --ac-head: #edf9f8;
+    --hero-1: #0b3532; --hero-2: #228c84; --hero-3: #8fdcd4; }
+
+/* 76. คลังหลวง */
+.vs-theme-treasury { --sb-a: #1f2d4d; --sb-b: #3a5a8c; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #F5D76E;
+    --ac: #2f4f7f; --ac-2: #5b80b8; --ac-ink: #1f2d4d; --ac-soft: #f0f4fa; --ac-line: #c9d6ea; --ac-head: #f0f4fa;
+    --hero-1: #131c33; --hero-2: #2f4f7f; --hero-3: #c9a227; }
+
+/* 77. บัญชีเขียว */
+.vs-theme-ledger { --sb-a: #1e4d3a; --sb-b: #2f7d5b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #286c4f; --ac-2: #4fa37e; --ac-ink: #1a4232; --ac-soft: #eff8f3; --ac-line: #c6e6d5; --ac-head: #eff8f3;
+    --hero-1: #0f2e22; --hero-2: #286c4f; --hero-3: #b8a24a; }
+
+/* 78. สัมมนา */
+.vs-theme-seminar { --sb-a: #5a2a6e; --sb-b: #8e44ad; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7d3c98; --ac-2: #af7ac5; --ac-ink: #4a2259; --ac-soft: #f8f1fb; --ac-line: #e3cdee; --ac-head: #f8f1fb;
+    --hero-1: #331640; --hero-2: #7d3c98; --hero-3: #f0b27a; }
+
+/* 79. แผนงาน */
+.vs-theme-planning { --sb-a: #0e4a5c; --sb-b: #1a7f99; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #166f86; --ac-2: #4eaac2; --ac-ink: #0e4a5c; --ac-soft: #edf7fa; --ac-line: #bfe3ec; --ac-head: #edf7fa;
+    --hero-1: #08313d; --hero-2: #166f86; --hero-3: #f5b041; }
+
+/* 80. คลังพัสดุ */
+.vs-theme-inventory { --sb-a: #4d3b1f; --sb-b: #8a6d3b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7a5f31; --ac-2: #b0915c; --ac-ink: #3e2f18; --ac-soft: #faf6ee; --ac-line: #e6d9bd; --ac-head: #faf6ee;
+    --hero-1: #2e2311; --hero-2: #7a5f31; --hero-3: #d4b483; }
+
+/* 81. คลินิก */
+.vs-theme-clinic { --sb-a: #0b5563; --sb-b: #14919b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #0f7f88; --ac-2: #45c4cc; --ac-ink: #0b4a55; --ac-soft: #ecf9fa; --ac-line: #bdebee; --ac-head: #ecf9fa;
+    --hero-1: #063a42; --hero-2: #0f7f88; --hero-3: #7fdbe0; }
+
+/* 82. ห่วงใย */
+.vs-theme-care { --sb-a: #7a3b52; --sb-b: #c06c84; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ad5a72; --ac-2: #d891a5; --ac-ink: #62293e; --ac-soft: #fcf1f4; --ac-line: #f0cbd6; --ac-head: #fcf1f4;
+    --hero-1: #4a1d2c; --hero-2: #ad5a72; --hero-3: #f6b8c8; }
+
+/* 83. ส่งต่อ */
+.vs-theme-referral { --sb-a: #1b4f72; --sb-b: #2e86c1; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2874a6; --ac-2: #5dade2; --ac-ink: #1b4f72; --ac-soft: #eef6fc; --ac-line: #c5e1f5; --ac-head: #eef6fc;
+    --hero-1: #11344c; --hero-2: #2874a6; --hero-3: #58d68d; }
+
+/* 84. สาธารณสุข */
+.vs-theme-healthblue { --sb-a: #0d47a1; --sb-b: #1e88e5; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1565c0; --ac-2: #42a5f5; --ac-ink: #0d3c82; --ac-soft: #eef5fd; --ac-line: #c3dcf7; --ac-head: #eef5fd;
+    --hero-1: #08306b; --hero-2: #1565c0; --hero-3: #4dd0e1; }
+
+/* 85. เฝ้าระวัง */
+.vs-theme-glucose { --sb-a: #9a3412; --sb-b: #f97316; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ea580c; --ac-2: #fb923c; --ac-ink: #7c2d12; --ac-soft: #fff7ed; --ac-line: #fed7aa; --ac-head: #fff7ed;
+    --hero-1: #5c1d06; --hero-2: #ea580c; --hero-3: #facc15; }
+
+/* 86. บ้านอุ่น */
+.vs-theme-homecare { --sb-a: #5b4636; --sb-b: #a47551; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #8f6444; --ac-2: #c49a74; --ac-ink: #4a3829; --ac-soft: #faf4ee; --ac-line: #ead7c4; --ac-head: #faf4ee;
+    --hero-1: #382a1e; --hero-2: #8f6444; --hero-3: #e6b98a; }
+
+/* 87. เภสัช */
+.vs-theme-pharmacy { --sb-a: #065f46; --sb-b: #10b981; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #059669; --ac-2: #34d399; --ac-ink: #064e3b; --ac-soft: #ecfdf5; --ac-line: #a7f3d0; --ac-head: #ecfdf5;
+    --hero-1: #022c22; --hero-2: #059669; --hero-3: #a7f3d0; }
+
+/* 88. จิตอาสา */
+.vs-theme-volunteer { --sb-a: #86198f; --sb-b: #e879f9; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c026d3; --ac-2: #f0abfc; --ac-ink: #701a75; --ac-soft: #fdf4ff; --ac-line: #f5d0fe; --ac-head: #fdf4ff;
+    --hero-1: #4a044e; --hero-2: #c026d3; --hero-3: #fbcfe8; }
+
+/* 89. ติดตาม */
+.vs-theme-tracker { --sb-a: #1e3a5f; --sb-b: #2563eb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1d4ed8; --ac-2: #60a5fa; --ac-ink: #1e3a5f; --ac-soft: #eff6ff; --ac-line: #bfdbfe; --ac-head: #eff6ff;
+    --hero-1: #0f2347; --hero-2: #1d4ed8; --hero-3: #f59e0b; }
+
+/* 90. ลายเซ็น */
+.vs-theme-signature { --sb-a: #312e81; --sb-b: #6366f1; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4f46e5; --ac-2: #818cf8; --ac-ink: #312e81; --ac-soft: #eef2ff; --ac-line: #c7d2fe; --ac-head: #eef2ff;
+    --hero-1: #1e1b4b; --hero-2: #4f46e5; --hero-3: #f472b6; }
+
+/* 91. ลูกหนี้ */
+.vs-theme-debtor { --sb-a: #7f1d1d; --sb-b: #dc2626; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #b91c1c; --ac-2: #f87171; --ac-ink: #7f1d1d; --ac-soft: #fef2f2; --ac-line: #fecaca; --ac-head: #fef2f2;
+    --hero-1: #450a0a; --hero-2: #b91c1c; --hero-3: #fbbf24; }
+
+/* 92. สัญญา */
+.vs-theme-contract { --sb-a: #3f3f46; --sb-b: #71717a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #52525b; --ac-2: #a1a1aa; --ac-ink: #27272a; --ac-soft: #fafafa; --ac-line: #e4e4e7; --ac-head: #fafafa;
+    --hero-1: #18181b; --hero-2: #52525b; --hero-3: #eab308; }
+
+/* 93. หมู่บ้าน */
+.vs-theme-village { --sb-a: #14532d; --sb-b: #16a34a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #15803d; --ac-2: #4ade80; --ac-ink: #14532d; --ac-soft: #f0fdf4; --ac-line: #bbf7d0; --ac-head: #f0fdf4;
+    --hero-1: #052e16; --hero-2: #15803d; --hero-3: #facc15; }
+
+/* 94. วัคซีน */
+.vs-theme-vaccine { --sb-a: #155e75; --sb-b: #06b6d4; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #0891b2; --ac-2: #67e8f9; --ac-ink: #164e63; --ac-soft: #ecfeff; --ac-line: #a5f3fc; --ac-head: #ecfeff;
+    --hero-1: #083344; --hero-2: #0891b2; --hero-3: #f9a8d4; }
+
+/* 95. เวรดึก */
+.vs-theme-nightshift { --sb-a: #1e1b4b; --sb-b: #4338ca; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FDE68A;
+    --ac: #3730a3; --ac-2: #6366f1; --ac-ink: #1e1b4b; --ac-soft: #eef2ff; --ac-line: #c7d2fe; --ac-head: #eef2ff;
+    --hero-1: #0f0c29; --hero-2: #3730a3; --hero-3: #fbbf24; }
+
+/* 96. รับเหมา */
+.vs-theme-contractor { --sb-a: #3b2f1e; --sb-b: #7a5c2e; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6b4f24; --ac-2: #a8834a; --ac-ink: #3b2f1e; --ac-soft: #fbf6ee; --ac-line: #ead9bd; --ac-head: #fbf6ee;
+    --hero-1: #261d10; --hero-2: #6b4f24; --hero-3: #e6c27a; }
+
+/* 97. ขั้นเงินเดือน */
+.vs-theme-salary { --sb-a: #0f3d2e; --sb-b: #1f7a5a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #18694c; --ac-2: #3fae86; --ac-ink: #0f3d2e; --ac-soft: #eefaf5; --ac-line: #c3eadb; --ac-head: #eefaf5;
+    --hero-1: #082a1f; --hero-2: #18694c; --hero-3: #ffd166; }
+
+/* 98. ผู้เรียน */
+.vs-theme-learner { --sb-a: #3a1c71; --sb-b: #6a3fc0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5b32a8; --ac-2: #8f6ae0; --ac-ink: #3a1c71; --ac-soft: #f5f1fd; --ac-line: #ddd0f7; --ac-head: #f5f1fd;
+    --hero-1: #24104a; --hero-2: #5b32a8; --hero-3: #ffb3d9; }
+
+/* 99. อักษรไขว้ */
+.vs-theme-crossword { --sb-a: #7a1f00; --sb-b: #e04e1b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c74214; --ac-2: #f2794d; --ac-ink: #5e1800; --ac-soft: #fff3ee; --ac-line: #fdd2c2; --ac-head: #fff3ee;
+    --hero-1: #4a1200; --hero-2: #c74214; --hero-3: #ffe066; }
+
+/* 100. ห้องพยาบาล */
+.vs-theme-nurse { --sb-a: #0b4f6c; --sb-b: #e0457b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c93a6c; --ac-2: #f07aa3; --ac-ink: #0b4f6c; --ac-soft: #fdf0f5; --ac-line: #f7c9da; --ac-head: #fdf0f5;
+    --hero-1: #073a50; --hero-2: #c93a6c; --hero-3: #7fdbff; }
+
+/* 101. ฉลากยา */
+.vs-theme-druglabel { --sb-a: #004d40; --sb-b: #00897b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00796b; --ac-2: #4db6ac; --ac-ink: #004d40; --ac-soft: #e8f6f4; --ac-line: #b2dfdb; --ac-head: #e8f6f4;
+    --hero-1: #00332b; --hero-2: #00796b; --hero-3: #ffcc80; }
+
+/* 102. โฮมรูม */
+.vs-theme-homeroom { --sb-a: #1a3a6b; --sb-b: #f08a24; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #d9761a; --ac-2: #f5a95c; --ac-ink: #1a3a6b; --ac-soft: #fff6ec; --ac-line: #fbdcb8; --ac-head: #fff6ec;
+    --hero-1: #10264a; --hero-2: #2f5ea8; --hero-3: #ffd166; }
+
+/* 103. แฟ้มผลงาน */
+.vs-theme-portfolio { --sb-a: #2b2d42; --sb-b: #ef476f; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #d63b61; --ac-2: #f47c98; --ac-ink: #2b2d42; --ac-soft: #fff0f3; --ac-line: #fbc9d5; --ac-head: #fff0f3;
+    --hero-1: #1b1c2b; --hero-2: #d63b61; --hero-3: #06d6a0; }
+
+/* 104. ประเมิน */
+.vs-theme-evaluate { --sb-a: #1f2a6b; --sb-b: #3949ab; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #303f9f; --ac-2: #5c6bc0; --ac-ink: #1a237e; --ac-soft: #eef0fb; --ac-line: #c5cae9; --ac-head: #eef0fb;
+    --hero-1: #121a4a; --hero-2: #303f9f; --hero-3: #ffca28; }
+
+/* 105. อุปกรณ์ */
+.vs-theme-equipment { --sb-a: #263238; --sb-b: #455a64; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #37474f; --ac-2: #78909c; --ac-ink: #263238; --ac-soft: #eff3f5; --ac-line: #cfd8dc; --ac-head: #eff3f5;
+    --hero-1: #151c20; --hero-2: #37474f; --hero-3: #4dd0e1; }
+
+/* 106. เด็กเล็ก */
+.vs-theme-toddler { --sb-a: #e65100; --sb-b: #ffa000; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #f57c00; --ac-2: #ffb74d; --ac-ink: #bf360c; --ac-soft: #fff8e1; --ac-line: #ffe0b2; --ac-head: #fff8e1;
+    --hero-1: #8a2f00; --hero-2: #f57c00; --hero-3: #81d4fa; }
+
+/* 107. แม่และเด็ก */
+.vs-theme-maternal { --sb-a: #880e4f; --sb-b: #d81b60; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c2185b; --ac-2: #f06292; --ac-ink: #880e4f; --ac-soft: #fce4ec; --ac-line: #f8bbd0; --ac-head: #fce4ec;
+    --hero-1: #560027; --hero-2: #c2185b; --hero-3: #b39ddb; }
+
+/* 108. ตรวจสุขภาพ */
+.vs-theme-checkup { --sb-a: #01579b; --sb-b: #0288d1; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #0277bd; --ac-2: #4fc3f7; --ac-ink: #01579b; --ac-soft: #e1f5fe; --ac-line: #b3e5fc; --ac-head: #e1f5fe;
+    --hero-1: #002f6c; --hero-2: #0277bd; --hero-3: #aed581; }
+
+/* 109. ตรวจแผน */
+.vs-theme-lessoncheck { --sb-a: #33691e; --sb-b: #689f38; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #558b2f; --ac-2: #9ccc65; --ac-ink: #33691e; --ac-soft: #f1f8e9; --ac-line: #dcedc8; --ac-head: #f1f8e9;
+    --hero-1: #1b3d0a; --hero-2: #558b2f; --hero-3: #ffd54f; }
+
+/* 110. ดูผลการเรียน */
+.vs-theme-gradeview { --sb-a: #311b92; --sb-b: #5e35b1; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #512da8; --ac-2: #9575cd; --ac-ink: #311b92; --ac-soft: #ede7f6; --ac-line: #d1c4e9; --ac-head: #ede7f6;
+    --hero-1: #1a0a5c; --hero-2: #512da8; --hero-3: #80deea; }
+
+/* 111. เรียนฟรี */
+.vs-theme-freeedu { --sb-a: #004d40; --sb-b: #00897b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00796b; --ac-2: #4db6ac; --ac-ink: #004d40; --ac-soft: #e0f2f1; --ac-line: #b2dfdb; --ac-head: #e0f2f1;
+    --hero-1: #00251a; --hero-2: #00796b; --hero-3: #ffcc80; }
+
+/* 112. สาธารณูปโภค */
+.vs-theme-utility { --sb-a: #e65100; --sb-b: #fb8c00; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ef6c00; --ac-2: #ffa726; --ac-ink: #bf360c; --ac-soft: #fff3e0; --ac-line: #ffe0b2; --ac-head: #fff3e0;
+    --hero-1: #7a2800; --hero-2: #ef6c00; --hero-3: #4fc3f7; }
+
+/* 113. ประกันคุณภาพ */
+.vs-theme-quality { --sb-a: #1a237e; --sb-b: #283593; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1e2a8a; --ac-2: #5c6bc0; --ac-ink: #1a237e; --ac-soft: #e8eaf6; --ac-line: #c5cae9; --ac-head: #e8eaf6;
+    --hero-1: #0d1442; --hero-2: #283593; --hero-3: #ffd740; }
+
+/* 114. เงินบำรุง */
+.vs-theme-healthfund { --sb-a: #1b5e20; --sb-b: #2e7d32; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #27692b; --ac-2: #66bb6a; --ac-ink: #1b5e20; --ac-soft: #e8f5e9; --ac-line: #c8e6c9; --ac-head: #e8f5e9;
+    --hero-1: #0b3010; --hero-2: #2e7d32; --hero-3: #fff176; }
+
+/* 115. ผลสัมฤทธิ์ */
+.vs-theme-achieve { --sb-a: #4a148c; --sb-b: #7b1fa2; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6a1b9a; --ac-2: #ba68c8; --ac-ink: #4a148c; --ac-soft: #f3e5f5; --ac-line: #e1bee7; --ac-head: #f3e5f5;
+    --hero-1: #2a0a52; --hero-2: #6a1b9a; --hero-3: #ffab40; }
+
+/* 116. ค่าเช่าบ้าน */
+.vs-theme-housing { --sb-a: #3e2723; --sb-b: #795548; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6d4c41; --ac-2: #a1887f; --ac-ink: #3e2723; --ac-soft: #efebe9; --ac-line: #d7ccc8; --ac-head: #efebe9;
+    --hero-1: #24140f; --hero-2: #6d4c41; --hero-3: #ffcc80; }
+
+/* 117. สวัสดิการ */
+.vs-theme-welfare { --sb-a: #0d47a1; --sb-b: #00acc1; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00838f; --ac-2: #4dd0e1; --ac-ink: #006064; --ac-soft: #e0f7fa; --ac-line: #b2ebf2; --ac-head: #e0f7fa;
+    --hero-1: #062a5e; --hero-2: #00838f; --hero-3: #ffd54f; }
+
+/* 118. นิเทศชั้นเรียน */
+.vs-theme-observe { --sb-a: #1b5e20; --sb-b: #43a047; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #388e3c; --ac-2: #81c784; --ac-ink: #1b5e20; --ac-soft: #e8f5e9; --ac-line: #c8e6c9; --ac-head: #e8f5e9;
+    --hero-1: #0d3311; --hero-2: #388e3c; --hero-3: #fff59d; }
+
+/* 119. ภาษาไทย */
+.vs-theme-thaiwrite { --sb-a: #b71c1c; --sb-b: #e53935; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #c62828; --ac-2: #ef5350; --ac-ink: #7f0000; --ac-soft: #ffebee; --ac-line: #ffcdd2; --ac-head: #ffebee;
+    --hero-1: #5c0000; --hero-2: #c62828; --hero-3: #ffe082; }
+
+/* 120. ภาษาอังกฤษ */
+.vs-theme-english { --sb-a: #0d47a1; --sb-b: #1e88e5; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1565c0; --ac-2: #64b5f6; --ac-ink: #0d47a1; --ac-soft: #e3f2fd; --ac-line: #bbdefb; --ac-head: #e3f2fd;
+    --hero-1: #072a60; --hero-2: #1565c0; --hero-3: #ff8a65; }
+
+/* 121. กีฬาสี */
+.vs-theme-sportsday { --sb-a: #e65100; --sb-b: #ff6d00; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ef6c00; --ac-2: #ffab40; --ac-ink: #bf360c; --ac-soft: #fff3e0; --ac-line: #ffe0b2; --ac-head: #fff3e0;
+    --hero-1: #7a2800; --hero-2: #ef6c00; --hero-3: #76ff03; }
+
+/* 122. เลือกตั้ง */
+.vs-theme-election { --sb-a: #4a148c; --sb-b: #8e24aa; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7b1fa2; --ac-2: #ba68c8; --ac-ink: #4a148c; --ac-soft: #f3e5f5; --ac-line: #e1bee7; --ac-head: #f3e5f5;
+    --hero-1: #2a0a52; --hero-2: #7b1fa2; --hero-3: #ffd740; }
+
+/* 123. การเจริญเติบโต */
+.vs-theme-growth { --sb-a: #00695c; --sb-b: #26a69a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00897b; --ac-2: #80cbc4; --ac-ink: #004d40; --ac-soft: #e0f2f1; --ac-line: #b2dfdb; --ac-head: #e0f2f1;
+    --hero-1: #003d33; --hero-2: #00897b; --hero-3: #ffab91; }
+
+/* 124. ร้องเรียน */
+.vs-theme-complaint { --sb-a: #37474f; --sb-b: #d84315; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #bf360c; --ac-2: #ff7043; --ac-ink: #3e2723; --ac-soft: #fbe9e7; --ac-line: #ffccbc; --ac-head: #fbe9e7;
+    --hero-1: #212b30; --hero-2: #bf360c; --hero-3: #ffd54f; }
+
+/* 125. คลินิก NCD */
+.vs-theme-ncdclinic { --sb-a: #0d47a1; --sb-b: #c62828; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #ad1f1f; --ac-2: #ef5350; --ac-ink: #0d47a1; --ac-soft: #ffebee; --ac-line: #ffcdd2; --ac-head: #ffebee;
+    --hero-1: #071f4d; --hero-2: #ad1f1f; --hero-3: #90caf9; }
+
+/* 126. คลังสื่อ */
+.vs-theme-medialib { --sb-a: #1a237e; --sb-b: #00b8d4; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #0097a7; --ac-2: #4dd0e1; --ac-ink: #1a237e; --ac-soft: #e0f7fa; --ac-line: #b2ebf2; --ac-head: #e0f7fa;
+    --hero-1: #0b1240; --hero-2: #0097a7; --hero-3: #ffab40; }
+
+/* 127. วิชาเลือก */
+.vs-theme-elective { --sb-a: #33691e; --sb-b: #c0ca33; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #9e9d24; --ac-2: #d4e157; --ac-ink: #33691e; --ac-soft: #f9fbe7; --ac-line: #f0f4c3; --ac-head: #f9fbe7;
+    --hero-1: #1b3d0a; --hero-2: #827717; --hero-3: #ff8a65; }
+
+/* 128. มอบหมายงาน */
+.vs-theme-taskboard { --sb-a: #263238; --sb-b: #5c6bc0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #3f51b5; --ac-2: #7986cb; --ac-ink: #1a237e; --ac-soft: #e8eaf6; --ac-line: #c5cae9; --ac-head: #e8eaf6;
+    --hero-1: #151c20; --hero-2: #3f51b5; --hero-3: #ffca28; }
+
+/* 129. รถรับส่ง */
+.vs-theme-schoolbus { --sb-a: #f57f17; --sb-b: #fbc02d; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #3e2723;
+    --ac: #f9a825; --ac-2: #ffee58; --ac-ink: #5d4037; --ac-soft: #fffde7; --ac-line: #fff9c4; --ac-head: #fffde7;
+    --hero-1: #3e2b00; --hero-2: #f9a825; --hero-3: #4fc3f7; }
+
+/* 130. สุขภาพจิต */
+.vs-theme-mindcare { --sb-a: #4a148c; --sb-b: #26a69a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00897b; --ac-2: #80cbc4; --ac-ink: #311b92; --ac-soft: #e0f2f1; --ac-line: #b2dfdb; --ac-head: #e0f2f1;
+    --hero-1: #1e0a3c; --hero-2: #5e35b1; --hero-3: #a5d6a7; }
+
+/* 131. วิเคราะห์ข้อสอบ */
+.vs-theme-itemanalysis { --sb-a: #1a237e; --sb-b: #3949ab; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #303f9f; --ac-2: #7986cb; --ac-ink: #1a237e; --ac-soft: #e8eaf6; --ac-line: #c5cae9; --ac-head: #e8eaf6;
+    --hero-1: #0d1442; --hero-2: #303f9f; --hero-3: #ff80ab; }
+
+/* 132. สอบคัดเลือก */
+.vs-theme-entrance { --sb-a: #880e4f; --sb-b: #ad1457; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #9c1050; --ac-2: #ec407a; --ac-ink: #560027; --ac-soft: #fce4ec; --ac-line: #f8bbd0; --ac-head: #fce4ec;
+    --hero-1: #3d0020; --hero-2: #ad1457; --hero-3: #80cbc4; }
+
+/* 133. หักเงินเดือน */
+.vs-theme-deduction { --sb-a: #004d40; --sb-b: #00796b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00695c; --ac-2: #26a69a; --ac-ink: #004d40; --ac-soft: #e0f2f1; --ac-line: #b2dfdb; --ac-head: #e0f2f1;
+    --hero-1: #002b24; --hero-2: #00695c; --hero-3: #ffd54f; }
+
+/* 134. น้ำมัน */
+.vs-theme-fuel { --sb-a: #bf360c; --sb-b: #e64a19; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #d84315; --ac-2: #ff8a65; --ac-ink: #7f1d00; --ac-soft: #fbe9e7; --ac-line: #ffccbc; --ac-head: #fbe9e7;
+    --hero-1: #5a1500; --hero-2: #d84315; --hero-3: #ffee58; }
+
+/* 135. ผลงานบริการ */
+.vs-theme-opdsummary { --sb-a: #01579b; --sb-b: #0097a7; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #00838f; --ac-2: #4dd0e1; --ac-ink: #01579b; --ac-soft: #e0f7fa; --ac-line: #b2ebf2; --ac-head: #e0f7fa;
+    --hero-1: #002f6c; --hero-2: #00838f; --hero-3: #c5e1a5; }
+
+/* 136. อาหารกลางวัน */
+.vs-theme-lunchpot { --sb-a: #62350e; --sb-b: #bb651a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05716; --ac-2: #e48e43; --ac-ink: #59300c; --ac-soft: #faf4ee; --ac-line: #eed4bd; --ac-head: #faf4ee;
+    --hero-1: #3e2108; --hero-2: #a05716; --hero-3: #7ee081; }
+
+/* 137. ราคากลาง */
+.vs-theme-pricetor { --sb-a: #0e3162; --sb-b: #1a5dbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1650a0; --ac-2: #4386e4; --ac-ink: #0c2c59; --ac-soft: #eef3fa; --ac-line: #bdd2ee; --ac-head: #eef3fa;
+    --hero-1: #081f3e; --hero-2: #1650a0; --hero-3: #ffd166; }
+
+/* 138. ทัศนศึกษา */
+.vs-theme-fieldtrip { --sb-a: #0e624d; --sb-b: #1abb93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a07e; --ac-2: #43e4bc; --ac-ink: #0c5946; --ac-soft: #eefaf7; --ac-line: #bdeee2; --ac-head: #eefaf7;
+    --hero-1: #083e31; --hero-2: #16a07e; --hero-3: #ffb86b; }
+
+/* 139. ปฏิทิน */
+.vs-theme-calendarx { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #8ecae6; }
+
+/* 140. วัคซีนนักเรียน */
+.vs-theme-vacschool { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #ffc6ff; }
+
+/* 141. เกมจับคู่ */
+.vs-theme-memorygame { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #fdffb6; }
+
+/* 142. อ่านออกเขียนได้ */
+.vs-theme-readscreen { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #a0c4ff; }
+
+/* 143. เกรดเฉลี่ยสะสม */
+.vs-theme-gpax { --sb-a: #0e1562; --sb-b: #1a28bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1622a0; --ac-2: #4350e4; --ac-ink: #0c1359; --ac-soft: #eeeffa; --ac-line: #bdc1ee; --ac-head: #eeeffa;
+    --hero-1: #080d3e; --hero-2: #1622a0; --hero-3: #caffbf; }
+
+/* 144. รับชำระเงิน */
+.vs-theme-feepay { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #ffd166; }
+
+/* 145. ID Plan */
+.vs-theme-idplan { --sb-a: #230e62; --sb-b: #421abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #3916a0; --ac-2: #6b43e4; --ac-ink: #1f0c59; --ac-soft: #f1eefa; --ac-line: #c9bdee; --ac-head: #f1eefa;
+    --hero-1: #16083e; --hero-2: #3916a0; --hero-3: #ffadad; }
+
+/* 146. ลูกน้ำยุงลาย */
+.vs-theme-larva { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #ffd6a5; }
+
+/* 147. จิตอาสา */
+.vs-theme-volunteer2 { --sb-a: #620e46; --sb-b: #bb1a85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01672; --ac-2: #e443ae; --ac-ink: #590c3f; --ac-soft: #faeef6; --ac-line: #eebdde; --ac-head: #faeef6;
+    --hero-1: #3e082c; --hero-2: #a01672; --hero-3: #caffbf; }
+
+/* 148. ข้อมูลนักเรียน */
+.vs-theme-studentinfo { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #ffc6ff; }
+
+/* 149. ฝึกสอน */
+.vs-theme-intern { --sb-a: #62460e; --sb-b: #bb851a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07216; --ac-2: #e4ae43; --ac-ink: #593f0c; --ac-soft: #faf6ee; --ac-line: #eedebd; --ac-head: #faf6ee;
+    --hero-1: #3e2c08; --hero-2: #a07216; --hero-3: #9bf6ff; }
+
+/* 150. สหกรณ์ */
+.vs-theme-coop { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #fdffb6; }
+
+/* 151. นมโรงเรียน */
+.vs-theme-schoolmilk { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #ffe066; }
+
+/* 152. หนังสือเรียน */
+.vs-theme-textbook { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #a0c4ff; }
+
+/* 153. สมรรถภาพทางกาย */
+.vs-theme-fitness { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #ffadad; }
+
+/* 154. บัญชีสหกรณ์ */
+.vs-theme-coopledger { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #b9fbc0; }
+
+/* 155. ห่วงโซ่ความเย็น */
+.vs-theme-coldchain { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #ffd6a5; }
+
+/* 156. บันไดงู */
+.vs-theme-snakeladder { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #ffd166; }
+
+/* 157. เศรษฐี */
+.vs-theme-millionaire { --sb-a: #1c0e62; --sb-b: #351abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2d16a0; --ac-2: #5e43e4; --ac-ink: #190c59; --ac-soft: #f0eefa; --ac-line: #c5bdee; --ac-head: #f0eefa;
+    --hero-1: #11083e; --hero-2: #2d16a0; --hero-3: #ffd700; }
+
+/* 158. สอนแทน */
+.vs-theme-substitute { --sb-a: #0e4d62; --sb-b: #1a93bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #167ea0; --ac-2: #43bce4; --ac-ink: #0c4659; --ac-soft: #eef7fa; --ac-line: #bde2ee; --ac-head: #eef7fa;
+    --hero-1: #08313e; --hero-2: #167ea0; --hero-3: #ffb703; }
+
+/* 159. งานพิธี */
+.vs-theme-ceremony { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffffff; }
+
+/* 160. ความเสี่ยงหัวใจ */
+.vs-theme-cvrisk { --sb-a: #620e15; --sb-b: #bb1a28; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01622; --ac-2: #e44350; --ac-ink: #590c13; --ac-soft: #faeeef; --ac-line: #eebdc1; --ac-head: #faeeef;
+    --hero-1: #3e080d; --hero-2: #a01622; --hero-3: #a0e7e5; }
+
+/* 161. นอกเวลา */
+.vs-theme-overtime { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #9be7ff; }
+
+/* 162. ไปราชการ */
+.vs-theme-officialtrip { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #ffd6a5; }
+
+/* 163. รูบริก */
+.vs-theme-rubric { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #ffafcc; }
+
+/* 164. ผู้มาติดต่อ */
+.vs-theme-visitor { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #ffd166; }
+
+/* 165. แจ้งลา */
+.vs-theme-studleave { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #a0c4ff; }
+
+/* 166. ทุนการศึกษา */
+.vs-theme-scholar { --sb-a: #625b0e; --sb-b: #bbae1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a09516; --ac-2: #e4d643; --ac-ink: #59520c; --ac-soft: #faf9ee; --ac-line: #eeeabd; --ac-head: #faf9ee;
+    --hero-1: #3e3a08; --hero-2: #a09516; --hero-3: #80ffdb; }
+
+/* 167. แนะแนว */
+.vs-theme-guidance { --sb-a: #3f0e62; --sb-b: #781abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6716a0; --ac-2: #a143e4; --ac-ink: #390c59; --ac-soft: #f5eefa; --ac-line: #dabdee; --ac-head: #f5eefa;
+    --hero-1: #28083e; --hero-2: #6716a0; --hero-3: #ffd6a5; }
+
+/* 168. แพทย์แผนไทย */
+.vs-theme-thaitrad { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #c7f9cc; }
+
+/* 169. ตรวจเวร */
+.vs-theme-patrol { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #ffbe0b; }
+
+/* 170. แผนปฏิบัติการ */
+.vs-theme-plantrack { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #ffcad4; }
+
+/* 171. คะแนน PA */
+.vs-theme-pascore { --sb-a: #310e62; --sb-b: #5d1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5016a0; --ac-2: #8643e4; --ac-ink: #2c0c59; --ac-soft: #f3eefa; --ac-line: #d2bdee; --ac-head: #f3eefa;
+    --hero-1: #1f083e; --hero-2: #5016a0; --hero-3: #ffe066; }
+
+/* 172. SWOT */
+.vs-theme-swot { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #ffadad; }
+
+/* 173. แก้ผลการเรียน */
+.vs-theme-graderepair { --sb-a: #62150e; --sb-b: #bb281a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02216; --ac-2: #e45043; --ac-ink: #59130c; --ac-soft: #faefee; --ac-line: #eec1bd; --ac-head: #faefee;
+    --hero-1: #3e0d08; --hero-2: #a02216; --hero-3: #9bf6ff; }
+
+/* 174. กองทุนตำบล */
+.vs-theme-localfund { --sb-a: #0e621c; --sb-b: #1abb35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a02d; --ac-2: #43e45e; --ac-ink: #0c5919; --ac-soft: #eefaf0; --ac-line: #bdeec5; --ac-head: #eefaf0;
+    --hero-1: #083e11; --hero-2: #16a02d; --hero-3: #ffd6a5; }
+
+/* 175. เงินกู้สหกรณ์ */
+.vs-theme-coopllan { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #caffbf; }
+
+/* 176. วิจัยในชั้นเรียน */
+.vs-theme-clsresearch { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #ffc94d; }
+
+/* 177. SAR ครู */
+.vs-theme-teachersar { --sb-a: #0e624d; --sb-b: #1abb93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a07e; --ac-2: #43e4bc; --ac-ink: #0c5946; --ac-soft: #eefaf7; --ac-line: #bdeee2; --ac-head: #eefaf7;
+    --hero-1: #083e31; --hero-2: #16a07e; --hero-3: #ffb703; }
+
+/* 178. คำอธิบายรายวิชา */
+.vs-theme-syllabus { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #7bdff2; }
+
+/* 179. แฟ้มผลงานครู */
+.vs-theme-tportfolio { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ffd6a5; }
+
+/* 180. PLC */
+.vs-theme-plclog { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #ffe066; }
+
+/* 181. Best Practice */
+.vs-theme-bestpractice { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #ffd60a; }
+
+/* 182. ประชุมผู้ปกครอง */
+.vs-theme-classmeet { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #ffcad4; }
+
+/* 183. รายงานอบรม */
+.vs-theme-trainreport { --sb-a: #0e2362; --sb-b: #1a42bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1639a0; --ac-2: #436be4; --ac-ink: #0c1f59; --ac-soft: #eef1fa; --ac-line: #bdc9ee; --ac-head: #eef1fa;
+    --hero-1: #08163e; --hero-2: #1639a0; --hero-3: #9ef01a; }
+
+/* 184. ส่งแผนการสอน */
+.vs-theme-plansubmit { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #ffd166; }
+
+/* 185. ประเมินการสอน */
+.vs-theme-teacheval { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #ffbe0b; }
+
+/* 186. คลังข้อสอบ */
+.vs-theme-itembank { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #ffd60a; }
+
+/* 187. ส่ง ปพ.5 */
+.vs-theme-gradesubmit { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #ffafcc; }
+
+/* 188. คลินิกวิชาการ */
+.vs-theme-tutoring { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #ffe066; }
+
+/* 189. ทะเบียนวิจัย */
+.vs-theme-resregister { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #bde0fe; }
+
+/* 190. ชั่วโมง PLC */
+.vs-theme-plchours { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #ffd166; }
+
+/* 191. คุณลักษณะ */
+.vs-theme-traits { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #ffd166; }
+
+/* 192. ปฐมวัย */
+.vs-theme-earlychild { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #ffafcc; }
+
+/* 193. สมรรถนะ */
+.vs-theme-competency { --sb-a: #380e62; --sb-b: #6b1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5b16a0; --ac-2: #9343e4; --ac-ink: #320c59; --ac-soft: #f4eefa; --ac-line: #d6bdee; --ac-head: #f4eefa;
+    --hero-1: #23083e; --hero-2: #5b16a0; --hero-3: #ffd60a; }
+
+/* 194. ชั่วโมงอบรม */
+.vs-theme-pdhours { --sb-a: #0e4d62; --sb-b: #1a93bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #167ea0; --ac-2: #43bce4; --ac-ink: #0c4659; --ac-soft: #eef7fa; --ac-line: #bde2ee; --ac-head: #eef7fa;
+    --hero-1: #08313e; --hero-2: #167ea0; --hero-3: #a0c4ff; }
+
+/* 195. กิจกรรมพัฒนาผู้เรียน */
+.vs-theme-activity { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #caffbf; }
+
+/* 196. จัดซื้อวิธีคัดเลือก */
+.vs-theme-procselect { --sb-a: #0e3162; --sb-b: #1a5dbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1650a0; --ac-2: #4386e4; --ac-ink: #0c2c59; --ac-soft: #eef3fa; --ac-line: #bdd2ee; --ac-head: #eef3fa;
+    --hero-1: #081f3e; --hero-2: #1650a0; --hero-3: #ffd23f; }
+
+/* 197. เรียนฟรี 15 ปี */
+.vs-theme-subsidy5 { --sb-a: #0e6231; --sb-b: #1abb5d; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a050; --ac-2: #43e486; --ac-ink: #0c592c; --ac-soft: #eefaf3; --ac-line: #bdeed2; --ac-head: #eefaf3;
+    --hero-1: #083e1f; --hero-2: #16a050; --hero-3: #ffe066; }
+
+/* 198. ทำเนียบบุคลากร */
+.vs-theme-orgchart { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #4cc9f0; }
+
+/* 199. คำสั่งแต่งตั้ง */
+.vs-theme-ordermaker { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #ff8fab; }
+
+/* 200. จัดสอบ */
+.vs-theme-examadmin { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #ffd60a; }
+
+/* 201. หนังสือรับรอง */
+.vs-theme-studcert { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #90e0ef; }
+
+/* 202. ส่งต่อผู้ป่วย */
+.vs-theme-referform { --sb-a: #620e15; --sb-b: #bb1a28; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01622; --ac-2: #e44350; --ac-ink: #590c13; --ac-soft: #faeeef; --ac-line: #eebdc1; --ac-head: #faeeef;
+    --hero-1: #3e080d; --hero-2: #a01622; --hero-3: #ff8fa3; }
+
+/* 203. เครื่องมือแพทย์ */
+.vs-theme-medequip { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #48cae4; }
+
+/* 204. ลงเวลา รพ.สต. */
+.vs-theme-hctime { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #80ffdb; }
+
+/* 205. หนังสือเวียน */
+.vs-theme-circular { --sb-a: #0e2362; --sb-b: #1a42bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1639a0; --ac-2: #436be4; --ac-ink: #0c1f59; --ac-soft: #eef1fa; --ac-line: #bdc9ee; --ac-head: #eef1fa;
+    --hero-1: #08163e; --hero-2: #1639a0; --hero-3: #ffd166; }
+
+/* 206. IT Helpdesk */
+.vs-theme-helpdesk { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #4cc9f0; }
+
+/* 207. ห้องแล็บ */
+.vs-theme-scilab { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #b9fbc0; }
+
+/* 208. งานนักการ */
+.vs-theme-janitor { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #ffb4a2; }
+
+/* 209. ความพึงพอใจ */
+.vs-theme-hcsatisfy { --sb-a: #620e46; --sb-b: #bb1a85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01672; --ac-2: #e443ae; --ac-ink: #590c3f; --ac-soft: #faeef6; --ac-line: #eebdde; --ac-head: #faeef6;
+    --hero-1: #3e082c; --hero-2: #a01672; --hero-3: #ffc8dd; }
+
+/* 210. แข่งขันทักษะ */
+.vs-theme-compentry { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffd60a; }
+
+/* 211. เงินนอกงบ */
+.vs-theme-nonbudget { --sb-a: #0e621c; --sb-b: #1abb35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a02d; --ac-2: #43e45e; --ac-ink: #0c5919; --ac-soft: #eefaf0; --ac-line: #bdeec5; --ac-head: #eefaf0;
+    --hero-1: #083e11; --hero-2: #16a02d; --hero-3: #ffd166; }
+
+/* 212. 50 ทวิ */
+.vs-theme-pnd50 { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #a0c4ff; }
+
+/* 213. หนี้สินบุคลากร */
+.vs-theme-staffdebt { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #ffafcc; }
+
+/* 214. KPI รพ.สต. */
+.vs-theme-hckpi { --sb-a: #0e624d; --sb-b: #1abb93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a07e; --ac-2: #43e4bc; --ac-ink: #0c5946; --ac-soft: #eefaf7; --ac-line: #bdeee2; --ac-head: #eefaf7;
+    --hero-1: #083e31; --hero-2: #16a07e; --hero-3: #80ffdb; }
+
+/* 215. ติดตามงบ */
+.vs-theme-budgettrack { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #ffd60a; }
+
+/* 216. บัตรแขวนคอ */
+.vs-theme-tripbadge { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #ffd23f; }
+
+/* 217. ใบงานวิทย์ */
+.vs-theme-sciworksheet { --sb-a: #0e621c; --sb-b: #1abb35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a02d; --ac-2: #43e45e; --ac-ink: #0c5919; --ac-soft: #eefaf0; --ac-line: #bdeec5; --ac-head: #eefaf0;
+    --hero-1: #083e11; --hero-2: #16a02d; --hero-3: #06d6a0; }
+
+/* 218. ผังรถรับส่ง */
+.vs-theme-busseat { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #ffb703; }
+
+/* 219. ป้ายชื่อ */
+.vs-theme-namesign { --sb-a: #540e62; --sb-b: #a01abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #8916a0; --ac-2: #c943e4; --ac-ink: #4c0c59; --ac-soft: #f8eefa; --ac-line: #e6bdee; --ac-head: #f8eefa;
+    --hero-1: #35083e; --hero-2: #8916a0; --hero-3: #f72585; }
+
+/* 220. ใช้สถานที่ */
+.vs-theme-facility { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #90be6d; }
+
+/* 221. SAR ปฐมวัย */
+.vs-theme-ecsar { --sb-a: #620e31; --sb-b: #bb1a5d; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01650; --ac-2: #e44386; --ac-ink: #590c2c; --ac-soft: #faeef3; --ac-line: #eebdd2; --ac-head: #faeef3;
+    --hero-1: #3e081f; --hero-2: #a01650; --hero-3: #ffafcc; }
+
+/* 222. คัดกรองซึมเศร้า */
+.vs-theme-depscreen { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #a0c4ff; }
+
+/* 223. เยี่ยมผู้ป่วยติดเตียง */
+.vs-theme-bedvisit { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #ffcad4; }
+
+/* 224. แต้มความดี */
+.vs-theme-gooddeeds { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #ffd166; }
+
+/* 225. จองคิวบริการ */
+.vs-theme-svcqueue { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #4cc9f0; }
+
+/* 226. ส่งงานรูปถ่าย */
+.vs-theme-photohw { --sb-a: #380e62; --sb-b: #6b1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5b16a0; --ac-2: #9343e4; --ac-ink: #320c59; --ac-soft: #f4eefa; --ac-line: #d6bdee; --ac-head: #f4eefa;
+    --hero-1: #23083e; --hero-2: #5b16a0; --hero-3: #ff9f1c; }
+
+/* 227. ลงทะเบียนอบรม */
+.vs-theme-eventreg { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #9b5de5; }
+
+/* 228. คัดกรองผู้สูงอายุ */
+.vs-theme-eldscreen { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #f4a261; }
+
+/* 229. สุขาภิบาลอาหาร */
+.vs-theme-foodsan { --sb-a: #15620e; --sb-b: #28bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #22a016; --ac-2: #50e443; --ac-ink: #13590c; --ac-soft: #effaee; --ac-line: #c1eebd; --ac-head: #effaee;
+    --hero-1: #0d3e08; --hero-2: #22a016; --hero-3: #80ed99; }
+
+/* 230. รถส่วนกลาง */
+.vs-theme-hcvehicle { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #48cae4; }
+
+/* 231. สอบจำลอง */
+.vs-theme-mockonet { --sb-a: #1c0e62; --sb-b: #351abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2d16a0; --ac-2: #5e43e4; --ac-ink: #190c59; --ac-soft: #f0eefa; --ac-line: #c5bdee; --ac-head: #f0eefa;
+    --hero-1: #11083e; --hero-2: #2d16a0; --hero-3: #ffd60a; }
+
+/* 232. ทุนเสมอภาค */
+.vs-theme-equity { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #ffafcc; }
+
+/* 233. ค่าน้ำไฟบ้านพัก */
+.vs-theme-utilsplit { --sb-a: #625b0e; --sb-b: #bbae1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a09516; --ac-2: #e4d643; --ac-ink: #59520c; --ac-soft: #faf9ee; --ac-line: #eeeabd; --ac-head: #faf9ee;
+    --hero-1: #3e3a08; --hero-2: #a09516; --hero-3: #90e0ef; }
+
+/* 234. วัสดุคงทน */
+.vs-theme-durable { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #cdb4db; }
+
+/* 235. สายตาและการได้ยิน */
+.vs-theme-visionhear { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #bde0fe; }
+
+/* 236. บำเหน็จบำนาญ */
+.vs-theme-pension { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffd23f; }
+
+/* 237. คัดลายมือ */
+.vs-theme-handwrite { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #ff8fab; }
+
+/* 238. ค้นหาคำ */
+.vs-theme-wordsearch { --sb-a: #3f0e62; --sb-b: #781abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6716a0; --ac-2: #a143e4; --ac-ink: #390c59; --ac-soft: #f5eefa; --ac-line: #dabdee; --ac-head: #f5eefa;
+    --hero-1: #28083e; --hero-2: #6716a0; --hero-3: #9b5de5; }
+
+/* 239. สะกดคำ */
+.vs-theme-spellbee { --sb-a: #62540e; --sb-b: #bba01a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a08916; --ac-2: #e4c943; --ac-ink: #594c0c; --ac-soft: #faf8ee; --ac-line: #eee6bd; --ac-head: #faf8ee;
+    --hero-1: #3e3508; --hero-2: #a08916; --hero-3: #ffd60a; }
+
+/* 240. จำหน่ายพัสดุ */
+.vs-theme-disposal { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #ffb703; }
+
+/* 241. ปัจฉิมนิเทศ */
+.vs-theme-gradkit { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #f9c74f; }
+
+/* 242. หน้าเสาธง */
+.vs-theme-assembly { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #00b4d8; }
+
+/* 243. ตรวจฟัน */
+.vs-theme-dental { --sb-a: #0e6262; --sb-b: #1abbbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a0a0; --ac-2: #43e4e4; --ac-ink: #0c5959; --ac-soft: #eefafa; --ac-line: #bdeeee; --ac-head: #eefafa;
+    --hero-1: #083e3e; --hero-2: #16a0a0; --hero-3: #90e0ef; }
+
+/* 244. อายุครรภ์ */
+.vs-theme-anccalc { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ffafcc; }
+
+/* 245. ศิษย์เก่า */
+.vs-theme-alumni { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #ffd166; }
+
+/* 246. ของหาย */
+.vs-theme-lostfound { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #4cc9f0; }
+
+/* 247. สั่งอาหาร */
+.vs-theme-canteen { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #ff9f1c; }
+
+/* 248. ห้องเรียนสะอาด */
+.vs-theme-cleanroom { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #80ed99; }
+
+/* 249. ระเบียบแต่งกาย */
+.vs-theme-dresscode { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #ff595e; }
+
+/* 250. ส่งยาถึงบ้าน */
+.vs-theme-meddelivery { --sb-a: #0e624d; --sb-b: #1abb93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a07e; --ac-2: #43e4bc; --ac-ink: #0c5946; --ac-soft: #eefaf7; --ac-line: #bdeee2; --ac-head: #eefaf7;
+    --hero-1: #083e31; --hero-2: #16a07e; --hero-3: #48cae4; }
+
+/* 251. ออกเหตุ EMS */
+.vs-theme-emslog { --sb-a: #620e15; --sb-b: #bb1a28; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01622; --ac-2: #e44350; --ac-ink: #590c13; --ac-soft: #faeeef; --ac-line: #eebdc1; --ac-head: #faeeef;
+    --hero-1: #3e080d; --hero-2: #a01622; --hero-3: #ff6b6b; }
+
+/* 252. ผ้าป่าการศึกษา */
+.vs-theme-donation { --sb-a: #62460e; --sb-b: #bb851a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07216; --ac-2: #e4ae43; --ac-ink: #593f0c; --ac-soft: #faf6ee; --ac-line: #eedebd; --ac-head: #faf6ee;
+    --hero-1: #3e2c08; --hero-2: #a07216; --hero-3: #ffd60a; }
+
+/* 253. ปพ.5 */
+.vs-theme-pp5book { --sb-a: #0e3162; --sb-b: #1a5dbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1650a0; --ac-2: #4386e4; --ac-ink: #0c2c59; --ac-soft: #eef3fa; --ac-line: #bdd2ee; --ac-head: #eef3fa;
+    --hero-1: #081f3e; --hero-2: #1650a0; --hero-3: #ffd23f; }
+
+/* 254. สารบรรณ */
+.vs-theme-sarabanphp { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #ffd23f; }
+
+/* 255. ยืมคืนพัสดุ */
+.vs-theme-inventoryphp { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #4cc9f0; }
+
+/* 256. บุคลากร */
+.vs-theme-personnelphp { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #bde0fe; }
+
+/* 257. สารสนเทศนักเรียน */
+.vs-theme-studinfophp { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #80ed99; }
+
+/* 258. จัดซื้อจัดจ้าง */
+.vs-theme-procurephp { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #ffb703; }
+
+/* 259. ศิษย์เก่า */
+.vs-theme-alumniphp { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #ffd166; }
+
+/* 260. แผนงบประมาณ */
+.vs-theme-budgetphp { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #90be6d; }
+
+/* 261. e-Office */
+.vs-theme-eofficephp { --sb-a: #1c0e62; --sb-b: #351abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2d16a0; --ac-2: #5e43e4; --ac-ink: #190c59; --ac-soft: #f0eefa; --ac-line: #c5bdee; --ac-head: #f0eefa;
+    --hero-1: #11083e; --hero-2: #2d16a0; --hero-3: #9b5de5; }
+
+/* 262. ปพ.5 ออนไลน์ */
+.vs-theme-gradephp { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #ffafcc; }
+
+/* 263. เว็บโรงเรียน */
+.vs-theme-schoolwebphp { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #00b4d8; }
+
+/* 264. ลาออนไลน์ */
+.vs-theme-leavephp { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #f72585; }
+
+/* 265. ลงเวลา */
+.vs-theme-timeclockphp { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #06d6a0; }
+
+/* 266. คำสั่ง/ประกาศ */
+.vs-theme-ordersphp { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #e63946; }
+
+/* 267. ห้องประชุม */
+.vs-theme-meetingphp { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #4361ee; }
+
+/* 268. รถราชการ */
+.vs-theme-vehiclephp { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #fb8500; }
+
+/* 269. วPA */
+.vs-theme-paphp { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7209b7; }
+
+/* 270. รับสมัคร */
+.vs-theme-admissionphp { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #2ec4b6; }
+
+/* 271. ปฐมวัย */
+.vs-theme-earlyphp { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ff99c8; }
+
+/* 272. ตารางสอน */
+.vs-theme-timetablephp { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #3a86ff; }
+
+/* 273. ส่งแผน/นิเทศ */
+.vs-theme-lessonphp { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #80b918; }
+
+/* 274. ห้องสมุด */
+.vs-theme-libraryphp { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #bc6c25; }
+
+/* 275. ชุมนุม */
+.vs-theme-clubphp { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #ffbe0b; }
+
+/* 276. ดูแลช่วยเหลือ */
+.vs-theme-carephp { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #52b788; }
+
+/* 277. ความประพฤติ */
+.vs-theme-behaviorphp { --sb-a: #62150e; --sb-b: #bb281a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02216; --ac-2: #e45043; --ac-ink: #59130c; --ac-soft: #faefee; --ac-line: #eec1bd; --ac-head: #faefee;
+    --hero-1: #3e0d08; --hero-2: #a02216; --hero-3: #ef476f; }
+
+/* 278. เช็คชื่อ */
+.vs-theme-attendphp { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #00bbf9; }
+
+/* 279. ห้องพยาบาล */
+.vs-theme-nursephp { --sb-a: #620e15; --sb-b: #bb1a28; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01622; --ac-2: #e44350; --ac-ink: #590c13; --ac-soft: #faeeef; --ac-line: #eebdc1; --ac-head: #faeeef;
+    --hero-1: #3e080d; --hero-2: #a01622; --hero-3: #ff6b6b; }
+
+/* 280. การเงิน */
+.vs-theme-financephp { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #2a9d8f; }
+
+/* 281. ธนาคารโรงเรียน */
+.vs-theme-bankphp { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #43aa8b; }
+
+/* 282. ประกันคุณภาพ */
+.vs-theme-sarphp { --sb-a: #310e62; --sb-b: #5d1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5016a0; --ac-2: #8643e4; --ac-ink: #2c0c59; --ac-soft: #f3eefa; --ac-line: #d2bdee; --ac-head: #f3eefa;
+    --hero-1: #1f083e; --hero-2: #5016a0; --hero-3: #4895ef; }
+
+/* 283. ร้องเรียน ITA */
+.vs-theme-complaintphp { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #d62828; }
+
+/* 284. แผนปฏิบัติการ */
+.vs-theme-actionplan { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #ffb703; }
+
+/* 286. ผลสอบระดับชาติ */
+.vs-theme-nationaltest { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #ef476f; }
+
+/* 287. แผน IEP */
+.vs-theme-iep { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #06d6a0; }
+
+/* 288. รายงานโครงการ */
+.vs-theme-projreport { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #8ac926; }
+
+/* 289. ทะเบียนคุมเงิน */
+.vs-theme-incomeledger { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #2ec4b6; }
+
+/* 290. ภาระงานสอน */
+.vs-theme-teachload { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #fb8500; }
+
+/* 291. กดปุ่มตอบเร็ว */
+.vs-theme-buzzer { --sb-a: #620e23; --sb-b: #bb1a42; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01639; --ac-2: #e4436b; --ac-ink: #590c1f; --ac-soft: #faeef1; --ac-line: #eebdc9; --ac-head: #faeef1;
+    --hero-1: #3e0816; --hero-2: #a01639; --hero-3: #ff006e; }
+
+/* 292. ใบงานสังคม */
+.vs-theme-socialws { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #bc6c25; }
+
+/* 293. บันทึกหลังสอน */
+.vs-theme-postteach { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #4361ee; }
+
+/* 294. ครูผู้ช่วย */
+.vs-theme-noviceteacher { --sb-a: #310e62; --sb-b: #5d1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5016a0; --ac-2: #8643e4; --ac-ink: #2c0c59; --ac-soft: #f3eefa; --ac-line: #d2bdee; --ac-head: #f3eefa;
+    --hero-1: #1f083e; --hero-2: #5016a0; --hero-3: #7209b7; }
+
+/* 295. ความปลอดภัย */
+.vs-theme-safety { --sb-a: #62150e; --sb-b: #bb281a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02216; --ac-2: #e45043; --ac-ink: #59130c; --ac-soft: #faefee; --ac-line: #eec1bd; --ac-head: #faefee;
+    --hero-1: #3e0d08; --hero-2: #a02216; --hero-3: #e63946; }
+
+/* 296. โหวตผลงาน */
+.vs-theme-onlinevote { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #f72585; }
+
+/* 297. ส่งข้อสอบ */
+.vs-theme-examsubmit { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #3a86ff; }
+
+/* 298. แก้ 0 ร มส */
+.vs-theme-gradefix { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #ff9f1c; }
+
+/* 299. รายงานงานรายวัน */
+.vs-theme-dailywork { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #38b000; }
+
+/* 300. รับสมัครครู */
+.vs-theme-recruit { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #00b4d8; }
+
+/* 301. วัคซีนเด็ก */
+.vs-theme-childvaccine { --sb-a: #0e6262; --sb-b: #1abbbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a0a0; --ac-2: #43e4e4; --ac-ink: #0c5959; --ac-soft: #eefafa; --ac-line: #bdeeee; --ac-head: #eefafa;
+    --hero-1: #083e3e; --hero-2: #16a0a0; --hero-3: #80ed99; }
+
+/* 302. ครุภัณฑ์ QR */
+.vs-theme-assetqr { --sb-a: #0e1562; --sb-b: #1a28bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1622a0; --ac-2: #4350e4; --ac-ink: #0c1359; --ac-soft: #eeeffa; --ac-line: #bdc1ee; --ac-head: #eeeffa;
+    --hero-1: #080d3e; --hero-2: #1622a0; --hero-3: #6a4c93; }
+
+/* 303. รถจักรยานยนต์ */
+.vs-theme-motoreg { --sb-a: #625b0e; --sb-b: #bbae1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a09516; --ac-2: #e4d643; --ac-ink: #59520c; --ac-soft: #faf9ee; --ac-line: #eeeabd; --ac-head: #faf9ee;
+    --hero-1: #3e3a08; --hero-2: #a09516; --hero-3: #fcbf49; }
+
+/* 304. สถิติวิจัย */
+.vs-theme-researchstats { --sb-a: #0e3162; --sb-b: #1a5dbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1650a0; --ac-2: #4386e4; --ac-ink: #0c2c59; --ac-soft: #eef3fa; --ac-line: #bdd2ee; --ac-head: #eef3fa;
+    --hero-1: #081f3e; --hero-2: #1650a0; --hero-3: #3a86ff; }
+
+/* 305. บัตรคำ */
+.vs-theme-flashmaker { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #ff9f1c; }
+
+/* 306. ใบงานปฐมวัย */
+.vs-theme-ecws { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #f15bb5; }
+
+/* 307. มาตรฐานการศึกษา */
+.vs-theme-edustandard { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #2a9d8f; }
+
+/* 308. คู่มือนักเรียน */
+.vs-theme-handbook { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #4361ee; }
+
+/* 309. กระดานคำถาม */
+.vs-theme-jeopardy { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #3f37c9; }
+
+/* 310. ตรวจกระดาษคำตอบ */
+.vs-theme-omr { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #06d6a0; }
+
+/* 311. หนังสือรุ่น */
+.vs-theme-yearbook { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #ff70a6; }
+
+/* 312. ลูกเสือ */
+.vs-theme-scout { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #606c38; }
+
+/* 313. ใบรับรองแพทย์ */
+.vs-theme-medcert { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #e63946; }
+
+/* 314. ใบประกอบวิชาชีพ */
+.vs-theme-license { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #00b4d8; }
+
+/* 315. ธรรมศึกษา */
+.vs-theme-dhamma { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #f4a261; }
+
+/* 316. ใบยินยอมผู้ปกครอง */
+.vs-theme-consent { --sb-a: #0e6223; --sb-b: #1abb42; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a039; --ac-2: #43e46b; --ac-ink: #0c591f; --ac-soft: #eefaf1; --ac-line: #bdeec9; --ac-head: #eefaf1;
+    --hero-1: #083e16; --hero-2: #16a039; --hero-3: #52b788; }
+
+/* 317. ประกาศผลสอบ */
+.vs-theme-admresult { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7b2cbf; }
+
+/* 318. ประกันคุณภาพภายใน */
+.vs-theme-schooliqa { --sb-a: #0e624d; --sb-b: #1abb93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a07e; --ac-2: #43e4bc; --ac-ink: #0c5946; --ac-soft: #eefaf7; --ac-line: #bdeee2; --ac-head: #eefaf7;
+    --hero-1: #083e31; --hero-2: #16a07e; --hero-3: #2a9d8f; }
+
+/* 319. วัณโรค DOT */
+.vs-theme-tbdot { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #d62828; }
+
+/* 321. ขอคำปรึกษา */
+.vs-theme-counsel { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #9d4edd; }
+
+/* 322. กิจกรรมพัฒนาผู้เรียน */
+.vs-theme-devactivity { --sb-a: #4d620e; --sb-b: #93bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7ea016; --ac-2: #bce443; --ac-ink: #46590c; --ac-soft: #f7faee; --ac-line: #e2eebd; --ac-head: #f7faee;
+    --hero-1: #313e08; --hero-2: #7ea016; --hero-3: #80b918; }
+
+/* 323. แฟ้มผลงานออนไลน์ */
+.vs-theme-portfolioon { --sb-a: #620e46; --sb-b: #bb1a85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01672; --ac-2: #e443ae; --ac-ink: #590c3f; --ac-soft: #faeef6; --ac-line: #eebdde; --ac-head: #faeef6;
+    --hero-1: #3e082c; --hero-2: #a01672; --hero-3: #ff006e; }
+
+/* 324. รายงานผล PA */
+.vs-theme-pareport { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #4361ee; }
+
+/* 325. หลักสูตรสถานศึกษา */
+.vs-theme-schoolcurr { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #2a9d8f; }
+
+/* 326. แผนพัฒนาคุณภาพ */
+.vs-theme-strategic { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #ff9f1c; }
+
+/* 327. ประเมินหลักสูตร */
+.vs-theme-curreval { --sb-a: #3f0e62; --sb-b: #781abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6716a0; --ac-2: #a143e4; --ac-ink: #390c59; --ac-soft: #f5eefa; --ac-line: #dabdee; --ac-head: #f5eefa;
+    --hero-1: #28083e; --hero-2: #6716a0; --hero-3: #7209b7; }
+
+/* 328. สอนซ่อมเสริม */
+.vs-theme-remedial { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #38b000; }
+
+/* 329. ใบงานภาษาจีน */
+.vs-theme-chinesews { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #d62828; }
+
+/* 330. วิทยาการคำนวณ */
+.vs-theme-unplugged { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #00b4d8; }
+
+/* 331. ทายคำ */
+.vs-theme-wordguess { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffbe0b; }
+
+/* 332. คิดเลขเร็ว */
+.vs-theme-mentalmath { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #06d6a0; }
+
+/* 333. คัดกรองไต */
+.vs-theme-ckd { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #118ab2; }
+
+/* 334. กิจการนักเรียน */
+.vs-theme-stuaffairs { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #3a0ca3; }
+
+/* 335. ขอเอกสาร */
+.vs-theme-docreq { --sb-a: #0e4d62; --sb-b: #1a93bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #167ea0; --ac-2: #43bce4; --ac-ink: #0c4659; --ac-soft: #eef7fa; --ac-line: #bde2ee; --ac-head: #eef7fa;
+    --hero-1: #08313e; --hero-2: #167ea0; --hero-3: #0096c7; }
+
+/* 336. สภานักเรียน */
+.vs-theme-council { --sb-a: #620e2a; --sb-b: #bb1a50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01644; --ac-2: #e44379; --ac-ink: #590c26; --ac-soft: #faeef2; --ac-line: #eebdce; --ac-head: #faeef2;
+    --hero-1: #3e081a; --hero-2: #a01644; --hero-3: #f72585; }
+
+/* 337. อาหารกลางวัน */
+.vs-theme-lunchstock { --sb-a: #38620e; --sb-b: #6bbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5ba016; --ac-2: #93e443; --ac-ink: #33590c; --ac-soft: #f4faee; --ac-line: #d6eebd; --ac-head: #f4faee;
+    --hero-1: #233e08; --hero-2: #5ba016; --hero-3: #55a630; }
+
+/* 338. จิตเวชชุมชน */
+.vs-theme-psychcomm { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #8338ec; }
+
+/* 339. ติดตามผู้จบ */
+.vs-theme-gradtrack { --sb-a: #0e625b; --sb-b: #1abbae; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a095; --ac-2: #43e4d6; --ac-ink: #0c5952; --ac-soft: #eefaf9; --ac-line: #bdeeea; --ac-head: #eefaf9;
+    --hero-1: #083e3a; --hero-2: #16a095; --hero-3: #2ec4b6; }
+
+/* 340. งานพิมพ์ */
+.vs-theme-printreq { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #fb5607; }
+
+/* 341. แจ้งซ่อมอาคาร */
+.vs-theme-buildrepair { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #e85d04; }
+
+/* 342. ทะเบียนประวัติ */
+.vs-theme-personnel { --sb-a: #0e3162; --sb-b: #1a5dbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1650a0; --ac-2: #4386e4; --ac-ink: #0c2c59; --ac-soft: #eef3fa; --ac-line: #bdd2ee; --ac-head: #eef3fa;
+    --hero-1: #081f3e; --hero-2: #1650a0; --hero-3: #457b9d; }
+
+/* 343. ธนาคารขยะ */
+.vs-theme-wastebank { --sb-a: #1c620e; --sb-b: #35bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2da016; --ac-2: #5ee443; --ac-ink: #19590c; --ac-soft: #f0faee; --ac-line: #c5eebd; --ac-head: #f0faee;
+    --hero-1: #113e08; --hero-2: #2da016; --hero-3: #2b9348; }
+
+/* 344. การเงินสถานศึกษา */
+.vs-theme-finance { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #e9c46a; }
+
+/* 345. การเงินออฟไลน์ */
+.vs-theme-financehtml { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #f4a261; }
+
+/* 346. ควบคุมภายใน */
+.vs-theme-intcontrol { --sb-a: #230e62; --sb-b: #421abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #3916a0; --ac-2: #6b43e4; --ac-ink: #1f0c59; --ac-soft: #f1eefa; --ac-line: #c9bdee; --ac-head: #f1eefa;
+    --hero-1: #16083e; --hero-2: #3916a0; --hero-3: #264653; }
+
+/* 347. หอพักนักเรียน */
+.vs-theme-dorm { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #5e60ce; }
+
+/* 348. รับ-ส่งนักเรียน */
+.vs-theme-pickup { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #00b4d8; }
+
+/* 349. กองทุนสวัสดิการ */
+.vs-theme-welfund { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #43aa8b; }
+
+/* 350. เกษตรโรงเรียน */
+.vs-theme-schoolfarm { --sb-a: #23620e; --sb-b: #42bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #39a016; --ac-2: #6be443; --ac-ink: #1f590c; --ac-soft: #f1faee; --ac-line: #c9eebd; --ac-head: #f1faee;
+    --hero-1: #163e08; --hero-2: #39a016; --hero-3: #70e000; }
+
+/* 351. ประกันอุบัติเหตุ */
+.vs-theme-insure { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #f3722c; }
+
+/* 352. เครื่องราชฯ */
+.vs-theme-decoration { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #d4a373; }
+
+/* 353. โครงงาน IS */
+.vs-theme-studproject { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7209b7; }
+
+/* 354. สารบรรณ */
+.vs-theme-esaraban { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #1d3557; }
+
+/* 355. สั่งจองสินค้า */
+.vs-theme-schoolshop { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ff006e; }
+
+/* 356. สำรวจเด็กในเขต */
+.vs-theme-census { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #2a9d8f; }
+
+/* 357. เครือข่ายผู้ปกครอง */
+.vs-theme-parentnet { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #fb8500; }
+
+/* 358. ภาวะโภชนาการ */
+.vs-theme-nutrition { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #52b788; }
+
+/* 359. หนังสือรับรอง */
+.vs-theme-staffcert { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #457b9d; }
+
+/* 360. คัดกรองมะเร็ง */
+.vs-theme-cancer { --sb-a: #620e31; --sb-b: #bb1a5d; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01650; --ac-2: #e44386; --ac-ink: #590c2c; --ac-soft: #faeef3; --ac-line: #eebdd2; --ac-head: #faeef3;
+    --hero-1: #3e081f; --hero-2: #a01650; --hero-3: #f15bb5; }
+
+/* 361. เฝ้าระวังโรค */
+.vs-theme-surveil { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #d00000; }
+
+/* 362. หลังคลอด */
+.vs-theme-postpartum { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #ffafcc; }
+
+/* 364. ธุรการชั้นเรียน */
+.vs-theme-classadmin { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #f77f00; }
+
+/* 365. ธุรการชั้นเรียนออฟไลน์ */
+.vs-theme-classadminhtml { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #fcbf49; }
+
+/* 366. ประเมินยืดหยุ่น */
+.vs-theme-flexsurvey { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #4cc9f0; }
+
+/* 367. ติดตามคำสั่ง */
+.vs-theme-ordertrack { --sb-a: #1c0e62; --sb-b: #351abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2d16a0; --ac-2: #5e43e4; --ac-ink: #190c59; --ac-soft: #f0eefa; --ac-line: #c5bdee; --ac-head: #f0eefa;
+    --hero-1: #11083e; --hero-2: #2d16a0; --hero-3: #3a0ca3; }
+
+/* 368. คัดเลือกดีเด่น */
+.vs-theme-awardsel { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffb703; }
+
+/* 369. ห้องสมุดดิจิทัล */
+.vs-theme-dlib { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7209b7; }
+
+/* 370. อุปกรณ์ความปลอดภัย */
+.vs-theme-safetyeq { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #e63946; }
+
+/* 371. พัฒนาบุคลากร */
+.vs-theme-tna { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #2a9d8f; }
+
+/* 372. ทะเบียนรางวัล */
+.vs-theme-awardreg { --sb-a: #62540e; --sb-b: #bba01a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a08916; --ac-2: #e4c943; --ac-ink: #594c0c; --ac-soft: #faf8ee; --ac-line: #eee6bd; --ac-head: #faf8ee;
+    --hero-1: #3e3508; --hero-2: #a08916; --hero-3: #f4a261; }
+
+/* 373. ค่ายพักแรม */
+.vs-theme-campmgr { --sb-a: #23620e; --sb-b: #42bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #39a016; --ac-2: #6be443; --ac-ink: #1f590c; --ac-soft: #f1faee; --ac-line: #c9eebd; --ac-head: #f1faee;
+    --hero-1: #163e08; --hero-2: #39a016; --hero-3: #55a630; }
+
+/* 374. ฟื้นฟูผู้พิการ */
+.vs-theme-rehab { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #118ab2; }
+
+/* 375. ความดันที่บ้าน */
+.vs-theme-homebp { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #d62828; }
+
+/* 376. ฝึกพิมพ์ */
+.vs-theme-typing { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #00b4d8; }
+
+/* 377. แจกลูกสะกดคำ */
+.vs-theme-phonics { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #ff006e; }
+
+/* 378. ผังความคิด */
+.vs-theme-mindmap { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #8338ec; }
+
+/* 379. จิ๊กซอว์ */
+.vs-theme-jigsaw { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #06d6a0; }
+
+/* 380. คัดลายมือ ABC */
+.vs-theme-enghand { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #3a86ff; }
+
+/* 381. ความสนใจอาชีพ */
+.vs-theme-riasec { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #fb8500; }
+
+/* 382. แผนอพยพ */
+.vs-theme-evacmap { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #d00000; }
+
+/* 383. รายงานประจำปี */
+.vs-theme-annualrpt { --sb-a: #310e62; --sb-b: #5d1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5016a0; --ac-2: #8643e4; --ac-ink: #2c0c59; --ac-soft: #f3eefa; --ac-line: #d2bdee; --ac-head: #f3eefa;
+    --hero-1: #1f083e; --hero-2: #5016a0; --hero-3: #264653; }
+
+/* 384. แผนปฐมวัย */
+.vs-theme-eclp { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #f15bb5; }
+
+/* 385. อาหารเบาหวาน */
+.vs-theme-dmmeal { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #38b000; }
+
+/* 386. ประสิทธิภาพนวัตกรรม */
+.vs-theme-innoei { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #06d6a0; }
+
+/* 387. คัดกรองเด็กพิเศษ */
+.vs-theme-spscreen { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #9b5de5; }
+
+/* 389. ภาษีครู */
+.vs-theme-tteacher { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #118ab2; }
+
+/* 390. แผนที่ไทย */
+.vs-theme-thaimap { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #ffd166; }
+
+/* 391. แบ่งกลุ่ม */
+.vs-theme-groupmk { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #2ec4b6; }
+
+/* 392. เตรียมสอบครู */
+.vs-theme-texam { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #3a86ff; }
+
+/* 393. สมุดผู้ป่วยเรื้อรัง */
+.vs-theme-ncdbook { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #e63946; }
+
+/* 394. ป้ายนิเทศ */
+.vs-theme-board { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #fb8500; }
+
+/* 395. ไทม์ไลน์ */
+.vs-theme-timeline { --sb-a: #62620e; --sb-b: #bbbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0a016; --ac-2: #e4e443; --ac-ink: #59590c; --ac-soft: #fafaee; --ac-line: #eeeebd; --ac-head: #fafaee;
+    --hero-1: #3e3e08; --hero-2: #a0a016; --hero-3: #bc6c25; }
+
+/* 396. ติดตามเรียนต่อ */
+.vs-theme-tcas { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #4361ee; }
+
+/* 397. ประเมินเพื่อน */
+.vs-theme-peer { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #2a9d8f; }
+
+/* 398. ลงชื่อเข้าห้อง */
+.vs-theme-roomci { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #0096c7; }
+
+/* 399. ค่าน้ำค่าไฟ */
+.vs-theme-meter { --sb-a: #625b0e; --sb-b: #bbae1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a09516; --ac-2: #e4d643; --ac-ink: #59520c; --ac-soft: #faf9ee; --ac-line: #eeeabd; --ac-head: #faf9ee;
+    --hero-1: #3e3a08; --hero-2: #a09516; --hero-3: #f77f00; }
+
+/* 400. ซ้อมอพยพ */
+.vs-theme-evac { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #d00000; }
+
+/* 401. ตู้ล็อกเกอร์ */
+.vs-theme-locker { --sb-a: #310e62; --sb-b: #5d1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5016a0; --ac-2: #8643e4; --ac-ink: #2c0c59; --ac-soft: #f3eefa; --ac-line: #d2bdee; --ac-head: #f3eefa;
+    --hero-1: #1f083e; --hero-2: #5016a0; --hero-3: #5e60ce; }
+
+/* 402. คะแนนกีฬาสี */
+.vs-theme-sportsc { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #e85d04; }
+
+/* 403. ชมรมผู้สูงอายุ */
+.vs-theme-eldclub { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #bc4749; }
+
+/* 404. วางแผนครอบครัว */
+.vs-theme-fplan { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #c9184a; }
+
+/* 405. เลิกบุหรี่สุรา */
+.vs-theme-quit { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #6a994e; }
+
+/* 406. สหกรณ์ครบวงจร */
+.vs-theme-coopfull { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #2b9348; }
+
+/* 407. ห้องพยาบาล */
+.vs-theme-sclinic { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #e5383b; }
+
+/* 408. โรคประจำตัว/แพ้ */
+.vs-theme-allergy { --sb-a: #62150e; --sb-b: #bb281a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02216; --ac-2: #e45043; --ac-ink: #59130c; --ac-soft: #faefee; --ac-line: #eec1bd; --ac-head: #faefee;
+    --hero-1: #3e0d08; --hero-2: #a02216; --hero-3: #ff595e; }
+
+/* 409. สายตา/การได้ยิน */
+.vs-theme-vision { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #3a86ff; }
+
+/* 410. เฝ้าระวังโรค */
+.vs-theme-outbreak { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #d62828; }
+
+/* 411. แปรงฟัน */
+.vs-theme-brush { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #00b4d8; }
+
+/* 412. รร.ส่งเสริมสุขภาพ */
+.vs-theme-hps { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #55a630; }
+
+/* 413. ชาเลนจ์ออกกำลังกาย */
+.vs-theme-fitchal { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #f77f00; }
+
+/* 414. เครื่องแบบมือสอง */
+.vs-theme-uniform { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #4361ee; }
+
+/* 415. โรงเรียนสีขาว */
+.vs-theme-whitesch { --sb-a: #0e0e62; --sb-b: #1a1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1616a0; --ac-2: #4343e4; --ac-ink: #0c0c59; --ac-soft: #eeeefa; --ac-line: #bdbdee; --ac-head: #eeeefa;
+    --hero-1: #08083e; --hero-2: #1616a0; --hero-3: #5e548e; }
+
+/* 416. หอพักให้เช่า */
+.vs-theme-dormrent { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #3a86ff; }
+
+/* 417. ตารางสอนออนไลน์ */
+.vs-theme-ttonline { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #4361ee; }
+
+/* 418. นักกีฬาโรงเรียน */
+.vs-theme-athlete { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #f77f00; }
+
+/* 419. เงินยืมราชการ */
+.vs-theme-advloan { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #2a9d8f; }
+
+/* 420. เช่าสนาม/อาคาร */
+.vs-theme-facrent { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #55a630; }
+
+/* 421. กลุ่มออมทรัพย์ */
+.vs-theme-savings { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #2b9348; }
+
+/* 422. ประปาหมู่บ้าน */
+.vs-theme-vwater { --sb-a: #0e4d62; --sb-b: #1a93bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #167ea0; --ac-2: #43bce4; --ac-ink: #0c4659; --ac-soft: #eef7fa; --ac-line: #bde2ee; --ac-head: #eef7fa;
+    --hero-1: #08313e; --hero-2: #167ea0; --hero-3: #0096c7; }
+
+/* 423. เบี้ยยังชีพ */
+.vs-theme-allowance { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #bc4749; }
+
+/* 424. ทะเบียน กศน. */
+.vs-theme-nfe { --sb-a: #3f0e62; --sb-b: #781abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #6716a0; --ac-2: #a143e4; --ac-ink: #390c59; --ac-soft: #f5eefa; --ac-line: #dabdee; --ac-head: #f5eefa;
+    --hero-1: #28083e; --hero-2: #6716a0; --hero-3: #5e60ce; }
+
+/* 425. ศูนย์เด็กเล็ก */
+.vs-theme-ccenter { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ff006e; }
+
+/* 426. ภาษีท้องถิ่น */
+.vs-theme-ltax { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #1d3557; }
+
+/* 427. ค่าขยะ */
+.vs-theme-wastefee { --sb-a: #38620e; --sb-b: #6bbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5ba016; --ac-2: #93e443; --ac-ink: #33590c; --ac-soft: #f4faee; --ac-line: #d6eebd; --ac-head: #f4faee;
+    --hero-1: #233e08; --hero-2: #5ba016; --hero-3: #2d6a4f; }
+
+/* 428. ศูนย์ป้องกันภัย */
+.vs-theme-dcenter { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #d00000; }
+
+/* 429. ช่วยเหลือผู้ประสบภัย */
+.vs-theme-relief { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #e85d04; }
+
+/* 430. บริหารวัด */
+.vs-theme-temple { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #e9c46a; }
+
+/* 431. มูลนิธิ/สมาคม */
+.vs-theme-found { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #6a4c93; }
+
+/* 432. ร้านรับซ่อม */
+.vs-theme-rshop { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #0077b6; }
+
+/* 433. จองคิวร้านสวย */
+.vs-theme-salon { --sb-a: #620e46; --sb-b: #bb1a85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01672; --ac-2: #e443ae; --ac-ink: #590c3f; --ac-soft: #faeef6; --ac-line: #eebdde; --ac-head: #faeef6;
+    --hero-1: #3e082c; --hero-2: #a01672; --hero-3: #f72585; }
+
+/* 434. ฟิตเนส */
+.vs-theme-gym { --sb-a: #62230e; --sb-b: #bb421a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a03916; --ac-2: #e46b43; --ac-ink: #591f0c; --ac-soft: #faf1ee; --ac-line: #eec9bd; --ac-head: #faf1ee;
+    --hero-1: #3e1608; --hero-2: #a03916; --hero-3: #ef233c; }
+
+/* 435. ออเดอร์ร้านอาหาร */
+.vs-theme-resto { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #fb5607; }
+
+/* 436. ให้เช่าชุด/อุปกรณ์ */
+.vs-theme-rental { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7209b7; }
+
+/* 437. เงินเดือน SME */
+.vs-theme-payroll { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #2a9d8f; }
+
+/* 438. ลูกค้า/ใบเสนอราคา */
+.vs-theme-crm { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #3a0ca3; }
+
+/* 439. โฮมสเตย์ */
+.vs-theme-homestay { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #06d6a0; }
+
+/* 440. นิติบุคคล */
+.vs-theme-estate { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #118ab2; }
+
+/* 441. วิสาหกิจชุมชน */
+.vs-theme-cent { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #55a630; }
+
+/* 442. บันทึกฟาร์ม */
+.vs-theme-farm { --sb-a: #4d620e; --sb-b: #93bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7ea016; --ac-2: #bce443; --ac-ink: #46590c; --ac-soft: #f7faee; --ac-line: #e2eebd; --ac-head: #f7faee;
+    --hero-1: #313e08; --hero-2: #7ea016; --hero-3: #bc6c25; }
+
+/* 443. คลินิกเอกชน */
+.vs-theme-pclinic { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #e63946; }
+
+/* 444. ศูนย์ดูแลผู้สูงอายุ */
+.vs-theme-nhome { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #bc4749; }
+
+/* 445. สถาบันกวดวิชา */
+.vs-theme-tutor { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #4361ee; }
+
+/* 446. ร้านขายยา */
+.vs-theme-pharm { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #2a9d8f; }
+
+/* 447. ฌาปนกิจสงเคราะห์ */
+.vs-theme-funeral { --sb-a: #380e62; --sb-b: #6b1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5b16a0; --ac-2: #9343e4; --ac-ink: #320c59; --ac-soft: #f4eefa; --ac-line: #d6bdee; --ac-head: #f4eefa;
+    --hero-1: #23083e; --hero-2: #5b16a0; --hero-3: #5e548e; }
+
+/* 448. ตลาดนัด/แผงค้า */
+.vs-theme-market { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #f77f00; }
+
+/* 449. ซองช่วยงาน */
+.vs-theme-envelope { --sb-a: #620e2a; --sb-b: #bb1a50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01644; --ac-2: #e44379; --ac-ink: #590c26; --ac-soft: #faeef2; --ac-line: #eebdce; --ac-head: #faeef2;
+    --hero-1: #3e081a; --hero-2: #a01644; --hero-3: #c9184a; }
+
+/* 450. ลานรับซื้อพืชผล */
+.vs-theme-crop { --sb-a: #38620e; --sb-b: #6bbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #5ba016; --ac-2: #93e443; --ac-ink: #33590c; --ac-soft: #f4faee; --ac-line: #d6eebd; --ac-head: #f4faee;
+    --hero-1: #233e08; --hero-2: #5ba016; --hero-3: #6a994e; }
+
+/* 451. ตัดเกรดมหาวิทยาลัย */
+.vs-theme-gradecut { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #3a86ff; }
+
+/* 452. มคอ.3/มคอ.5 */
+.vs-theme-tqf { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #8338ec; }
+
+/* 453. ภาระงานอาจารย์ */
+.vs-theme-uniload { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #fb5607; }
+
+/* 454. ขอตำแหน่งทางวิชาการ */
+.vs-theme-rank { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffbe0b; }
+
+/* 455. วิทยานิพนธ์ */
+.vs-theme-thesis { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #00a6a6; }
+
+/* 456. ผลงานตีพิมพ์ */
+.vs-theme-pub { --sb-a: #620e46; --sb-b: #bb1a85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01672; --ac-2: #e443ae; --ac-ink: #590c3f; --ac-soft: #faeef6; --ac-line: #eebdde; --ac-head: #faeef6;
+    --hero-1: #3e082c; --hero-2: #a01672; --hero-3: #d81159; }
+
+/* 457. ข้อสอบมหาวิทยาลัย */
+.vs-theme-uexam { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #2a9d8f; }
+
+/* 458. วัดผล OBE */
+.vs-theme-obe { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #6a4c93; }
+
+/* 459. งบโครงการวิจัย */
+.vs-theme-rbudget { --sb-a: #1c620e; --sb-b: #35bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #2da016; --ac-2: #5ee443; --ac-ink: #19590c; --ac-soft: #f0faee; --ac-line: #c5eebd; --ac-head: #f0faee;
+    --hero-1: #113e08; --hero-2: #2da016; --hero-3: #38b000; }
+
+/* 460. ตารางสอนและนัดพบ */
+.vs-theme-ohours { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #118ab2; }
+
+/* 461. อาจารย์ที่ปรึกษา */
+.vs-theme-advisor { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #3a86ff; }
+
+/* 462. เช็กชื่อ QR มหาวิทยาลัย */
+.vs-theme-uattend { --sb-a: #0e6254; --sb-b: #1abba0; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a089; --ac-2: #43e4c9; --ac-ink: #0c594c; --ac-soft: #eefaf8; --ac-line: #bdeee6; --ac-head: #eefaf8;
+    --hero-1: #083e35; --hero-2: #16a089; --hero-3: #06d6a0; }
+
+/* 463. ส่งงานและ Rubric */
+.vs-theme-uassign { --sb-a: #62460e; --sb-b: #bb851a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07216; --ac-2: #e4ae43; --ac-ink: #593f0c; --ac-soft: #faf6ee; --ac-line: #eedebd; --ac-head: #faf6ee;
+    --hero-1: #3e2c08; --hero-2: #a07216; --hero-3: #fb8500; }
+
+/* 464. สหกิจศึกษา */
+.vs-theme-ucoop { --sb-a: #2a620e; --sb-b: #50bb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #44a016; --ac-2: #79e443; --ac-ink: #26590c; --ac-soft: #f2faee; --ac-line: #ceeebd; --ac-head: #f2faee;
+    --hero-1: #1a3e08; --hero-2: #44a016; --hero-3: #2b9348; }
+
+/* 466. ประเมินการสอน */
+.vs-theme-ueval { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #ef476f; }
+
+/* 467. ประกันคุณภาพหลักสูตร */
+.vs-theme-aunqa { --sb-a: #0e1c62; --sb-b: #1a35bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #162da0; --ac-2: #435ee4; --ac-ink: #0c1959; --ac-soft: #eef0fa; --ac-line: #bdc5ee; --ac-head: #eef0fa;
+    --hero-1: #08113e; --hero-2: #162da0; --hero-3: #0077b6; }
+
+/* 468. บริการวิชาการ */
+.vs-theme-aservice { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #e76f51; }
+
+/* 469. ห้องปฏิบัติการวิจัย */
+.vs-theme-ulab { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #14746f; }
+
+/* 470. KPI อาจารย์ */
+.vs-theme-fkpi { --sb-a: #620e1c; --sb-b: #bb1a35; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0162d; --ac-2: #e4435e; --ac-ink: #590c19; --ac-soft: #faeef0; --ac-line: #eebdc5; --ac-head: #faeef0;
+    --hero-1: #3e0811; --hero-2: #a0162d; --hero-3: #c1121f; }
+
+/* 471. นิเทศภายใน */
+.vs-theme-insup { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #4361ee; }
+
+/* 472. อ่านคิดวิเคราะห์เขียน */
+.vs-theme-rtw { --sb-a: #0e4662; --sb-b: #1a85bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1672a0; --ac-2: #43aee4; --ac-ink: #0c3f59; --ac-soft: #eef6fa; --ac-line: #bddeee; --ac-head: #eef6fa;
+    --hero-1: #082c3e; --hero-2: #1672a0; --hero-3: #3a86ff; }
+
+/* 473. จิตพิสัยรายคาบ */
+.vs-theme-affect { --sb-a: #620e38; --sb-b: #bb1a6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0165b; --ac-2: #e44393; --ac-ink: #590c33; --ac-soft: #faeef4; --ac-line: #eebdd6; --ac-head: #faeef4;
+    --hero-1: #3e0823; --hero-2: #a0165b; --hero-3: #ef476f; }
+
+/* 474. ตารางสอบ */
+.vs-theme-examsch { --sb-a: #62310e; --sb-b: #bb5d1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05016; --ac-2: #e48643; --ac-ink: #592c0c; --ac-soft: #faf3ee; --ac-line: #eed2bd; --ac-head: #faf3ee;
+    --hero-1: #3e1f08; --hero-2: #a05016; --hero-3: #fb8500; }
+
+/* 475. ค่าเทอมเอกชน */
+.vs-theme-tuition { --sb-a: #0e6238; --sb-b: #1abb6b; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a05b; --ac-2: #43e493; --ac-ink: #0c5933; --ac-soft: #eefaf4; --ac-line: #bdeed6; --ac-head: #eefaf4;
+    --hero-1: #083e23; --hero-2: #16a05b; --hero-3: #2a9d8f; }
+
+/* 476. อุดหนุนเอกชน */
+.vs-theme-psubsidy { --sb-a: #2a0e62; --sb-b: #501abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #4416a0; --ac-2: #7943e4; --ac-ink: #260c59; --ac-soft: #f2eefa; --ac-line: #cebdee; --ac-head: #f2eefa;
+    --hero-1: #1a083e; --hero-2: #4416a0; --hero-3: #6a4c93; }
+
+/* 477. คำนวณยาพยาบาล */
+.vs-theme-drugcalc { --sb-a: #0e5462; --sb-b: #1aa0bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1689a0; --ac-2: #43c9e4; --ac-ink: #0c4c59; --ac-soft: #eef8fa; --ac-line: #bde6ee; --ac-head: #eef8fa;
+    --hero-1: #08353e; --hero-2: #1689a0; --hero-3: #00a6a6; }
+
+/* 478. เวรพยาบาล */
+.vs-theme-nshift { --sb-a: #620e62; --sb-b: #bb1abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a016a0; --ac-2: #e443e4; --ac-ink: #590c59; --ac-soft: #faeefa; --ac-line: #eebdee; --ac-head: #faeefa;
+    --hero-1: #3e083e; --hero-2: #a016a0; --hero-3: #9b5de5; }
+
+/* 479. ประเมินเสี่ยงผู้ป่วย */
+.vs-theme-riskassess { --sb-a: #622a0e; --sb-b: #bb501a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a04416; --ac-2: #e47943; --ac-ink: #59260c; --ac-soft: #faf2ee; --ac-line: #eecebd; --ac-head: #faf2ee;
+    --hero-1: #3e1a08; --hero-2: #a04416; --hero-3: #e76f51; }
+
+/* 480. บันทึกการพยาบาล */
+.vs-theme-nnote { --sb-a: #0e3862; --sb-b: #1a6bbb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #165ba0; --ac-2: #4393e4; --ac-ink: #0c3259; --ac-soft: #eef4fa; --ac-line: #bdd6ee; --ac-head: #eef4fa;
+    --hero-1: #08233e; --hero-2: #165ba0; --hero-3: #118ab2; }
+
+/* 481. คัดแยกผู้ป่วยฉุกเฉิน */
+.vs-theme-triage { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #d62828; }
+
+/* 482. บันทึกประจำวันตำรวจ */
+.vs-theme-plog { --sb-a: #0e2362; --sb-b: #1a42bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1639a0; --ac-2: #436be4; --ac-ink: #0c1f59; --ac-soft: #eef1fa; --ac-line: #bdc9ee; --ac-head: #eef1fa;
+    --hero-1: #08163e; --hero-2: #1639a0; --hero-3: #1d3557; }
+
+/* 483. ค่าปรับจราจร */
+.vs-theme-tfine { --sb-a: #624d0e; --sb-b: #bb931a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a07e16; --ac-2: #e4bc43; --ac-ink: #59460c; --ac-soft: #faf7ee; --ac-line: #eee2bd; --ac-head: #faf7ee;
+    --hero-1: #3e3108; --hero-2: #a07e16; --hero-3: #ffb703; }
+
+/* 484. แผนพัฒนาท้องถิ่น */
+.vs-theme-ldplan { --sb-a: #0e620e; --sb-b: #1abb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a016; --ac-2: #43e443; --ac-ink: #0c590c; --ac-soft: #eefaee; --ac-line: #bdeebd; --ac-head: #eefaee;
+    --hero-1: #083e08; --hero-2: #16a016; --hero-3: #2b9348; }
+
+/* 485. ใบอนุญาตก่อสร้าง/ป้าย */
+.vs-theme-permit { --sb-a: #623f0e; --sb-b: #bb781a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a06716; --ac-2: #e4a143; --ac-ink: #59390c; --ac-soft: #faf5ee; --ac-line: #eedabd; --ac-head: #faf5ee;
+    --hero-1: #3e2808; --hero-2: #a06716; --hero-3: #bc6c25; }
+
+/* 486. เบี้ยความพิการ */
+.vs-theme-disab { --sb-a: #460e62; --sb-b: #851abb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #7216a0; --ac-2: #ae43e4; --ac-ink: #3f0c59; --ac-soft: #f6eefa; --ac-line: #debdee; --ac-head: #f6eefa;
+    --hero-1: #2c083e; --hero-2: #7216a0; --hero-3: #7209b7; }
+
+/* 487. คุณลักษณะอันพึงประสงค์ */
+.vs-theme-dtraits { --sb-a: #31620e; --sb-b: #5dbb1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #50a016; --ac-2: #86e443; --ac-ink: #2c590c; --ac-soft: #f3faee; --ac-line: #d2eebd; --ac-head: #f3faee;
+    --hero-1: #1f3e08; --hero-2: #50a016; --hero-3: #2a9d8f; }
+
+/* 488. ลดเวลาเรียนเพิ่มเวลารู้ */
+.vs-theme-lessmore { --sb-a: #62540e; --sb-b: #bba01a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a08916; --ac-2: #e4c943; --ac-ink: #594c0c; --ac-soft: #faf8ee; --ac-line: #eee6bd; --ac-head: #faf8ee;
+    --hero-1: #3e3508; --hero-2: #a08916; --hero-3: #f77f00; }
+
+/* 490. ชำระค่าเทอมออนไลน์ */
+.vs-theme-feeonline { --sb-a: #0e6246; --sb-b: #1abb85; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a072; --ac-2: #43e4ae; --ac-ink: #0c593f; --ac-soft: #eefaf6; --ac-line: #bdeede; --ac-head: #eefaf6;
+    --hero-1: #083e2c; --hero-2: #16a072; --hero-3: #06d6a0; }
+
+/* 491. ประเมินบุคลากรเอกชน */
+.vs-theme-pstaff { --sb-a: #620e2a; --sb-b: #bb1a50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01644; --ac-2: #e44379; --ac-ink: #590c26; --ac-soft: #faeef2; --ac-line: #eebdce; --ac-head: #faeef2;
+    --hero-1: #3e081a; --hero-2: #a01644; --hero-3: #c9184a; }
+
+/* 492. ความเสี่ยงโรงพยาบาล */
+.vs-theme-hrisk { --sb-a: #621c0e; --sb-b: #bb351a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a02d16; --ac-2: #e45e43; --ac-ink: #59190c; --ac-soft: #faf0ee; --ac-line: #eec5bd; --ac-head: #faf0ee;
+    --hero-1: #3e1108; --hero-2: #a02d16; --hero-3: #e63946; }
+
+/* 493. ควบคุมการติดเชื้อ */
+.vs-theme-hic { --sb-a: #0e625b; --sb-b: #1abbae; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a095; --ac-2: #43e4d6; --ac-ink: #0c5952; --ac-soft: #eefaf9; --ac-line: #bdeeea; --ac-head: #eefaf9;
+    --hero-1: #083e3a; --hero-2: #16a095; --hero-3: #2d6a4f; }
+
+/* 494. บริหารเตียง */
+.vs-theme-bedmgmt { --sb-a: #0e3f62; --sb-b: #1a78bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1667a0; --ac-2: #43a1e4; --ac-ink: #0c3959; --ac-soft: #eef5fa; --ac-line: #bddaee; --ac-head: #eef5fa;
+    --hero-1: #08283e; --hero-2: #1667a0; --hero-3: #457b9d; }
+
+/* 495. ส่งต่อผู้ป่วย */
+.vs-theme-refer { --sb-a: #0e5b62; --sb-b: #1aaebb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1695a0; --ac-2: #43d6e4; --ac-ink: #0c5259; --ac-soft: #eef9fa; --ac-line: #bdeaee; --ac-head: #eef9fa;
+    --hero-1: #083a3e; --hero-2: #1695a0; --hero-3: #0096c7; }
+
+/* 496. CNEU พยาบาล */
+.vs-theme-cneu { --sb-a: #620e4d; --sb-b: #bb1a93; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a0167e; --ac-2: #e443bc; --ac-ink: #590c46; --ac-soft: #faeef7; --ac-line: #eebde2; --ac-head: #faeef7;
+    --hero-1: #3e0831; --hero-2: #a0167e; --hero-3: #b5179e; }
+
+/* 497. ติดตามคดี */
+.vs-theme-pcase { --sb-a: #0e2a62; --sb-b: #1a50bb; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #1644a0; --ac-2: #4379e4; --ac-ink: #0c2659; --ac-soft: #eef2fa; --ac-line: #bdceee; --ac-head: #eef2fa;
+    --hero-1: #081a3e; --hero-2: #1644a0; --hero-3: #1d3557; }
+
+/* 498. ตู้แดงสายตรวจ */
+.vs-theme-ppatrol { --sb-a: #620e0e; --sb-b: #bb1a1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a01616; --ac-2: #e44343; --ac-ink: #590c0c; --ac-soft: #faeeee; --ac-line: #eebdbd; --ac-head: #faeeee;
+    --hero-1: #3e0808; --hero-2: #a01616; --hero-3: #c1121f; }
+
+/* 499. ของกลาง */
+.vs-theme-evidence { --sb-a: #62380e; --sb-b: #bb6b1a; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #a05b16; --ac-2: #e49343; --ac-ink: #59330c; --ac-soft: #faf4ee; --ac-line: #eed6bd; --ac-head: #faf4ee;
+    --hero-1: #3e2308; --hero-2: #a05b16; --hero-3: #6c584c; }
+
+/* 500. คำร้อง อบต. */
+.vs-theme-obtreq { --sb-a: #0e622a; --sb-b: #1abb50; --sb-glow: rgba(0, 0, 0, .22); --sb-mark: #FFFFFF;
+    --ac: #16a044; --ac-2: #43e479; --ac-ink: #0c5926; --ac-soft: #eefaf2; --ac-line: #bdeece; --ac-head: #eefaf2;
+    --hero-1: #083e1a; --hero-2: #16a044; --hero-3: #40916c; }
+
+/* ---------- ผูกตัวแปรธีมเข้ากับส่วนประกอบ ---------- */
+.app-sidebar { background: linear-gradient(180deg, var(--sb-a) 0%, var(--sb-b) 100%); box-shadow: 4px 0 25px var(--sb-glow); }
+.sb-link.active { border-left-color: var(--sb-mark); }
+.tb-title i { color: var(--ac); }
+.tb-term { background: var(--ac-soft); color: var(--ac-ink); border-color: var(--ac-line); }
+.tb-burger { color: var(--ac-ink); background: var(--ac-soft); }
+.tb-burger:hover { background: var(--ac-line); }
+.btn-x.primary { background: linear-gradient(135deg, var(--ac), var(--ac-2)); box-shadow: 0 8px 18px -8px var(--ac); }
+.btn-x.ghost { color: var(--ac-ink); }
+.btn-x.ghost:hover:not(:disabled) { background: var(--ac-soft); }
+.btn-x.soft { background: var(--ac-soft); color: var(--ac-ink); border-color: var(--ac-line); }
+.btn-x.cta { background-image: linear-gradient(120deg, var(--ac), var(--ac-2) 55%, #FF375F); box-shadow: 0 14px 28px -12px var(--ac); }
+.icon-btn { background: var(--ac-soft); color: var(--ac-ink); }
+.icon-btn:hover { background: var(--ac); color: #fff; }
+.icon-btn.edit, .icon-btn.del { }  /* ปุ่มแก้ไข (เหลือง) / ลบ (แดง) คงสีเดิม */
+.msec { color: var(--ac-ink); border-bottom-color: var(--ac-line); }
+.msec i { background: linear-gradient(135deg, var(--ac), var(--ac-2)); }
+.dt thead th { color: var(--ac-ink); background: var(--ac-head); border-bottom-color: var(--ac-line); }
+.num-pill { color: var(--ac-ink); background: var(--ac-soft); }
+.seg a.active, .seg button.active { color: var(--ac-ink); }
+.form-control:focus, .form-select:focus { border-color: var(--ac); box-shadow: 0 0 0 .2rem color-mix(in srgb, var(--ac) 18%, transparent); }
+.hero:not([class*="hero--"]) { --h1: var(--hero-1); --h2: var(--hero-2); --h3: var(--hero-3); }
+.sheet-head { --s1: var(--hero-2); --s2: var(--ac); --s3: var(--ac-2); }
+.swal-x .swal2-confirm.btn-x.primary { background: linear-gradient(135deg, var(--ac), var(--ac-2)); }
+.icon-btn.edit { background: #fef3c7; color: #b45309; }
+.icon-btn.del { background: #fee2e2; color: #dc2626; }
+.icon-btn.del:hover { background: #dc2626; color: #fff; }

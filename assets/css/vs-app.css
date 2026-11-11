@@ -1,0 +1,707 @@
+/* =====================================================================
+   VS Kit — ธีมกลางของระบบงาน "System ห้องสื่อครูคอม"
+   ที่มา: ระบบจัดตารางสอน (ออฟไลน์) + โทนสีเว็บ vipsys — สีสด แต่เป็นทางการ ไม่รก
+   ===================================================================== */
+:root {
+    --blue: #0A84FF;
+    --indigo: #5E5CE6;
+    --purple: #BF5AF2;
+    --pink: #FF375F;
+    --red: #FF453A;
+    --orange: #FF9F0A;
+    --yellow: #FFD60A;
+    --green: #30D158;
+    --teal: #00C7BE;
+    --cyan: #40C8E0;
+    --ink: #0f172a;
+    --ink-2: #334155;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --line-2: #eef2f7;
+    --surface: #ffffff;
+    --surface-2: #f6f8fc;
+    --page-bg: #f3f5fb;
+    --hero: linear-gradient(135deg, #1e3a8a 0%, #4338ca 48%, #0f766e 100%);
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 4px 14px rgba(15, 23, 42, 0.05);
+    --shadow: 0 12px 34px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 18px 46px rgba(30, 58, 138, 0.22);
+    --radius: 20px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    --sidebar-w: 268px;
+    --topbar-h: 62px;
+}
+
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ink);
+    background: var(--page-bg);
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+button { font-family: inherit; }
+.swal2-container, .swal2-popup { font-family: 'Sarabun', sans-serif !important; }
+.fw-800 { font-weight: 800 !important; }
+.text-muted-2 { color: var(--muted) !important; }
+[hidden] { display: none !important; }
+
+/* ---------- โครงหน้าหลัก ---------- */
+.app-shell { display: flex; min-height: 100vh; }
+.app-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--sidebar-w);
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: linear-gradient(180deg, #4f46e5 0%, #7c3aed 100%);
+    box-shadow: 4px 0 25px rgba(124, 58, 237, 0.25);
+    z-index: 1040;
+}
+.sb-brand { display: flex; align-items: center; gap: 12px; padding: 20px 18px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); }
+.sb-brand-icon {
+    flex: 0 0 auto;
+    width: 46px;
+    height: 46px;
+    border-radius: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.sb-brand b { display: block; font-size: 1.05rem; font-weight: 800; line-height: 1.25; }
+.sb-brand small { display: block; font-size: 0.78rem; opacity: 0.82; line-height: 1.35; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 170px; }
+.sb-menu { flex: 1 1 auto; overflow-y: auto; padding: 10px 0 14px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.3) transparent; }
+.sb-group { margin: 14px 24px 4px; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.6); }
+.sb-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 3px 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border-left: 4px solid transparent;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.sb-link i { width: 22px; text-align: center; font-size: 1.02rem; }
+.sb-link:hover { color: #fff; background: rgba(255, 255, 255, 0.1); transform: translateX(3px); }
+.sb-link.active { color: #fff; background: rgba(255, 255, 255, 0.2); border-left-color: #FFCC70; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18); }
+.sb-link .sb-badge { margin-left: auto; min-width: 22px; padding: 1px 7px; border-radius: 999px; font-size: 0.72rem; font-weight: 800; text-align: center; background: rgba(255, 255, 255, 0.22); }
+.sb-link .sb-badge.is-alert { background: #FF375F; }
+.sb-foot { flex: 0 0 auto; padding: 12px 14px 16px; border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.sb-backup {
+    border-radius: 14px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+.sb-backup.is-warn { background: rgba(255, 159, 10, 0.28); border-color: rgba(255, 214, 10, 0.55); }
+.sb-backup b { display: flex; align-items: center; gap: 6px; font-size: 0.84rem; }
+.sb-backup-actions { display: flex; gap: 6px; margin-top: 8px; }
+.sb-backup-actions button {
+    flex: 1 1 0;
+    border: 0;
+    border-radius: 10px;
+    padding: 6px 4px;
+    font-weight: 800;
+    font-size: 0.78rem;
+    color: #4338ca;
+    background: #fff;
+    white-space: nowrap;
+}
+.sb-backup-actions button.ghost { color: #fff; background: rgba(255, 255, 255, 0.16); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.45); }
+.sb-backup-actions button:hover { filter: brightness(1.05); }
+
+.app-main { flex: 1 1 auto; min-width: 0; margin-left: var(--sidebar-w); }
+.app-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    height: var(--topbar-h);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 26px;
+    background: rgba(255, 255, 255, 0.86);
+    -webkit-backdrop-filter: saturate(180%) blur(16px);
+    backdrop-filter: saturate(180%) blur(16px);
+    border-bottom: 1px solid var(--line);
+}
+.tb-title { font-weight: 800; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.tb-title i { color: var(--indigo); }
+.tb-term { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-weight: 800; font-size: 0.82rem; border: 1px solid #e0e7ff; }
+.tb-right { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.tb-saved { font-size: 0.8rem; color: var(--muted); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+.tb-saved i { color: var(--green); }
+.app-content { padding: 22px 26px 40px; max-width: 1760px; }
+
+/* ---------- Hero ---------- */
+.hero {
+    --h1: #1e3a8a; --h2: #4338ca; --h3: #0f766e;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 22px 26px;
+    margin-bottom: 18px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--h1) 0%, var(--h2) 48%, var(--h3) 100%);
+    color: #fff;
+    box-shadow: var(--shadow-lg);
+}
+.hero::before { content: ''; position: absolute; inset: -40% -8% auto auto; width: 420px; height: 420px; background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 65%); pointer-events: none; }
+.hero::after { content: ''; position: absolute; right: 160px; bottom: -110px; width: 200px; height: 200px; border-radius: 50%; background: rgba(255, 255, 255, 0.07); pointer-events: none; }
+.hero-main { display: flex; align-items: center; gap: 16px; position: relative; z-index: 1; min-width: 0; }
+.hero-icon {
+    flex: 0 0 auto;
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.55rem;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.hero-title { margin: 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; color: #fff; }
+.hero-sub { margin: 4px 0 0; font-size: 0.93rem; color: rgba(255, 255, 255, 0.86); }
+.hero-side { position: relative; z-index: 1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.hero-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    font-size: 0.86rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+.hero-stat b { font-size: 1rem; }
+.hero-stat.is-alert { background: rgba(255, 69, 58, 0.34); border-color: rgba(255, 255, 255, 0.4); }
+.hero-stat.is-warn { background: rgba(255, 159, 10, 0.34); }
+.hero-btn {
+    border: 0;
+    border-radius: 13px;
+    padding: 9px 16px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: #3730a3;
+    background: #fff;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.16);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+}
+.hero-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(15, 23, 42, 0.22); }
+.hero-btn.ghost { color: #fff; background: rgba(255, 255, 255, 0.14); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.45); }
+.hero--teachers { --h1: #0369a1; --h2: #4f46e5; --h3: #7c3aed; }
+.hero--subjects { --h1: #9a3412; --h2: #ea580c; --h3: #db2777; }
+.hero--classes { --h1: #065f46; --h2: #059669; --h3: #0891b2; }
+.hero--rooms { --h1: #0e7490; --h2: #0891b2; --h3: #2563eb; }
+.hero--settings { --h1: #92400e; --h2: #d97706; --h3: #e11d48; }
+.hero--load { --h1: #5b21b6; --h2: #7c3aed; --h3: #db2777; }
+.hero--print { --h1: #1e40af; --h2: #2563eb; --h3: #0d9488; }
+.hero--import { --h1: #166534; --h2: #16a34a; --h3: #0d9488; }
+.hero--backup { --h1: #334155; --h2: #4338ca; --h3: #0f766e; }
+
+/* ---------- การ์ดเมนู (ไอคอนในกล่องไล่สี) ---------- */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 14px 15px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), border-color 0.18s var(--ease);
+    min-width: 0;
+}
+.tile:hover { transform: translateY(-2px); border-color: #c7d2fe; box-shadow: 0 14px 30px rgba(67, 56, 202, 0.14); color: var(--ink); }
+.ic-box {
+    --a: #0A84FF; --b: #5E5CE6;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.05rem;
+    background: linear-gradient(135deg, var(--a), var(--b));
+    box-shadow: 0 8px 18px -8px var(--a), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.ic-box.sm { width: 32px; height: 32px; border-radius: 10px; font-size: 0.85rem; }
+.ic-box.lg { width: 52px; height: 52px; border-radius: 16px; font-size: 1.3rem; }
+.tile-text { display: flex; flex-direction: column; min-width: 0; line-height: 1.3; }
+.tile-text strong { font-size: 0.97rem; font-weight: 800; }
+.tile-text small { font-size: 0.78rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tile-num { margin-left: auto; font-size: 1.5rem; font-weight: 800; color: var(--ink); }
+
+/* ---------- การ์ดขาว + แถบสีด้านบน ---------- */
+.panel {
+    --pa: #0A84FF; --pb: #5E5CE6;
+    position: relative;
+    border-radius: var(--radius);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+.panel::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--pa), var(--pb)); }
+.panel-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 16px 18px 12px; border-bottom: 1px solid var(--line-2); }
+.panel-head h3 { margin: 0; font-size: 1.05rem; font-weight: 800; }
+.panel-head small { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 600; }
+.panel-head .panel-tools { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.panel-body { padding: 16px 18px; }
+.panel-body.p-0 { padding: 0; }
+.panel--orange { --pa: #FF9F0A; --pb: #FF375F; }
+.panel--green { --pa: #30D158; --pb: #00C7BE; }
+.panel--purple { --pa: #5E5CE6; --pb: #BF5AF2; }
+.panel--teal { --pa: #00C7BE; --pb: #0A84FF; }
+.panel--pink { --pa: #FF375F; --pb: #BF5AF2; }
+.panel--slate { --pa: #475569; --pb: #94a3b8; }
+
+/* ---------- ปุ่ม ---------- */
+.btn-x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 7px 15px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    font-weight: 800;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s var(--ease), box-shadow 0.15s var(--ease), background 0.15s, opacity 0.15s, filter 0.15s;
+}
+.btn-x:active:not(:disabled) { transform: scale(0.98); }
+.btn-x:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-x:hover:not(:disabled) { filter: brightness(1.05); }
+.btn-x.ghost { background: #fff; border-color: var(--line); color: #3730a3; }
+.btn-x.ghost:hover:not(:disabled) { background: #eef2ff; filter: none; }
+.btn-x.primary { background: linear-gradient(135deg, #5E5CE6, #BF5AF2); color: #fff; box-shadow: 0 8px 18px -8px rgba(94, 92, 230, 0.8); }
+.btn-x.blue { background: linear-gradient(135deg, #0A84FF, #5E5CE6); color: #fff; box-shadow: 0 8px 18px -8px rgba(10, 132, 255, 0.8); }
+.btn-x.green { background: linear-gradient(135deg, #30D158, #00A86B); color: #fff; box-shadow: 0 8px 18px -8px rgba(48, 209, 88, 0.9); }
+.btn-x.orange { background: linear-gradient(135deg, #FF9F0A, #FF6482); color: #fff; box-shadow: 0 8px 18px -8px rgba(255, 159, 10, 0.9); }
+.btn-x.danger { background: #fff; border-color: #fecdd3; color: #e11d48; }
+.btn-x.danger:hover:not(:disabled) { background: #fff1f2; filter: none; }
+.btn-x.danger-solid { color: #fff; border-color: transparent; background: linear-gradient(135deg, #FF453A, #FF375F); box-shadow: 0 8px 18px -8px rgba(255, 55, 95, .9); }
+.btn-x.danger-solid:hover:not(:disabled) { color: #fff; filter: brightness(1.05); }
+.btn-x.soft { background: #eef2ff; color: #3730a3; border-color: #e0e7ff; }
+.btn-x.sm { min-height: 31px; padding: 4px 11px; font-size: 0.8rem; border-radius: 10px; gap: 6px; }
+.btn-x.lg { min-height: 46px; padding: 10px 20px; font-size: 0.98rem; border-radius: 14px; }
+.icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    transition: transform 0.12s, background 0.12s, color 0.12s;
+    background: #eef2ff;
+    color: #4338ca;
+}
+.icon-btn:hover { transform: translateY(-1px); background: #4f46e5; color: #fff; }
+.icon-btn.edit { background: #fef3c7; color: #b45309; }
+.icon-btn.edit:hover { background: #f59e0b; color: #fff; }
+.icon-btn.del { background: #fee2e2; color: #dc2626; }
+.icon-btn.del:hover { background: #dc2626; color: #fff; }
+.icon-btn.ok { background: #dcfce7; color: #15803d; }
+.icon-btn.ok:hover { background: #16a34a; color: #fff; }
+.icon-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* ---------- ฟอร์ม ---------- */
+.form-label { font-weight: 700; color: #334155; font-size: 0.86rem; margin-bottom: 5px; }
+.form-control, .form-select { border-radius: 12px; border: 1.5px solid #dbe3ef; min-height: 41px; font-size: 0.93rem; }
+textarea.form-control { min-height: auto; }
+.form-control:focus, .form-select:focus { border-color: #5E5CE6; box-shadow: 0 0 0 0.22rem rgba(94, 92, 230, 0.16); }
+.form-control-sm, .form-select-sm { min-height: 34px; border-radius: 10px; font-size: 0.86rem; }
+.form-check-input:checked { background-color: #5E5CE6; border-color: #5E5CE6; }
+.form-text { font-size: 0.78rem; }
+.search-box { position: relative; min-width: 240px; }
+.search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 0.85rem; }
+.search-box input { padding-left: 34px; min-height: 38px; background: #f8fafc; }
+.search-box input:focus { background: #fff; }
+.field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.msec { display: flex; align-items: center; gap: 8px; margin: 4px 0 12px; padding-bottom: 8px; font-weight: 800; font-size: 0.92rem; color: #3730a3; border-bottom: 2px dashed #e0e7ff; }
+.msec i { width: 28px; height: 28px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; color: #fff; background: linear-gradient(135deg, #4f46e5, #9333ea); font-size: 0.78rem; }
+
+/* ---------- ตารางข้อมูล (เรียบ ทางการ ไม่ใส่ gradient) ---------- */
+.dt-wrap { overflow: auto; }
+.dt { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 0.9rem; }
+.dt thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 11px 10px;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #3730a3;
+    background: #f5f7ff;
+    border-bottom: 2px solid #e0e7ff;
+    text-align: left;
+}
+.dt tbody td { padding: 9px 10px; vertical-align: middle; border-bottom: 1px solid #f1f5f9; }
+.dt tbody tr:hover td { background: #fafbff; }
+.dt tbody tr:last-child td { border-bottom: 0; }
+.dt .num { text-align: center; white-space: nowrap; }
+.dt .act { text-align: right; white-space: nowrap; width: 1%; }
+.dt .muted { color: var(--muted); }
+.dt-empty { text-align: center; padding: 38px 10px !important; color: var(--muted); }
+.dt-empty i { display: block; font-size: 1.8rem; color: #cbd5e1; margin-bottom: 8px; }
+.code { display: inline-block; padding: 2px 8px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; color: #334155; background: #f1f5f9; border: 1px solid #e2e8f0; letter-spacing: 0.02em; white-space: nowrap; }
+.tag {
+    --c: #64748b;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--c);
+    background: color-mix(in srgb, var(--c) 12%, #ffffff);
+    border: 1px solid color-mix(in srgb, var(--c) 28%, #ffffff);
+    white-space: nowrap;
+}
+.tag.ok { --c: #15803d; } .tag.bad { --c: #e11d48; } .tag.warn { --c: #c2410c; } .tag.info { --c: #1d4ed8; } .tag.violet { --c: #6d28d9; }
+.num-pill { display: inline-block; min-width: 32px; padding: 1px 8px; border-radius: 999px; text-align: center; font-weight: 800; font-size: 0.82rem; color: #3730a3; background: #eef2ff; }
+.num-pill.zero { color: #cbd5e1; background: transparent; }
+.num-pill.over { color: #be123c; background: #fff1f2; }
+.num-pill.full { color: #15803d; background: #dcfce7; }
+.avatar { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 0.86rem; background: var(--c, #6366f1); }
+.person { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.person b { font-weight: 700; color: #1e293b; }
+.person small { display: block; color: var(--muted); font-size: 0.76rem; }
+.color-dot { display: inline-block; width: 12px; height: 12px; border-radius: 4px; background: var(--c); vertical-align: -1px; }
+.bar { height: 6px; border-radius: 999px; background: #eef2f7; overflow: hidden; min-width: 80px; }
+.bar > span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--indigo)); }
+.bar.is-full > span { background: linear-gradient(90deg, #30D158, #00C7BE); }
+.bar.is-over > span { background: linear-gradient(90deg, #FF453A, #FF375F); }
+
+/* ---------- แจ้งเตือนในหน้า ---------- */
+.note { display: flex; gap: 10px; align-items: flex-start; padding: 11px 14px; border-radius: 14px; border-left: 5px solid #0ea5e9; background: #f0f9ff; color: #0c4a6e; font-size: 0.88rem; line-height: 1.6; margin-bottom: 14px; }
+.note i { margin-top: 4px; }
+.note.warn { border-left-color: #f59e0b; background: #fffbeb; color: #78350f; }
+.note.bad { border-left-color: #f43f5e; background: #fff1f2; color: #9f1239; }
+.note.ok { border-left-color: #22c55e; background: #f0fdf4; color: #14532d; }
+.note b { font-weight: 800; }
+
+/* ---------- แท็บแบบปุ่มแบ่งส่วน ---------- */
+.seg { display: inline-flex; gap: 3px; padding: 3px; border-radius: 12px; background: #eef1f6; }
+.seg > button { border: 0; border-radius: 9px; padding: 6px 13px; background: transparent; color: var(--muted); font-weight: 800; font-size: 0.85rem; white-space: nowrap; transition: background 0.18s var(--ease), color 0.18s, box-shadow 0.18s; display: inline-flex; align-items: center; gap: 6px; }
+.seg > button.active { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12), 0 2px 8px rgba(15, 23, 42, 0.06); }
+.seg > button .cnt { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 999px; background: var(--pink); color: #fff; font-size: 0.7rem; line-height: 17px; }
+.seg.full { display: flex; }
+.seg.full > button { flex: 1 1 0; justify-content: center; }
+
+/* ---------- Toast ---------- */
+.toast-x {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    z-index: 2147482000;
+    transform: translate(-50%, 20px);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: min(680px, calc(100vw - 32px));
+    padding: 11px 14px 11px 16px;
+    border-radius: 16px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(15, 23, 42, 0.92);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.3);
+    transition: opacity 0.22s var(--ease), transform 0.22s var(--ease);
+}
+.toast-x.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+.toast-x.is-bad { background: rgba(190, 18, 60, 0.95); }
+.toast-x.is-warn { background: rgba(194, 65, 12, 0.95); }
+.toast-x.is-ok { background: rgba(4, 120, 87, 0.95); }
+.toast-x button { border: 0; border-radius: 10px; padding: 5px 12px; font-weight: 800; background: rgba(255, 255, 255, 0.2); color: #fff; white-space: nowrap; }
+
+/* ---------- SweetAlert: หน้าต่างฟอร์มแบบแผ่น ---------- */
+.sheet.swal2-popup { border-radius: 22px !important; padding: 0 0 18px !important; overflow: hidden; }
+.sheet .swal2-html-container { margin: 0 !important; padding: 0 !important; text-align: left; overflow: visible; }
+.sheet .swal2-actions { padding: 0 20px; margin-top: 14px; gap: 8px; }
+.sheet .swal2-validation-message { margin: 10px 22px 0; border-radius: 12px; }
+.sheet-head { --s1: #4338ca; --s2: #7c3aed; --s3: #db2777; padding: 18px 22px 16px; color: #fff; background: linear-gradient(135deg, var(--s1) 0%, var(--s2) 55%, var(--s3) 120%); display: flex; align-items: center; gap: 12px; }
+.sheet-head .sh-ic { width: 40px; height: 40px; border-radius: 13px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.2); font-size: 1rem; flex: 0 0 auto; }
+.sheet-head h3 { margin: 0; font-size: 1.12rem; font-weight: 800; color: #fff; }
+.sheet-head p { margin: 2px 0 0; font-size: 0.84rem; opacity: 0.9; }
+.sheet-body { padding: 16px 22px 4px; display: flex; flex-direction: column; gap: 12px; }
+.sheet-body .row { --bs-gutter-x: 12px; --bs-gutter-y: 12px; }
+.sheet-hint { font-size: 0.77rem; color: var(--muted); line-height: 1.5; margin-top: 4px; }
+.swal2-actions .btn-x { margin: 0; }
+.swal-x.swal2-popup { border-radius: 24px !important; padding-bottom: 20px !important; }
+.swal-x .swal2-title { font-weight: 800 !important; color: #1e293b !important; font-size: 1.35rem !important; }
+.swal-x .swal2-html-container { color: #475569 !important; font-size: 0.97rem !important; line-height: 1.6; }
+.swal-x .swal2-input, .swal-x .swal2-textarea, .swal-x .swal2-select {
+    box-sizing: border-box;
+    width: auto;
+    max-width: calc(100% - 3.5em);
+    margin: 0.9em 1.75em 4px;
+    height: 46px;
+    padding: 0 14px;
+    border-radius: 12px;
+    border: 1.5px solid #dbe3ef;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-align: center;
+}
+.swal-x .swal2-input:focus, .swal-x .swal2-textarea:focus, .swal-x .swal2-select:focus { border-color: #5E5CE6; box-shadow: 0 0 0 4px rgba(94, 92, 230, 0.16); outline: none; }
+.swal-x .swal2-input::placeholder { color: #cbd5e1; font-weight: 600; }
+.swal-x .swal2-validation-message { margin: 10px 1.75em 0; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: #be123c; background: #fff1f2; }
+.pick-list { display: flex; flex-direction: column; gap: 6px; max-height: 50vh; overflow: auto; padding: 2px; }
+.check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px; max-height: 220px; overflow: auto; padding: 8px; border: 1.5px solid #e0e7ff; border-radius: 14px; background: #fafbff; }
+.check-grid label { display: flex; align-items: center; gap: 7px; padding: 6px 9px; border-radius: 10px; background: #fff; border: 1px solid #eef2f7; font-size: 0.86rem; font-weight: 600; cursor: pointer; margin: 0; }
+.check-grid label:has(input:checked) { border-color: #a5b4fc; background: #eef2ff; color: #3730a3; }
+.check-grid input { margin: 0; }
+.check-grid .grp { grid-column: 1 / -1; font-size: 0.74rem; font-weight: 800; color: #94a3b8; margin-top: 4px; }
+
+/* ---------- แดชบอร์ด ---------- */
+.dash-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 18px; }
+.stat-card { position: relative; overflow: hidden; border-radius: 18px; padding: 16px 16px 14px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--ink); transition: transform 0.18s var(--ease), box-shadow 0.18s; }
+.stat-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--a), var(--b)); }
+.stat-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(67, 56, 202, 0.12); color: var(--ink); }
+.stat-card > div b { display: block; font-size: 1.75rem; font-weight: 800; line-height: 1.1; }
+.stat-card > div span { font-size: 0.84rem; color: var(--muted); font-weight: 700; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.step { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border-radius: 16px; border: 1px solid #e0e7ff; background: #f8f9ff; color: var(--ink-2); font-size: 0.84rem; line-height: 1.5; text-decoration: none; transition: border-color .15s, background .15s; }
+.step:hover { border-color: #a5b4fc; background: #f1f3ff; color: var(--ink-2); }
+.step > b { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; color: #fff; font-size: 0.82rem; background: linear-gradient(135deg, var(--blue), var(--indigo)); }
+.step.done > b { background: linear-gradient(135deg, #30D158, #00C7BE); }
+.step strong { display: block; color: var(--ink); font-size: 0.9rem; }
+
+/* ---------- นำเข้า Excel ---------- */
+.dropzone { border: 2px dashed #a7f3d0; border-radius: 18px; background: #f0fdf4; padding: 26px; text-align: center; cursor: pointer; transition: background .15s, border-color .15s; }
+.dropzone:hover, .dropzone.is-over { background: #dcfce7; border-color: #34d399; }
+.dropzone i { font-size: 2rem; color: #16a34a; margin-bottom: 6px; }
+.dropzone b { display: block; font-size: 1rem; }
+.dropzone small { color: var(--muted); }
+.imp-summary { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.dt tr.row-bad td { background: #fff5f6; }
+.dt tr.row-dup td { background: #fffbeb; }
+.dt tr.row-skip td { color: #94a3b8; }
+.dt td .err { color: #be123c; font-size: 0.78rem; font-weight: 700; display: block; }
+.dt td .warn { color: #b45309; font-size: 0.78rem; font-weight: 700; display: block; }
+
+/* ---------- พิมพ์ (หน้าตั้งค่าก่อนพิมพ์) ---------- */
+.print-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.print-opt { position: relative; margin: 0; cursor: pointer; }
+.print-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.print-opt > div { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: 16px; border: 1.5px solid var(--line); background: #fff; transition: all .15s; height: 100%; }
+.print-opt input:checked + div { border-color: var(--indigo); background: #f5f3ff; box-shadow: 0 0 0 3px rgba(94, 92, 230, 0.15); }
+.print-opt b { display: block; font-size: 0.97rem; }
+.print-opt small { color: var(--muted); font-size: 0.8rem; }
+.preview-stage { background: #e5e7eb; border-radius: 16px; padding: 18px; overflow: auto; max-height: 78vh; }
+.preview-zoom { width: 297mm; margin: 0 auto; }
+.preview-stage .pp-page { box-sizing: content-box; padding: 7mm; margin: 0 0 6mm; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18); position: relative; min-height: 196mm; }
+.preview-stage .pp-page.is-overflow { outline: 3px solid #f43f5e; }
+.preview-stage .pp-page.is-overflow::after { content: 'เนื้อหาเกิน 1 หน้ากระดาษ'; position: absolute; right: 7mm; top: 2mm; padding: 2px 10px; border-radius: 999px; background: #e11d48; color: #fff; font: 700 12px 'Sarabun', sans-serif; }
+/* รายการเลือกครู/ห้องสำหรับพิมพ์: แถวเดียว + checkbox แบบใหม่ */
+.tg-search { min-width: 0; margin-bottom: 10px; }
+.tg-list { display: flex; flex-direction: column; gap: 4px; max-height: 430px; overflow: auto; margin: 0 -6px; padding: 0 6px 4px; scrollbar-width: thin; }
+.tg-group + .tg-group { margin-top: 8px; }
+.tg-grp { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 8px; padding: 6px 2px 6px; background: var(--surface); }
+.tg-grp-name { font-size: 0.78rem; font-weight: 800; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tg-grp-count { flex: 0 0 auto; font-size: 0.7rem; font-weight: 800; color: #94a3b8; }
+.tg-grp-btn { flex: 0 0 auto; margin-left: auto; display: inline-flex; align-items: center; gap: 5px; border: 0; border-radius: 999px; padding: 3px 10px; font-size: 0.72rem; font-weight: 800; color: #4338ca; background: #eef2ff; transition: background 0.15s, color 0.15s; }
+.tg-grp-btn:hover { background: #e0e7ff; }
+.tg-grp-btn.is-on { color: #64748b; background: #f1f5f9; }
+.tg-grp-btn.is-on:hover { background: #e2e8f0; }
+.tg-items { display: flex; flex-direction: column; gap: 5px; }
+.tg-list.is-grid .tg-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); }
+.tg-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 8px 10px 8px 9px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: #fff;
+    cursor: pointer;
+    user-select: none;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.tg-item:hover { border-color: #c7d2fe; background: #fafaff; }
+.tg-item input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.tg-box {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 7px;
+    border: 1.5px solid #cbd5e1;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.66rem;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.tg-box i { transform: scale(0); transition: transform 0.18s var(--ease); }
+.tg-item:hover .tg-box { border-color: #a5b4fc; }
+.tg-item input:focus-visible + .tg-box { box-shadow: 0 0 0 3px rgba(94, 92, 230, 0.25); }
+.tg-item.is-on { border-color: #a5b4fc; background: linear-gradient(90deg, #f5f3ff, #ffffff 85%); box-shadow: inset 3px 0 0 #5E5CE6; }
+.tg-item.is-on .tg-box { border-color: transparent; background: linear-gradient(135deg, #5E5CE6, #BF5AF2); box-shadow: 0 4px 10px -4px #5E5CE6; }
+.tg-item.is-on .tg-box i { transform: scale(1); }
+.tg-name { flex: 1 1 auto; min-width: 0; font-size: 0.9rem; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tg-item.is-on .tg-name { color: #3730a3; font-weight: 700; }
+.tg-meta { flex: 0 0 auto; font-size: 0.7rem; font-weight: 800; padding: 1px 8px; border-radius: 999px; color: #64748b; background: #f1f5f9; white-space: nowrap; }
+.tg-item.is-on .tg-meta { color: #4338ca; background: #e0e7ff; }
+.tg-item.is-empty .tg-meta { color: #c2410c; background: #fff7ed; }
+.tg-item.is-empty .tg-name { color: #94a3b8; }
+.tg-list.is-grid .tg-item { padding: 7px 8px; gap: 8px; }
+.tg-list.is-grid .tg-meta { padding: 1px 6px; }
+.tg-empty { text-align: center; color: var(--muted); font-size: 0.86rem; padding: 22px 8px; }
+.tg-empty i { display: block; font-size: 1.5rem; color: #cbd5e1; margin-bottom: 6px; }
+
+#print-root { display: none; }
+
+/* ---------- สกรอลบาร์ ---------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; background-clip: content-box; border: 2px solid transparent; }
+.app-sidebar ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.28); background-clip: content-box; }
+
+@media (max-width: 1280px) {
+    .dash-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .print-opts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- สร้างไฟล์ PDF: แถบความคืบหน้า ---------- */
+#pdf-stage { position: fixed; left: -30000px; top: 0; width: 283mm; background: #fff; pointer-events: none; }
+.pdf-prog { padding: 8px 6px 0; text-align: center; }
+.pdf-prog-ic { width: 64px; height: 64px; margin: 0 auto 12px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 1.7rem; color: #fff; background: linear-gradient(135deg, #FF453A, #FF375F); box-shadow: 0 14px 28px -12px #FF375F; animation: pdfBob 1.6s var(--ease) infinite; }
+@keyframes pdfBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.pdf-prog h3 { margin: 0; font-size: 1.25rem; font-weight: 800; color: #1e293b; }
+.pdf-prog p { margin: 4px 0 14px; color: #475569; font-size: 0.92rem; font-weight: 600; min-height: 1.4em; }
+.pdf-bar { height: 14px; border-radius: 999px; background: #eef2f7; overflow: hidden; box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08); }
+.pdf-bar > span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #0A84FF, #5E5CE6, #BF5AF2); background-size: 200% 100%; transition: width 0.3s var(--ease); position: relative; overflow: hidden; animation: pdfShift 2.4s linear infinite; }
+.pdf-bar > span::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0 10px, rgba(255, 255, 255, 0) 10px 20px); background-size: 28px 28px; animation: pdfStripe 0.8s linear infinite; }
+@keyframes pdfShift { from { background-position: 0 0; } to { background-position: 200% 0; } }
+@keyframes pdfStripe { from { background-position: 0 0; } to { background-position: 28px 0; } }
+.pdf-prog-meta { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.84rem; font-weight: 800; color: #3730a3; }
+.pdf-prog small { display: block; margin-top: 10px; color: #94a3b8; font-size: 0.76rem; word-break: break-all; }
+
+
+/* =====================================================================
+   VS Kit — รองรับทุกอุปกรณ์ (มือถือ / แท็บเล็ต / คอม)
+   โครง: แถบเมนูซ้ายกลายเป็นลิ้นชักเลื่อนออกบนจอ < 992px
+   HTML ที่ต้องมี: <button class="tb-burger" data-sb-open> ใน .app-topbar
+                  <div class="sb-backdrop" data-sb-close></div> ต่อจาก .app-sidebar
+   ===================================================================== */
+.tb-burger { display: none; flex: 0 0 auto; width: 40px; height: 40px; border: 0; border-radius: 12px; align-items: center; justify-content: center; color: #4338ca; background: #eef2ff; font-size: 1.05rem; }
+.tb-burger:hover { background: #e0e7ff; }
+.sb-close { display: none; margin-left: auto; width: 34px; height: 34px; border: 0; border-radius: 10px; color: #fff; background: rgba(255, 255, 255, 0.16); }
+.sb-backdrop { display: none; }
+@media (max-width: 991.98px) {
+    :root { --topbar-h: 58px; }
+    .app-sidebar { transform: translateX(-102%); transition: transform .28s var(--ease); width: min(86vw, 300px); }
+    .app-shell.sb-open .app-sidebar { transform: translateX(0); }
+    .sb-backdrop { position: fixed; inset: 0; z-index: 1035; background: rgba(15, 23, 42, .45); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+    .app-shell.sb-open .sb-backdrop { display: block; }
+    .sb-close { display: inline-flex; align-items: center; justify-content: center; }
+    .tb-burger { display: inline-flex; }
+    .app-main { margin-left: 0; }
+    .app-topbar { padding: 0 14px; gap: 10px; }
+    .tb-saved span, .tb-hide-md { display: none !important; }
+    .app-content { padding: 16px 14px 32px; }
+    .dash-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}
+@media (max-width: 767.98px) {
+    .hero { flex-direction: column; align-items: flex-start; padding: 18px; }
+    .hero-side { width: 100%; margin-left: 0; justify-content: flex-start; flex-wrap: wrap; }
+    .hero-title { font-size: 1.25rem; }
+    .panel-head { padding: 14px 16px; flex-wrap: wrap; }
+    .panel-body { padding: 16px; }
+    .tb-title { font-size: 0.98rem; }
+    .tb-hide-sm { display: none !important; }
+    .stat-card { padding: 12px; gap: 10px; }
+    .stat-card > div b { font-size: 1.35rem; }
+    /* ตารางคงเป็นตาราง เลื่อนซ้าย-ขวาได้ (เหมือนบนคอม) + เงาบอกว่าเลื่อนต่อได้ */
+    .dt-wrap {
+        background:
+            linear-gradient(to right, #fff 30%, rgba(255, 255, 255, 0)),
+            linear-gradient(to right, rgba(255, 255, 255, 0), #fff 70%) 100% 0,
+            radial-gradient(farthest-side at 0 50%, rgba(15, 23, 42, .16), transparent),
+            radial-gradient(farthest-side at 100% 50%, rgba(15, 23, 42, .16), transparent) 100% 0;
+        background-repeat: no-repeat;
+        background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+        background-attachment: local, local, scroll, scroll;
+    }
+    .dt-wrap > .dt { min-width: 640px; }
+    .dt-wrap > .dt td { white-space: nowrap; }
+    .btn-block-sm { width: 100%; }
+}
+@media (max-width: 420px) {
+    .dash-grid { grid-template-columns: 1fr 1fr; }
+    .stat-card { flex-direction: column; align-items: flex-start; }
+}
+/* อุปกรณ์สัมผัส: เป้ากดใหญ่พอ (≥ 40px) */
+@media (hover: none) {
+    .btn-x, .icon-btn, .sb-link { min-height: 40px; }
+}
+
+/* =====================================================================
+   VS Kit — ส่วนเสริมโทน vipsys
+   ===================================================================== */
+/* ปุ่มเด่นชวนกด (ใช้กับปุ่มหลักของหน้า เช่น "บันทึก" "ส่งคำขอ" "ดาวน์โหลดรายงาน") */
+.btn-x.cta { position: relative; overflow: hidden; color: #fff; background: linear-gradient(120deg, #5E5CE6, #BF5AF2 55%, #FF375F); background-size: 160% 100%; box-shadow: 0 14px 28px -12px #5E5CE6; transition: transform .18s var(--ease), background-position .4s; }
+.btn-x.cta:hover { color: #fff; transform: translateY(-2px); background-position: 100% 50%; }
+/* กล่องไอคอนไล่สี: <span class="ic-box" style="--a:#0A84FF;--b:#5E5CE6"><i class="fas fa-..."></i></span> */
+.ic-box { background: linear-gradient(135deg, var(--a, #0A84FF), var(--b, #5E5CE6)); }
+/* ป้ายสถานะมาตรฐาน: .tag.ok / .tag.warn / .tag.bad / .tag.info / .tag.wait */
+.tag.wait { --c: #1d4ed8; }
+/* หน้าว่าง */
+.empty-state { text-align: center; padding: 36px 16px; color: var(--muted); }
+.empty-state .ic-box { margin: 0 auto 12px; }
+.empty-state h3 { margin: 0 0 4px; font-size: 1.1rem; font-weight: 800; color: var(--ink); }

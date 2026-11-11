@@ -1,0 +1,11 @@
+/* ฟอนต์ทั้งหมดเก็บในเครื่อง (ใช้งานออฟไลน์ได้) — Sarabun สำหรับหน้าจอ, TH SarabunPSK/New สำหรับเอกสารราชการ */
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 300; font-display: swap; src: url('../fonts/sarabun/Sarabun-Light.ttf') format('truetype'); }
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 400; font-display: swap; src: url('../fonts/sarabun/Sarabun-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 500; font-display: swap; src: url('../fonts/sarabun/Sarabun-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 600; font-display: swap; src: url('../fonts/sarabun/Sarabun-SemiBold.ttf') format('truetype'); }
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 700; font-display: swap; src: url('../fonts/sarabun/Sarabun-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'Sarabun'; font-style: normal; font-weight: 800; font-display: swap; src: url('../fonts/sarabun/Sarabun-ExtraBold.ttf') format('truetype'); }
+@font-face { font-family: 'TH Sarabun New'; font-weight: 400; src: url('../fonts/thsarabunnew/THSarabunNew.ttf') format('truetype'); }
+@font-face { font-family: 'TH Sarabun New'; font-weight: 700; src: url('../fonts/thsarabunnew/THSarabunNew-Bold.ttf') format('truetype'); }
+@font-face { font-family: 'TH SarabunPSK'; font-weight: 400; src: url('../fonts/thsarabunpsk/THSarabun.ttf') format('truetype'); }
+@font-face { font-family: 'TH SarabunPSK'; font-weight: 700; src: url('../fonts/thsarabunpsk/THSarabun-Bold.ttf') format('truetype'); }

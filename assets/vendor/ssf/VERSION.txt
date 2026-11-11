@@ -1,0 +1,2 @@
+SSF (SheetJS Format) 0.11.2 — npm: ssf@0.11.2 — Apache-2.0 (ดู LICENSE)
+ใช้โดย tools/xlsx-demo (รูปแบบตัวเลข/วันที่ และฟังก์ชัน TEXT)

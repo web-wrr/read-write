@@ -1,0 +1,2 @@
+Chart.js 4.5.1 — npm: chart.js@4.5.1 (dist/chart.umd.min.js) — MIT (ดู LICENSE.md)
+ใช้โดย tools/xlsx-demo (วาดกราฟจากสมุดงาน)

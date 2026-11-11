@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1672a0">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%231672a0%27/%3E%3Cpath d=%27M14 18c7-3 13-2 18 3 5-5 11-6 18-3v28c-7-3-13-2-18 3-5-5-11-6-18-3z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+    <title>โปรแกรมบันทึกการอ่าน คิดวิเคราะห์ และเขียน • System ห้องสื่อครูคอม</title>
+    <!-- ทุกไฟล์อยู่ในโฟลเดอร์ assets ใช้งานออฟไลน์ได้ ไม่โหลดจากอินเทอร์เน็ต -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/vendor/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="assets/css/vs-fonts.css">
+    <link rel="stylesheet" href="assets/css/vs-app.css">
+    <link rel="stylesheet" href="assets/css/vs-themes.css">
+    <link rel="stylesheet" href="assets/css/official-print.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="vs-theme-rtw">
+<div class="app-shell" id="app-shell">
+    <aside class="app-sidebar" aria-label="เมนูหลัก">
+        <div class="sb-brand">
+            <span class="sb-brand-icon" id="sb-logo"><i class="fas fa-book-open-reader"></i></span>
+            <div><b>อ่าน คิดวิเคราะห์ เขียน</b><small id="sb-school">บันทึก • แปลผล • รายงาน</small></div>
+            <button type="button" class="sb-close" data-sb-close aria-label="ปิดเมนู"><i class="fas fa-xmark"></i></button>
+        </div>
+        <nav class="sb-menu" id="sb-menu"></nav>
+        <div class="sb-foot"><div class="sb-backup" id="sb-backup"></div></div>
+    </aside>
+    <div class="sb-backdrop" data-sb-close></div>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button type="button" class="tb-burger" data-sb-open aria-label="เปิดเมนู"><i class="fas fa-bars"></i></button>
+            <div class="tb-title" id="tb-title"><i class="fas fa-house"></i><span>หน้าหลัก</span></div>
+            <button type="button" class="tb-term" id="tb-term" title="เปลี่ยนภาคเรียนที่กำลังบันทึก" data-demo-allow></button>
+            <div class="tb-right">
+                <span class="tb-saved" id="tb-saved"></span>
+                <button type="button" class="btn-x green sm" id="tb-backup-btn" title="บันทึกข้อมูลทั้งหมดเป็นไฟล์ .json เพื่อสำรอง/ย้ายเครื่อง"><i class="fas fa-download"></i><span class="tb-hide-sm">บันทึกไฟล์ข้อมูล (.json)</span></button>
+            </div>
+        </header>
+        <main class="app-content" id="view"></main>
+    </div>
+</div>
+
+<!-- พื้นที่สำหรับพิมพ์ (ซ่อนบนหน้าจอ) -->
+<div id="print-root"></div>
+
+<noscript>
+    <div style="padding:40px;font-family:sans-serif">กรุณาเปิดใช้ JavaScript และเปิดไฟล์นี้ด้วย Google Chrome หรือ Microsoft Edge</div>
+</noscript>
+
+<!-- ไลบรารี (อยู่ในโฟลเดอร์ assets ใช้งานได้โดยไม่ต้องต่ออินเทอร์เน็ต) -->
+<script src="assets/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/sweetalert2/sweetalert2.min.js"></script>
+<script src="assets/vendor/xlsx/xlsx.bundle.js"></script>
+<script src="assets/vendor/chartjs/chart.umd.min.js"></script>
+<script src="assets/vendor/docx/docx.iife.js"></script>
+<script src="assets/js/thaidoc.browser.js"></script>
+<script src="assets/js/vs-demo.js"></script> <!-- โหมดทดลองใช้ (vipsys / ?vsdemo=1) — ฉบับที่ขายไม่มีผล -->
+<script src="assets/js/vs-utils.js"></script>
+<script src="assets/js/vs-shell.js"></script>
+
+<!-- โปรแกรม -->
+<script src="js/core.js"></script>
+<script src="js/presets.js"></script>
+<script src="js/store.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/docs.js"></script>
+<script src="js/excel.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/views/basic.js"></script>
+<script src="js/views/assess.js"></script>
+<script src="js/views/reports.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
