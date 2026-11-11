@@ -112,7 +112,137 @@
         d.schemaVersion = SCHEMA_VERSION;
         return d;
     }
+       /* ---------- ตั้งค่าเชื่อมต่อ GitHub ---------- */
+       const GH_CONFIG = {
+           owner: 'web-wrr',
+           repo: 'read-write',
+           path: 'data.json',
+           // แนะนำให้เก็บ Token ไว้ใน localStorage ของเครื่องแอดมิน เพื่อไม่ให้หลุดไปกับโค้ดสาธารณะ
+           getToken: () => localStorage.getItem('gh_token') || ''
+       };
+       let currentSha = null;
+       let isSaving = false;
+   
+       /* ---------- สถานะ ---------- */
+       const listeners = new Set();
+       let data = null;
+       let meta = { lastBackupAt: null, lastBackupName: '', lastChangeAt: null, lastSavedAt: null, dismissedWelcome: false, lastClass: '', lastTask: '' };
+       let storageOk = true;
+   
+       function loadMeta() { try { meta = Object.assign(meta, JSON.parse(localStorage.getItem(KEY_META) || '{}')); } catch (e) { /* ค่าเริ่มต้น */ } }
+       function saveMeta() { try { localStorage.setItem(KEY_META, JSON.stringify(meta)); } catch (e) { /* ไม่เป็นไร */ } }
+   
+       // 1. ดึงข้อมูลจาก GitHub มาอัปเดตทับ localStorage
+       async function syncFromGitHub() {
+           try {
+               const url = `https://github.com{GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}?t=${Date.now()}`;
+               const headers = {};
+               if (GH_CONFIG.getToken()) headers['Authorization'] = `token ${GH_CONFIG.getToken()}`;
+   
+               const res = await fetch(url, { headers });
+               if (!res.ok) throw new Error('โหลดจาก GitHub ไม่สำเร็จ');
+               
+               const file = await res.json();
+               currentSha = file.sha; // เก็บ sha ล่าสุดไว้ใช้ตอนบันทึก
+   
+               const content = decodeURIComponent(escape(atob(file.content)));
+               const parsed = JSON.parse(content);
+   
+               // ถ้าไฟล์บน GitHub มีข้อมูลอยู่แล้ว ให้นำมาใช้งานและรีเฟรชหน้าจอ
+               if (parsed && Object.keys(parsed).length > 0) {
+                   data = normalize(parsed);
+                   localStorage.setItem(KEY, JSON.stringify(data));
+                   emit('sync'); // สั่งให้ UI อัปเดตข้อมูลใหม่ทันที
+               }
+           } catch (e) {
+               console.warn('ใช้ข้อมูลสำรองในเครื่องแทนเนื่องจาก:', e);
+           }
+       }
+   
+       function load() {
+           loadMeta();
+           try {
+               const raw = localStorage.getItem(KEY);
+               data = raw ? normalize(JSON.parse(raw)) : newData();
+           } catch (e) {
+               console.warn('โหลดข้อมูลไม่สำเร็จ', e);
+               storageOk = false;
+               data = newData();
+           }
+           // สั่งดึงข้อมูลล่าสุดจาก GitHub ทันทีที่เปิดหน้าเว็บ
+           syncFromGitHub();
+           return data;
+       }
+   
+       // 2. บันทึกลงทั้งในเบราว์เซอร์ และส่งขึ้น GitHub
+       async function persist() {
+           // บันทึกลงเครื่องก่อนเสมอ (ทำงานเร็วและกันข้อมูลหาย)
+           try {
+               localStorage.setItem(KEY, JSON.stringify(data));
+               meta.lastSavedAt = new Date().toISOString();
+               saveMeta();
+               storageOk = true;
+           } catch (e) {
+               storageOk = false;
+               console.error('บันทึกลงเบราว์เซอร์ไม่สำเร็จ', e);
+           }
+   
+           // ส่งขึ้น GitHub ถ้ามี Token
+           const token = GH_CONFIG.getToken();
+           if (!token) {
+               console.warn('ยังไม่ได้ใส่ GitHub Token (บันทึกเฉพาะในเครื่องนี้)');
+               return;
+           }
+           if (isSaving) return; // ป้องกันการกดบันทึกซ้ำซ้อนขณะกำลังส่งข้อมูล
+           isSaving = true;
+   
+           try {
+               const url = `https://github.com{GH_CONFIG.owner}/${GH_CONFIG.repo}/contents/${GH_CONFIG.path}`;
+               
+               // ดึง sha ล่าสุดก่อนบันทึกเสมอ เพื่อป้องกัน Error 409 Conflict
+               if (!currentSha) {
+                   const checkRes = await fetch(`${url}?t=${Date.now()}`, { headers: { 'Authorization': `token ${token}` } });
+                   if (checkRes.ok) {
+                       const checkFile = await checkRes.json();
+                       currentSha = checkFile.sha;
+                   }
+               }
+   
+               const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+               const res = await fetch(url, {
+                   method: 'PUT',
+                   headers: {
+                       'Authorization': `token ${token}`,
+                       'Content-Type': 'application/json'
+                   },
+                   body: JSON.stringify({
+                       message: `Update data (${new Date().toLocaleString('th-TH')})`,
+                       content: encodedContent,
+                       sha: currentSha
+                   })
+               });
+   
+               if (res.ok) {
+                   const result = await res.json();
+                   currentSha = result.content.sha; // อัปเดต sha ใหม่สำหรับการบันทึกครั้งถัดไป
+                   U.toast('บันทึกข้อมูลขึ้นส่วนกลาง (GitHub) สำเร็จ', { type: 'ok', ms: 2500 });
+               } else {
+                   throw new Error(`HTTP ${res.status}`);
+               }
+           } catch (e) {
+               console.error('บันทึกขึ้น GitHub ไม่สำเร็จ:', e);
+               U.toast('บันทึกขึ้นส่วนกลางไม่สำเร็จ กรุณาตรวจสอบ Token หรืออินเทอร์เน็ต', { type: 'bad', ms: 5000 });
+           } finally {
+               isSaving = false;
+           }
+       }
+   
+       // ปรับเวลาหน่วงการบันทึกอัตโนมัติเป็น 1.5 วินาที (1500ms) เพื่อไม่ให้ยิง API ถี่เกินไปตอนพิมพ์คะแนน
+       const persistSoon = U.debounce(persist, 1500);
 
+
+
+   
     /* ---------- สถานะ ---------- */
     const listeners = new Set();
     let data = null;
