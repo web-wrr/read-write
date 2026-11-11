@@ -50,24 +50,33 @@
             return `<a class="sb-link${App.current === m.route ? ' active' : ''}" href="#/${m.route}"><i class="fas ${m.icon}"></i><span>${U.esc(m.label)}</span>${badge}</a>`;
         }).join('');
     }
+   
     function renderBackupBox() {
         const m = Store.meta;
         const warn = Store.needsBackup();
+        const hasToken = !!localStorage.getItem('gh_token');
         const box = document.getElementById('sb-backup');
         box.className = `sb-backup${warn ? ' is-warn' : ''}`;
         box.innerHTML = `
             <b><i class="fas ${warn ? 'fa-triangle-exclamation' : 'fa-shield-halved'}"></i>${warn ? 'มีข้อมูลที่ยังไม่ได้สำรอง' : 'สำรองข้อมูลแล้ว'}</b>
             <div>สำรองล่าสุด: ${m.lastBackupAt ? U.esc(U.thDate(m.lastBackupAt, true)) : 'ยังไม่เคยสำรอง'}</div>
+            <div style="margin-top:4px; font-size:0.85em; color:${hasToken ? '#16a34a' : '#d97706'};">
+                <i class="fas ${hasToken ? 'fa-cloud-arrow-up' : 'fa-eye'}"></i> 
+                ${hasToken ? 'เชื่อมต่อ GitHub (แก้ไขได้)' : 'โหมดอ่านอย่างเดียว (ไม่มี Token)'}
+            </div>
             <div class="sb-backup-actions">
                 <button type="button" data-act="save"><i class="fas fa-download"></i> บันทึกไฟล์</button>
                 <button type="button" class="ghost" data-act="open" data-demo-lock="เปิดไฟล์ข้อมูล (.json)"><i class="fas fa-folder-open"></i> เปิดไฟล์</button>
+                <button type="button" class="ghost" data-act="token" title="ตั้งค่าสิทธิ์บันทึกขึ้น GitHub"><i class="fas fa-key"></i></button>
             </div>`;
         box.querySelector('[data-act="save"]').onclick = App.backupNow;
         box.querySelector('[data-act="open"]').onclick = App.openFile;
+        box.querySelector('[data-act="token"]').onclick = App.setGitHubToken;
         const btn = document.getElementById('tb-backup-btn');
         btn.classList.toggle('orange', warn);
         btn.classList.toggle('green', !warn);
     }
+
     function renderTop() {
         const item = MENU.find((m) => m.route === App.current) || MENU[0];
         document.getElementById('tb-title').innerHTML = `<i class="fas ${item.icon}"></i><span>${U.esc(item.label)}</span>`;
@@ -99,7 +108,7 @@
         App.refreshChrome();
     };
     function onStoreChange(reason) {
-        if (reason === 'replace' || reason === 'reset' || reason === 'term') { App.render(); return; }
+        if (reason === 'replace' || reason === 'reset' || reason === 'term' || reason === 'sync') { App.render(); return; }
         if (reason === 'change') {
             const y = window.scrollY;
             App.render();
@@ -113,6 +122,22 @@
         const name = await Store.exportFile();
         if (name) U.toast(`บันทึกไฟล์ข้อมูลแล้ว: <b>${U.esc(name)}</b><br><small>เก็บไฟล์นี้ไว้ในแฟลชไดรฟ์/Google Drive เพื่อความปลอดภัย</small>`, { type: 'ok', ms: 5000 });
     };
+    
+    App.setGitHubToken = () => {
+        const current = localStorage.getItem('gh_token') || '';
+        const token = prompt('ใส่ GitHub Personal Access Token (Fine-grained) เพื่อเปิดสิทธิ์บันทึกข้อมูลขึ้นส่วนกลาง\n(เว้นว่างแล้วกด OK เพื่อลบ Token ออกจากเครื่องนี้):', current);
+        if (token === null) return; // กด Cancel
+        if (token.trim()) {
+            localStorage.setItem('gh_token', token.trim());
+            U.toast('บันทึก GitHub Token เรียบร้อยแล้ว กำลังซิงค์ข้อมูล...', { type: 'ok' });
+        } else {
+            localStorage.removeItem('gh_token');
+            U.toast('ลบ Token ออกแล้ว (เปลี่ยนเป็นโหมดอ่านอย่างเดียว)', { type: 'warn' });
+        }
+        App.refreshChrome();
+    };
+
+   
     App.openFile = async () => {
         if (!VSDemo.allow('เปิดไฟล์ข้อมูล (.json)')) return;
         const file = await U.pickFile('.json,application/json');
