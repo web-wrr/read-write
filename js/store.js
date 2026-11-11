@@ -114,7 +114,7 @@
     }
 
         /* ---------- ตั้งค่าเชื่อมต่อส่วนกลาง (Google Apps Script) ---------- */
-       const PROXY_URL = 'https://script.google.com/a/macros/ska2.go.th/s/AKfycbytX-KekEqfaquHhn3ERrjAvpECm1CREX2QQCLUfeDVReZN65OrKpZmkYO6XYRZaxYl/exec';
+       const PROXY_URL = 'https://script.google.com/a/macros/s/AKfycbytX-KekEqfaquHhn3ERrjAvpECm1CREX2QQCLUfeDVReZN65OrKpZmkYO6XYRZaxYl/exec';
        let isSaving = false;
    
        /* ---------- สถานะ ---------- */
